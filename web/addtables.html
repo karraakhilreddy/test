@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function deleteRow(id,row) {
+ 
+    document.getElementById(id).deleteRow(row);
+}
+
+
+function insRow(id) {
+    
+    var filas = document.getElementById("myTable").rows.length;
+    var x = document.getElementById(id).insertRow(filas);
+    var y = x.insertCell(0);
+    var u = x.insertCell(1);
+    var q = x.insertCell(2);
+    var v = x.insertCell(3);
+    var z = x.insertCell(4);
+    
+   
+    v.innerHTML = '<input type="text" id="fname">';
+    u.innerHTML = '<input type="text" id="fname">';
+    q.innerHTML = '<input type="text" id="fname">';
+    y.innerHTML = '<input type="text" id="fname">';
+    z.innerHTML ='<button id="btn" name="btn" > Delete</button>';
+}
+</script>
+</head>
+<body>
+
+<table id="myTable" style="border: 1px solid black">
+<tr>
+  <td><input type="text" id="fname"></td>
+  <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+  <td><input type="button" value="Delete" onclick="deleteRow('myTable',x.rowIndex)"></td>
+</tr>
+<tr>
+  <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+  <td><input type="text" id="fname"></td>
+  <td><input type="button" value="Delete" onclick="deleteRow('myTable',+x.rowIndex)"></td>
+</tr>
+<tr>
+  <td><input type="text" id="fname"></td>
+    <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+   <td><input type="text" id="fname"></td>
+  <td><input type="button" value="Delete" onclick="deleteRow('myTable',x.rowIndex)"></td>
+</tr>
+</table>
+  
+ <p>
+<input type="button" onclick="insRow('myTable')" value="Insert row">
+<input type="button" onclick="deleteRow('myTable','delrow')" value="delete row">
+
+</p>
+</body>
+</html>
