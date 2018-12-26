@@ -115,13 +115,10 @@
                         </center>
         
                     <%
-                    
-                   
-                    
-                    
-                    
                     break;
-                    case "Faculty" :
+                    
+                    
+             case "Faculty" :
                     rs = st.executeQuery("SELECT * FROM cdc.faculty;");
                     %>
         

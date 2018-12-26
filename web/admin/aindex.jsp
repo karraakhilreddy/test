@@ -19,7 +19,8 @@
                 { %>
                 <form action="aindex.jsp" method="post">
                     <input type="text" name="aCcode">
-                    <input type="submit" name="submit">
+                    <input type="submit" name="submit" value="Get College Reports">
+                    <br><a href="../Reports/adminReports.jsp">Complete Reports</a>
                 </form>
                 <% }else{
                     String aCcode=request.getParameter("aCcode");
@@ -41,11 +42,11 @@
               <table>  
                   <center>
                       <tr>
-                           <td><h1><a href="basicDetails.jsp">1.</a></h1></td>
+                           <td><h1><a href="aindex.jsp">1.</a></h1></td>
                           <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
                           <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="inspectionCalculation.jsp">4.</a></h1></td>
-                          <td><h1><a href="affiliationCalculation.jsp">5.</a></h1></td>
+                          <td><h1><a href="../Reports/reports.jsp">4.</a></h1></td>
+                         
                       
                       </tr>
                   </center>

@@ -26,9 +26,10 @@
     
     <table >
         <tr>
-                            <td><h1><a href="aindex.jsp">1.</a></h1></td>
+                             <td><h1><a href="aindex.jsp">1.</a></h1></td>
                           <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
                           <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
+                          <td><h1><a href="../Reports/reports.jsp">4.</a></h1></td>
                          
                           
                       
