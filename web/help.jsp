@@ -15,13 +15,13 @@
           <h4><strong><b>KAKATIYA UNIVERSITY, </b></strong><spam>Warangal-506 009,Telangana</spam></h4>
           <h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
       </div>
-      <a href="login.php">
+      <a href="#">
        <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
   </div>
     <nav>
-         <nav>
         <div class="navbuttons">
-             <ul><button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
+             <ul>
+                <button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
@@ -33,60 +33,13 @@
        
     </nav>
     
-       
-        </nav>
-
      
-         
+       
+              
+                  
             
-    <div>
-        <!-- code -->
-        <center>
-        <form action="loginAction.jsp" method="post">
-           
-            <table>
-                <tr>
-                    <td> <p >College Code</p></td>
-                    <td><input type="text" name="cCode"  value="567" required="required" ></td>
-                </tr>
-                 <tr>
-                    <td><p>Password</p></td>
-                    <td><input type="password" name="password" value="qwertyuiop" required="required" ></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" name="button" value="login"></td>
-                </tr>
-                <tr>
-                    <p><a href="#">Forget Password</a> </p>
-                </tr>
-            
-            </table>
-        </form>
-            </center>
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-        
-        
-    
-    <script>
-            
-            function openCont(evt,contName){
-              var i,tabcontent,tablinks;
+                   
                 
-              tabcontent=document.getElementsByClassName("tabcontent");
-                for(i=0;i<tabcontent.length;i++){
-                    tabcontent[i].style.display="none";
-                }
-                
-                
-                tablinks=document.getElementsByClassName("tablinks");
-               for(i=0;i<tablinks.length;i++){
-                    tablinks[i].className=tablinks[i].className.replace("active","");
-                }
-                document.getElementById(contName).style.display="block";
-                evt.currentTarget.className +="active";
-            }
-            
-        </script>
         
        
         <footer>

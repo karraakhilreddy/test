@@ -36,15 +36,17 @@
     <div>
         
         <table>
-          <td><h1><a href="../basicDetails.jsp">1.</a></h1></td>
-                          <td><h1><a href="../facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="../courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="../inspectionCalculation.jsp">4.</a></h1></td>
-                          <td><h1><a href="../affiliationCalculation.jsp">5.</a></h1></td>
-                           <td><h1><a href="reports.jsp">6.</a></h1></td>
+            <tr>
+                          <td><h1><a href="aindex.jsp">1.</a></h1></td>
+                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
+                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
+                          <td><h1><a href="reports.jsp">4.</a></h1></td>
+                         
+                      
+                      </tr>
         </table>
         
-        <form action="generateReportsPDF.jsp" method="post">
+        <form action="../Reports/generateReportsPDF.jsp" method="post">
             <input type="submit" name="button" value="Basic">
             <input type="submit" name="button" value="Course">
             <input type="submit" name="button" value="Faculty">

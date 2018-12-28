@@ -1,20 +1,52 @@
-<%-- 
-    Document   : aindex
-    Created on : Dec 20, 2018, 7:15:34 PM
-    Author     : akhil
---%>
 <%@page import="java.sql.*"%>
 <%@page import="cdc.Database"%>
+<%@ page import="java.io.*"%>
+<%@page import="com.lowagie.text.*,com.lowagie.text.pdf.*"%>;
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<head>
+	 <meta charset="utf-8">
+	<title>cdc</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+</head>
+<body style="background: black">
+  <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
+      <div>
+           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+          <h3 style="color:navyblue; font-family: Bookman Old Style; ">COLLEGE DEVELOPMENT COUNCIL</h3>
+          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>UNIVERSITY HOSTELS</b></h1>
+          <h4><strong><b>KAKATIYA UNIVERSITY, </b></strong><spam>Warangal-506 009,Telangana</spam></h4>
+          <h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
+      </div>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
+  </div>
+    <nav>
+        <div class="navbuttons">
+             <div class="navbuttons">
+             <ul>
+                <button class="tablinks" onclick="window.location='../home.jsp'" ><li>About</li></button>
+                <button class="tablinks" onclick="window.location='../login.jsp'"><li>College Login</li></button>
+                <button class="tablinks" onclick="window.location='../admin/aindex.jsp'"><li>Admin Login</li></button>
+                <button class="tablinks" onclick="window.location='../dean.jsp'"><li>Dean</li></button>
+                <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
+                <button class="tablinks" onclick="window.location='../help.jsp'"><li>Help</li></button>
+            
+            </ul>
+        </div>
+       
+        </div>
+       
+    </nav>
+    
+    <div>
+        
+        <body>
         
         <h1>Admin Page</h1>
+        
         <% if(request.getParameter("aCcode")==null)
                 { %>
                 <form action="aindex.jsp" method="post">
@@ -23,165 +55,214 @@
                     <br><a href="../Reports/adminReports.jsp">Complete Reports</a>
                 </form>
                 <% }else{
-                    String aCcode=request.getParameter("aCcode");
-                     session.setAttribute("aCcode", aCcode);
-                %>
-                <form action="aindex.jsp" method="post">
-                    <input type="text" name="aCcode" value="<%=aCcode%>">
-                    <input type="submit" name="submit">
-                </form>
-                    
-                    <% 
-            
+                     int cCode=(int)session.getAttribute("cCode");
+            //int cCode=Integer.parseInt(scCode);
+            session.setAttribute("cCode", cCode);
              Connection con=Database.getConnection();
-          PreparedStatement ps=con.prepareStatement("select * from cdc_college_details   where cCode='"+aCcode+"'");
+          PreparedStatement ps=con.prepareStatement("select * from cdc_college_details   where cCode='"+cCode+"'");
          ResultSet rs=ps.executeQuery();
            if(rs.next())
             {
                %>
-              <table>  
-                  <center>
-                      <tr>
-                           <td><h1><a href="aindex.jsp">1.</a></h1></td>
+               <table>
+            <tr>
+                          <td><h1><a href="aindex.jsp">1.</a></h1></td>
                           <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
                           <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="../Reports/reports.jsp">4.</a></h1></td>
+                          <td><h1><a href="reports.jsp">4.</a></h1></td>
                          
                       
                       </tr>
-                  </center>
+        </table>
+               <form action="upload.jsp" method="POST">
+              <table>  
+                  
                          
                         <tr>
                               <td>College code:</td>
-                              <td><input type="number" value="<%=rs.getInt("cCode") %>" ></td>
+                              <td><input type="number" value="<%=rs.getInt("cCode") %>" readonly="true" ></td>
                             
                          </tr>
                           <tr>
                              <td>Name of the college:</td>
-                             <td><input type="text" name="cName" placeholder="college name"  value="<%=rs.getString("cName") %> "  required="required" readonly=""></td>
+                             <td><input type="text" name="cName" placeholder="college name"  value="<%=rs.getString("cName") %>"  required="required"></td>
+                         </tr>
+                          <tr>
+                             <td>Address of the college:</td>
+                             <td><input type="text" name="cAddress" placeholder="college address"  value="<%=rs.getString("cAddress") %>"  required="required"></td>
                          </tr>
                          
                         <tr>
                               <td>Name of the Sponsoring society:</td>
-                              <td><input type="text" name="sName" placeholder="society name" value="<%=rs.getString("sName") %> "  required="required" ></td>
+                              <td><input type="text" name="sName" placeholder="society name" value="<%=rs.getString("sName") %>"  required="required" ></td>
                         </tr>
                         
                         <tr>
                             <td>Address:</td>
-                            <td><input type="text" name="sAddress" placeholder="society address"  value="<%=rs.getString("sAddress") %> "required="required" ></td>
+                            <td><input type="text" name="sAddress" placeholder="society address"  value="<%=rs.getString("sAddress") %>"required="required" ></td>
                         </tr>
+                        <tr>
+                            <td>Postal Address of the college :</td>
+                            <td><input type="number" name="sPostalAddress" placeholder="society postal address"  value="<%=rs.getInt("sPostalAddress") %>"  ></td>
+                        </tr>
+                         <tr>
+                            <td> Type of the college :</td>
+                                    <td><select name="typeOfCollege" value="<%=rs.getString("typeOfCollege") %>" >
+                                            <option>-------</option>
+                                            <option value="university" <% if(rs.getString("typeOfCollege").equals("university")){ out.println("selected");} %>>University</option>
+                                            <option value="universityAutonomous" <% if(rs.getString("typeOfCollege").equals("universityAutonomous")){ out.println("selected");} %>>University Autonomous</option>
+                                            <option value="government" <% if(rs.getString("typeOfCollege").equals("government")){ out.println("selected");} %>>Government</option>
+                                            <option value="governmentAutonomous" <% if(rs.getString("typeOfCollege").equals("governmentAutonomous")){ out.println("selected");} %>>Government Autonomous</option>
+                                            <option value="aided" <% if(rs.getString("typeOfCollege").equals("aided")){ out.println("selected");} %>>Aided</option>
+                                            <option value="pivate" <% if(rs.getString("typeOfCollege").equals("pivate")){ out.println("selected");} %>>Private</option>
+                                            <option value="privateAutonomous" <% if(rs.getString("typeOfCollege").equals("privateAutonomous")){ out.println("selected");} %>>Private Autonomous</option>
+                                            
+                                </select>
+                                    </td>
+                        </tr>
+                        
                <tr>
                            <td>Registration no:</td>
-                           <td><input type="text" name="sRegno" value="<%=rs.getString("sRegNo") %> " required="required"></td>
+                           <td><input type="text" name="sRegNo" value="<%=rs.getString("sRegNo") %>" required="required"></td>
                          </tr>
                          
                          <tr>
                             <td>Year of registration:</td>
-                            <td><input type="text" maxlength="4" name="sYear" value="<%=rs.getInt("sYear") %> " required="required"></td>
+                            <td><input type="date_date_set"  name="sYear" value="<%=rs.getInt("sYear") %>" required="required"></td>
                          </tr>
                     
-                         <tr>
-                             <td>Name of the Secretary/Correspondent: </td>
-                             <td> <input type="text" name="secName" required="required"  value="<%=rs.getString("secName") %> " autocomplete="false"></td>
-                         </tr>
+                         
                          <tr>
                              <td>Year of Establishment of College:</td>
                              <td><input type="date_date_set" name="cEstd"  value="<%=rs.getDate("cEstd") %>" required= "required"></td>
                          </tr>
+                         <tr>
+                             <td>Name of the Secretary/Correspondent: </td>
+                             <td> <input type="text" name="secName" required="required"  value="<%=rs.getString("secName") %>" autocomplete="false"></td>
+                         </tr>
                          
                          <tr>
                              <td>Mobile Number of the Secretary:</td>
-                             <td><input type="text"  name="secPhNo"  value="<%=rs.getString("secPhNo") %> " required="required"></td> 
+                             <td><input type="text"  name="secPhNo"  value="<%=rs.getString("secPhNo") %>" required="required"></td> 
                          </tr>
                          
                          <tr>
                              <td>Name of the Principal:</td>
                              <td><input type="text" name="cPrincipal"  value="<%=rs.getString("cPrincipal") %>" required="required" autocomplete="false"></td> 
                          </tr>
-                         
+                          
                          <tr>
                             <td>Mobile Number of the Principal:</td>
-                             <td><input type="text" maxlength="10" value="<%=rs.getString("cPPhNo") %> " name="cPphNo" required="required"></td>
+                             <td><input type="text" maxlength="10" name="cPPhNo" value="<%=rs.getString("cPPhNo")%>"  required="required"></td>
                          </tr>
                          <tr>
-                             <td>Whether the College Building(s)<br> owned by the Society(lease/own):</td>
-                             <td><input type="radio" name="valOwnBuilding"  <% 
-                             if(rs.getInt("valOwnBuilding")==1){ out.print("checked");} 
-                             
-                             %> >Lease
-                             <input type="radio" name="valOwnBuilding"  <% if(rs.getInt("valOwnBuilding")==0){ out.print("checked");} %> >Own</td>
+                             <td>Experience as Principal(in years)</td>
+                             <td><input type="number" name="cExperiencePrincipal"  value="<%=rs.getInt("cExperiencePrincipal") %>" required="required" autocomplete="false"></td> 
                          </tr>
+                          <tr>
+                               
+                                   <td>  whether the college building is owned by society(owned/rented)                       </td>
+                                   <td><select name="valOwnBuilding" value="<%=rs.getString("valOwnBuilding") %>">
+                                <option></option>
+                                <option value="owned" <% if(rs.getString("valOwnBuilding").equals("owned")){ out.println("selected");} %>>Owned</option>
+                                <option value="leased" <% if(rs.getString("valOwnBuilding").equals("leased")){ out.println("selected");} %>>Leased</option>
+                                       </select></td>
+                                       <td></td>
+                            
+                                   
+                          
+                            </tr>
+                       
+                        
               </table>
-                         <script>
-                             
-                         </script>
+                 <br><hr> 
                     
                          <div class="hidden" id="hidden">
                         <table>
+                           
                             <tr>
-                                
+                                 
+                                 <td><b>if leased please fillup these details</b> </td>
+                           
                                 <td>Details of lease(lessor/lessee/Period/Survey No):</td>
-                                <td><input type="text" name="lLessor" required="required" value="<%=rs.getString("lLessor") %> " class="hidden">lLessor</td>
-                                <td><input type="text" name="lLessee" required="required" value="<%=rs.getString("lLessee") %> " class="hidden">lLessee</td>
-                                <td><input type="text" name="lPeriod" required="required" value="<%=rs.getString("lPeriod") %> "  class="hidden">lPeriod</td>
-                                <td><input type="text" name="lSurveyNo" required="required" value="<%=rs.getString("lSurveyNo") %> " class="hidden">lSurveyNo</td>
+                                <td><input type="text" name="lLessor" required="required" value="<%=rs.getString("lLessor") %>" class="hidden">lLessor</td>
+                                <td><input type="text" name="lLessee" required="required" value="<%=rs.getString("lLessee") %>" class="hidden">lLessee</td>
+                                <td><input type="number" name="lPeriod" required="required" value="<%=rs.getInt("lPeriod") %>"  class="hidden">lPeriod</td>
+                                <td><input type="text" name="lSurveyNo" required="required" value="<%=rs.getString("lSurveyNo") %>" class="hidden">lSurveyNo</td>
                                 
-                                <td><input type="text" name="lRegNo" required="required" value="<%= rs.getString("lRegNo") %> " >lRegNo</td>
+                                <td><input type="text" name="lRegNo" required="required" value="<%= rs.getString("lRegNo") %>" >lRegNo</td>
                                
-                                <td><input type="date_date_set" name="lRegDate" required="required" value="<%=rs.getDate("lRegDate") %> " class="hidden">lRegDate</td>
+                                <td><input type="date" name="lRegDate" required="required" value="<%=rs.getDate("lRegDate") %>" class="hidden">lRegDate</td>
+                               
                             </tr>
+                        
                         </table>
                      </div>
                             <table>
                             
-                          
+                       <hr>    
                      <tr>         
                          <td>Land Survey Number:</td>
-                         <td><input type="text" name="landSurveyNo"  value="<%=rs.getString("landSurveyNumber") %> " required="required"></td>
+                         <td><input type="text" name="landSurveyNumber"  value="<%=rs.getString("landSurveyNumber") %>" required="required"></td>
                      </tr>
                          
                     <tr>     
                         <td>Documentation No:</td>
-                        <td><input type="text" name="landDocNo"  value="<%=rs.getString("landDocNo") %> "required="required"></td>
+                        <td><input type="text" name="landDocNo"  value="<%=rs.getString("landDocNo") %>"required="required"></td>
                     </tr>
                     
                     <tr>
                         <td>Date of Registration:</td>
-                        <td><input type="date_date_set" name="landRegDate"  value="<%=rs.getDate("landRegNo") %> "required="required"></td>
+                        <td><input type="date" name="landRegDate"  value="<%=rs.getDate("landRegDate") %>"required="required"></td>
                     </tr>
                          
                     <tr>     
                         <td>Whether Registered in the name of Society:</td>
-                        <td><input type="radio" name="valRegSociety"  <% if(rs.getInt("valRegSociety")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valRegSociety"  <% if(rs.getInt("valRegSociety")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valRegSociety" value="yes" <% if(rs.getString("valRegSociety").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valRegSociety" value="no" <% if(rs.getString("valRegSociety").equals("no")){ out.println("checked");} %> >No</td>
                     </tr>
                          
                     <tr>     
                         <td>Represented by the Secretary or Member:</td>
-                        <td><input type="radio" name="valSecMem"  <% if(rs.getInt("valSecMem")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valSecMem"  <% if(rs.getInt("valSecMem")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valSecMem" value="yes" <% if(rs.getString("valSecMem").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSecMem" value="no" <% if(rs.getString("valSecMem").equals("no")){ out.println("checked");} %>>No </td>
                     </tr>
                          
                     <tr>    
                         <td>Whether representative name is in the list of members of the society:</td>
-                         <td><input type="radio" name="valSocietyMem"  <% if(rs.getInt("valSocietyMem")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valSocietyMem"  <% if(rs.getInt("valSocietyMem")==0){ out.print("checked");} %> >No</td>
+                         <td><input type="radio" name="valSocietyMem" value="yes" <% if(rs.getString("valSocietyMem").equals("yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valSocietyMem" value="no" <% if(rs.getString("valSocietyMem").equals("no")){ out.println("checked");} %>>No</td>
                     </tr>
                          
                     <tr>     
                         <td>Whether entire land is in single bit:</td>
-                        <td><input type="radio" name="valSingleBit"  <% if(rs.getInt("valSingleBit")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valSingleBit"  <% if(rs.getInt("valSingleBit")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valSingleBit" value="yes" <% if(rs.getString("valSingleBit").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSingleBit" value="no" <% if(rs.getString("valSingleBit").equals("no")){ out.println("checked");} %>>No</td>
                     </tr>
+                     <tr>
+                           <td>Whether the sketch plan of land is certified by MRO/Tahasildar:</td>
+                          <td><input type="radio" name="valLandCert" value="yes" <% if(rs.getString("valLandCert").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valLandCert" value="no" <% if(rs.getString("valLandCert").equals("no")){ out.println("checked");} %> > No </td>
+                         </tr>
+                         
                          
                     <tr>     
                         <td>Permission for grant of Construction of Building by the competent authority:</td>
-                        <td><select name="grantPremission"><option></option><option value="GP">GP</option><option value="Muncipality">Muncipality</option></select></td>
+                        <td><select name="grantPermission" value="<%=rs.getString("grantPermission") %>">
+                                <option></option>
+                                <option value="gramPanchayat" <% if(rs.getString("grantPermission").equals("gramPanchayat")){ out.println("selected");} %>>GramPanchayat</option>
+                                <option value="muncipality" <% if(rs.getString("grantPermission").equals("muncipality")){ out.println("selected");} %>>Muncipality</option>
+                            </select></td>
                     </tr>
                          
                     <tr>     
                         <td>Building MAP approved by the Competent Authority:</td>
-                        <td><select name="mapApproval"><option></option><option value="GP">GP</option><option value="Muncipality">Muncipality</option></select></td>
+                        <td><select name="mapApproval" value="<%=rs.getString("mapApproval") %>">
+                                <option></option>
+                                <option value="gramPanchayat" <% if(rs.getString("mapApproval").equals("gramPanchayat")){ out.println("selected");} %>>GramPanchayat</option>
+                                <option value="muncipality" <% if(rs.getString("mapApproval").equals("muncipality")){ out.println("selected");} %>>Muncipality</option>
+                            </select>
+                        </td>
                     </tr>
                          
                     <tr>
@@ -191,30 +272,30 @@
                    
                      <tr>    
                          <td>Whether Playground is Available in(or)around the college:</td>
-                         <td><input type="radio" name="valPlayGround"  <% if(rs.getInt("valPlayGround")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valPlayGround"  <% if(rs.getInt("valPlayGround")==0){ out.print("checked");} %> >No</td>
+                         <td><input type="radio" name="valPlayGround" value="yes" <% if(rs.getString("valPlayGround").equals("yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valPlayGround" value="no"<% if(rs.getString("valPlayGround").equals("no")){ out.println("checked");} %> >No</td>
                    </tr>
                       
                     <tr>     
                         <td>Is parking area available:</td>
-                         <td><input type="radio" name="valParkingArea"  <% if(rs.getInt("valParkingArea")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valParkingArea"  <% if(rs.getInt("valParkingArea")==0){ out.print("checked");} %> >No</td>
+                         <td><input type="radio" name="valParkingArea" value="yes"<% if(rs.getString("valParkingArea").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valParkingArea"  value="no" <% if(rs.getString("valParkingArea").equals("no")){ out.println("checked");} %> >No</td>
                     </tr>
                     <tr>     
                         <td>Safe Drinking Water Facility Available:</td>
-                        <td><input type="radio" name="valDrinkingWater"  <% if(rs.getInt("valDrinkingWater")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valDrinkingWater"  <% if(rs.getInt("valDrinkingWater")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valDrinkingWater" value="yes" <% if(rs.getString("valDrinkingWater").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valDrinkingWater" value="no" <% if(rs.getString("valDrinkingWater").equals("no")){ out.println("checked");} %> >No</td>
                     </tr>
                          
                     <tr>     
                         <td>Whether Fire-Safety measures taken:</td>
-                        <td><input type="radio" name="valFireSafety"  <% if(rs.getInt("valFireSafety")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valFireSafety"  <% if(rs.getInt("valFireSafety")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valFireSafety" value="yes" <% if(rs.getString("valFireSafety").equals("yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valFireSafety" value="no"<% if(rs.getString("valFireSafety").equals("no")){ out.println("checked");} %> >No</td>
                     </tr>    
                     <tr>     
                         <td>Whether Sanitary Certificate taken:</td>
-                        <td><input type="radio" name="valSanitaryCert"  <% if(rs.getInt("valSanitaryCert")==1){ out.print("checked");} %> >Yes
-                             <input type="radio" name="valSanitaryCert"  <% if(rs.getInt("valSanitaryCert")==0){ out.print("checked");} %> >No</td>
+                        <td><input type="radio" name="valSanitaryCert" value="yes" <% if(rs.getString("valSanitaryCert").equals("yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSanitaryCert" value="no" <% if(rs.getString("valSanitaryCert").equals("no")){ out.println("checked");} %> >No</td>
                     </tr>
                 </table>         
                   
@@ -228,7 +309,7 @@
                   <table> 
                    <tr>
                        <td>Total land in acres:</td>
-                       <td><input type="numbers" name="totalLand" value="<%=rs.getInt("totalLand") %>" required="required" autocomplete="false"></td>
+                       <td><input type="number" name="totalLand" value="<%=rs.getInt("totalLand") %>" required="required" autocomplete="false"></td>
                    </tr>
                    
                     <tr>
@@ -266,12 +347,15 @@
                        <td><input type="number" name="libraryArea" value="<%=rs.getInt("libraryArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
-                       <td>No of Class Rooms and each size in sq.ft.:</td>
-                       <td><input type="number" name="noClassrooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">&emsp;<input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
+                       <td>No of Class Rooms :</td>
+                       <td><input type="number" name="noClassRooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">&emsp;</td>
+                       <td>Approximate size of each classroom in sq.ft.:
+                       <input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
-                      <td>No of Lab Rooms and each size in sq.ft.:</td>
-                      <td><input type="number" name="noLabrooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">&emsp;<input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
+                      <td>No of Lab Rooms :</td>
+                      <td><input type="number" name="noLabRooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">&emsp;</td>
+                      <td>Approximate size of Each Lab Room in sq.ft:<input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
                    </tr>
             
                
@@ -293,7 +377,7 @@
                      </tr>
                      <tr>
                          <td>No of Journals:</td>
-                         <td><input type="number" name="noJournals" value="<%=rs.getInt("noJournels") %>"  required="required" autocomplete="false"></td>
+                         <td><input type="number" name="noJournels" value="<%=rs.getInt("noJournels") %>"  required="required" autocomplete="false"></td>
                      </tr>
                      <tr>
                         <td>No of Periodicals:</td>
@@ -333,31 +417,39 @@
                      
                      </tr>
                      <tr>
-                         <td><input type="number" name="CFDno"  value="<%=rs.getInt("CFDNo") %>" required="required" autocomplete="false"></td>
-                          <td><input type="date_date_set"  value="<%=rs.getDate("CFDDate") %>" name="CFDdate"  required="required" autocomplete="false"></td>
-                          <td><input type="number" name="CFDamount"  required="required" value="<%=rs.getInt("CFDAmount") %>" autocomplete="false"></td>
-                          <td><input type="text" name="CFDissuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" autocomplete="false"></td>
-                          <td><input type="date_date_set" name="CFDmaturityDate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" autocomplete="false"></td>
-                          <td><input type="date_date_set" name="CFDRenewaldate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required" autocomplete="false"></td>
+                         <td><input type="text" name="CFDNo"  value="<%=rs.getString("CFDNo") %>" required="required" autocomplete="false"></td>
+                          <td><input type="date" name="CFDDate" value="<%=rs.getDate("CFDDate") %>" name="CFDDate"  required="required" autocomplete="false"></td>
+                          <td><input type="number" name="CFDAmount"  required="required" value="<%=rs.getInt("CFDAmount") %>" autocomplete="false"></td>
+                          <td><input type="text" name="CFDIssuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" autocomplete="false"></td>
+                          <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" autocomplete="false"></td>
+                          <td><input type="date" name="CFDRenewalDate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required" autocomplete="false"></td>
                      </tr>
                  
                    </table>
           </div>
                
                 
-          <div class="buttons">
-                 <table>
-                    <tr>
-                        <td><button><b>SAVE</b></button> </td>
-                         <td><button><b>EDIT</b></button> </td>
-                         <td><button><b>SAVE and CONTINUE</b></button> </td>
-                     
-                    </tr>
-                 </table>
-          </div>
+         
+         </form>
             <%
             }
                 %>
         <%  }%>
-    </body>
+        
+        
+    </div>
+       
+              
+                  
+            
+                   
+                
+        
+       
+        <footer>
+            <p id="copyright"> Copyrights reserved by Kakatiya University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="developers.jsp">Developers</a></p>
+            
+            
+        </footer>
+</body>
 </html>
