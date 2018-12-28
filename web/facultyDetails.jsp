@@ -53,7 +53,7 @@
                 
             </tr>
             <%
-                String cCode=(String)session.getAttribute("cCode");
+                int cCode=(int)session.getAttribute("cCode");
             try
             {
            

@@ -17,7 +17,8 @@
      </head>    
     <body>
         <% 
-            String cCode=request.getParameter("code");
+            int cCode=(int)session.getAttribute("cCode");
+            //int cCode=Integer.parseInt(scCode);
             session.setAttribute("cCode", cCode);
              Connection con=Database.getConnection();
           PreparedStatement ps=con.prepareStatement("select * from cdc_college_details   where cCode='"+cCode+"'");
@@ -25,7 +26,7 @@
            if(rs.next())
             {
                %>
-               <form action="upload.jsp" method="POST">
+               <form action="sampleUpload.jsp" method="POST">
               <table>  
                   <center>
                       <tr>
@@ -40,7 +41,7 @@
                          
                         <tr>
                               <td>College code:</td>
-                              <td><input type="number" value="<%=rs.getInt("cCode") %>" ></td>
+                              <td><input type="number" value="<%=rs.getInt("cCode") %>" readonly="true" ></td>
                             
                          </tr>
                           <tr>
@@ -67,14 +68,15 @@
                         </tr>
                          <tr>
                             <td> Type of the college :</td>
-                                    <td><select value="<%=rs.getString("typeOfCollege") %>">
-                                            <option value="University">University</option>
-                                            <option value="University Autonomous">University Autonomous</option>
-                                            <option value="Government">Government</option>
-                                            <option value="Government Autonomous">Government Autonomous</option>
-                                            <option value="Aided">Aided</option>
-                                            <option value="Private">Private</option>
-                                            <option value="Private Autonomous">Private Autonomous</option>
+                                    <td><select name="typeOfCollege" value="<%=rs.getString("typeOfCollege") %>" >
+                                            <option>-------</option>
+                                            <option value="university" <% if(rs.getString("typeOfCollege").equals("university")){ out.println("selected");} %>>University</option>
+                                            <option value="universityAutonomous" <% if(rs.getString("typeOfCollege").equals("universityAutonomous")){ out.println("selected");} %>>University Autonomous</option>
+                                            <option value="government" <% if(rs.getString("typeOfCollege").equals("government")){ out.println("selected");} %>>Government</option>
+                                            <option value="governmentAutonomous" <% if(rs.getString("typeOfCollege").equals("governmentAutonomous")){ out.println("selected");} %>>Government Autonomous</option>
+                                            <option value="aided" <% if(rs.getString("typeOfCollege").equals("aided")){ out.println("selected");} %>>Aided</option>
+                                            <option value="pivate" <% if(rs.getString("typeOfCollege").equals("pivate")){ out.println("selected");} %>>Private</option>
+                                            <option value="privateAutonomous" <% if(rs.getString("typeOfCollege").equals("privateAutonomous")){ out.println("selected");} %>>Private Autonomous</option>
                                             
                                 </select>
                                     </td>
@@ -82,7 +84,7 @@
                         
                <tr>
                            <td>Registration no:</td>
-                           <td><input type="text" name="sRegno" value="<%=rs.getString("sRegNo") %>" required="required"></td>
+                           <td><input type="text" name="sRegNo" value="<%=rs.getString("sRegNo") %>" required="required"></td>
                          </tr>
                          
                          <tr>
@@ -118,17 +120,31 @@
                              <td>Experience as Principal(in years)</td>
                              <td><input type="number" name="cExperiencePrincipal"  value="<%=rs.getInt("cExperiencePrincipal") %>" required="required" autocomplete="false"></td> 
                          </tr>
-                         
+                          <tr>
+                               
+                                   <td>  whether the college building is owned by society(owned/rented)                       </td>
+                                   <td><select name="valOwnBuilding" value="<%=rs.getString("valOwnBuilding") %>">
+                                <option></option>
+                                <option value="owned" <% if(rs.getString("valOwnBuilding").equals("owned")){ out.println("selected");} %>>Owned</option>
+                                <option value="leased" <% if(rs.getString("valOwnBuilding").equals("leased")){ out.println("selected");} %>>Leased</option>
+                                       </select></td>
+                                       <td></td>
+                            
+                                   
+                          
+                            </tr>
+                       
                         
               </table>
-                         <script>
-                             
-                         </script>
+                 <br><hr> 
                     
                          <div class="hidden" id="hidden">
                         <table>
+                           
                             <tr>
-                                
+                                 
+                                 <td><b>if leased please fillup these details</b> </td>
+                           
                                 <td>Details of lease(lessor/lessee/Period/Survey No):</td>
                                 <td><input type="text" name="lLessor" required="required" value="<%=rs.getString("lLessor") %>" class="hidden">lLessor</td>
                                 <td><input type="text" name="lLessee" required="required" value="<%=rs.getString("lLessee") %>" class="hidden">lLessee</td>
@@ -138,12 +154,14 @@
                                 <td><input type="text" name="lRegNo" required="required" value="<%= rs.getString("lRegNo") %>" >lRegNo</td>
                                
                                 <td><input type="date" name="lRegDate" required="required" value="<%=rs.getDate("lRegDate") %>" class="hidden">lRegDate</td>
+                               
                             </tr>
+                        
                         </table>
                      </div>
                             <table>
                             
-                          
+                       <hr>    
                      <tr>         
                          <td>Land Survey Number:</td>
                          <td><input type="text" name="landSurveyNumber"  value="<%=rs.getString("landSurveyNumber") %>" required="required"></td>
@@ -156,7 +174,7 @@
                     
                     <tr>
                         <td>Date of Registration:</td>
-                        <td><input type="date" name="landRegDate"  value="<%=rs.getDate("landRegNo") %>"required="required"></td>
+                        <td><input type="date" name="landRegDate"  value="<%=rs.getDate("landRegDate") %>"required="required"></td>
                     </tr>
                          
                     <tr>     
@@ -360,8 +378,8 @@
                      
                      </tr>
                      <tr>
-                         <td><input type="number" name="CFDno"  value="<%=rs.getInt("CFDNo") %>" required="required" autocomplete="false"></td>
-                          <td><input type="date"  value="<%=rs.getDate("CFDDate") %>" name="CFDdate"  required="required" autocomplete="false"></td>
+                         <td><input type="text" name="CFDNo"  value="<%=rs.getString("CFDNo") %>" required="required" autocomplete="false"></td>
+                          <td><input type="date" name="CFDDate" value="<%=rs.getDate("CFDDate") %>" name="CFDDate"  required="required" autocomplete="false"></td>
                           <td><input type="number" name="CFDAmount"  required="required" value="<%=rs.getInt("CFDAmount") %>" autocomplete="false"></td>
                           <td><input type="text" name="CFDIssuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" autocomplete="false"></td>
                           <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" autocomplete="false"></td>
@@ -375,9 +393,9 @@
           <div class="buttons">
                  <table>
                     <tr>
-                        <td><input type="submit" name="name" value="basicDetails" </td>
-                         
-                         
+                        <td><input type="submit" name="basicDetails" </td>
+                         <td><button><b>EDIT</b></button> </td>
+                         <td><button><b>SAVE and CONTINUE</b></button> </td>
                      
                     </tr>
                  </table>

@@ -1,0 +1,9 @@
+college - course
+SELECT 
+    cdc_college_details.cCode,cName,cType,cCourse,cCombination,cMedium,cIntakeSanctioned,cStudentsAdmitted,cStatus
+FROM
+    cdc_college_details 
+    LEFT JOIN
+    courses ON cdc_college_details.ccode=courses.cCode
+    Order by cdc_college_details.cCode
+;

@@ -12,6 +12,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Reports</h1>
+        <form action="generateReportsPDF.jsp" method="post">
+        <table>
+            <tr>
+                <td>College</td>
+                <td><input type="submit" name="button" value="adminCollege"></td>
+            </tr>
+            <tr>
+                <td>College-course</td>
+                <td><input type="submit" name="button" value="adminCollegeCourse"></td>
+            </tr>
+            <tr>
+                <td>College-Amount</td>
+                <td><input type="submit" name="button" value="adminCollegeAmount"></td>
+            </tr>
+            
+        </table>
+            </form>
     </body>
 </html>

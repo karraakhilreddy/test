@@ -242,6 +242,117 @@
                     
                     break;
                     
+                    
+                    case "adminCollegeCourse" :
+                    rs = st.executeQuery("SELECT cdc_college_details.cCode,cName,cType,cCourse,cCombination,cMedium,cIntakeSanctioned,cStudentsAdmitted,cStatus FROM  cdc_college_details  LEFT JOIN  courses ON cdc_college_details.ccode=courses.cCode Order by cdc_college_details.cCode ;");
+                    %>
+        
+                          <table width="100%" border="0">
+                            <tr bgcolor="royalblue">
+                                <td>
+                                    <center>
+                                        <font color="white">View Delegation</font>
+                                    </center>
+                                </td>
+                            </tr>
+                            </table>
+                                    <table width="100%" border="1">
+                            <tr>
+                                    <td align="right"><a href="role.jsp" style ="text-decoration:none;"><font size="2" color="red"> Back</font></a> 
+                                    <a href="Home.jsp" style ="text-decoration:none;"><font size="2" color="red">Home</font></a> 
+                                    <a href="Logout.jsp" onclick="fun()" style ="text-decoration:none;"> <font size="2" color="red"> Logout</font></a> 
+                                    </td>
+                            </tr>
+                            </table><br>
+                        <center>
+                        <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
+                            <tr bgcolor="royalblue">
+                                <td>Code</td>
+                                <td>Name</td>
+                                <td>Type</td>
+                                <td>Course</td>
+                                <td>Combination</td>
+                                <td>Medium</td>
+                                <td>Intake sanctioned</td>
+                                <td>Students admitted</td>
+                                <td>Status</td>
+                               
+                                
+                                </tr>
+                    <%
+
+                    
+                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    document.open();
+                                                                    
+                    String[] headers3 = new String[] {"Code","Name","Type", "Course", "Combination", "Medium","Intake sanctioned", "Students admitted","Status"};
+                    PdfPTable table3 = new PdfPTable(headers3.length);
+                                for (int i = 0; i < headers3.length; i++) {
+                                    String header = headers3[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table3.addCell(cell);
+                                }
+                                table3.completeRow();
+                    while (rs.next()){
+                        
+                        String st1=rs.getString("cdc_college_details.cCode");
+                    String st2=rs.getString("cName");
+                    String st3=rs.getString("cType");
+                    String st4=rs.getString("cCourse");
+                    String st5=rs.getString("cCombination");
+                    String st6=rs.getString("cMedium");
+                    String st7=rs.getString("cIntakeSanctioned");
+                    String st8=rs.getString("cStudentsAdmitted");
+                    String st9=rs.getString("cStatus");
+                    
+                    
+                    table3.addCell(st1);
+                    table3.addCell(st2);
+                    table3.addCell(st3);
+                    table3.addCell(st4);
+                    table3.addCell(st5);
+                    table3.addCell(st6);
+                    table3.addCell(st7);
+                    table3.addCell(st8);
+                    table3.addCell(st9);
+                    
+                    table3.completeRow();
+                        %>      
+                        <tr >
+                                <td><font size="2"><%=st1%></font></td>
+                                <td><font size="2"><%=st2%></font></td>
+                                <td><font size="2"><%=st3%></font></td>
+                                <td><font size="2"><%=st4%></font></td>
+                                <td><font size="2"><%=st5%></font></td>
+                                <td><font size="2"><%=st6%></font></td>
+                                <td><font size="2"><%=st7%></font></td>
+                                <td><font size="2"><%=st8%></font></td>
+                                <td><font size="2"><%=st9%></font></td>
+                                
+                            </tr>
+
+                    <% 
+                    }
+                    document.add(table3);
+                    document.close();
+                    System.out.println(f);
+                    %>
+                        </TABLE>
+                        <a href="download.jsp?ff=<%=f%>">Download the  as PDF</a>
+                        <a href="excelData.jsp?button=adminCollegeCourse">Download as Excel file</a>
+                        </center>
+        
+                    <%
+                    
+                   
+                    
+                    
+                    
+                    break;
+                    
+                    
             }
         
         

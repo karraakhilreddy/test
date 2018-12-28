@@ -14,7 +14,7 @@
     </head>
     <body>
         
-        <h1>Hello World!</h1>
+        <h1>Admin Page</h1>
         <% if(request.getParameter("aCcode")==null)
                 { %>
                 <form action="aindex.jsp" method="post">

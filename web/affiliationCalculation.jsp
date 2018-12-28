@@ -36,7 +36,7 @@
                 
             </tr>
             <%
-                String cCode=(String)session.getAttribute("cCode");
+                int cCode=(int)session.getAttribute("cCode");
             try
             {
            
@@ -76,7 +76,7 @@
         
                  long amount=0;
                  feeCalculation is=new feeCalculation();
-                 amount=is.AffiliationCalculation(Integer.parseInt(cCode));
+                 amount=is.AffiliationCalculation(cCode);
                  out.print("is = " +amount);
                  System.out.print(amount);
         
