@@ -1,0 +1,83 @@
+<DOCTYPE html>
+<html>
+    
+    
+    <head>
+           <title>cdc page</title>
+          <meta charset="utf-8">        
+          <link rel="stylesheet" type="text/css" href="cdc.css">
+    </head>
+    
+    
+    <body>
+        
+        
+         <header>
+             <h3>KAKATIYA UNIVERSITY</h3>
+         </header>  
+        
+        
+         <nav>
+             
+            <table>
+                 <tr>
+                     <td><button class="tablinks" onclick="openCont(event,'college details')">COLLEGE DETAILS</button></td>
+                     <td><button class="tablinks" onclick="openCont(event,'faculty details')">FACULTY DETAILS</button></td>
+                     <td><button href="" class="tablinks" onclick="openCont(event,'course details')">COURSE DETAILS</button></td>
+                     <td><button class="tablinks" onclick="openCont(event,'payments')">PAYMENTS</button></td>
+                </tr>
+            </table>
+            
+        </nav>
+
+        <div id="college details" class="tabcontent">
+         <iframe src="details.html" width="1220" height="800px" scroll="auto"></iframe>
+        
+        </div>
+          <div id="faculty details" class="tabcontent">
+         <iframe src="faculty.html" width="1220px" height="800px" scroll="auto"></iframe>
+        
+        </div>
+          <div id="course details" class="tabcontent">
+         <iframe src="course.html" width="1220" height="800px" scroll="auto"></iframe>
+        
+        </div>
+          <div id="payments" class="tabcontent">
+         <iframe src="payments.html" width="1220" height="800px" scroll="auto"></iframe>
+        
+        </div>
+        
+        <script>
+            
+            function openCont(evt,contName){
+              var i,tabcontent,tablinks;
+                
+              tabcontent=document.getElementsByClassName("tabcontent");
+                for(i=0;i<tabcontent.length;i++){
+                    tabcontent[i].style.display="none";
+                }
+                
+                
+                tablinks=document.getElementsByClassName("tablinks");
+               for(i=0;i<tablinks.length;i++){
+                    tablinks[i].className=tablinks[i].className.replace("active","");
+                }
+                document.getElementById(contName).style.display="block";
+                evt.currentTarget.className +="active";
+            }
+            
+        </script>
+        
+    </body>
+    
+    
+    </html>
+</DOCTYPE>
+         
+         
+         
+         
+         
+         
+         
+         

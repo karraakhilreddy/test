@@ -54,7 +54,7 @@
                 <form action="aindex.jsp" method="post">
                     <input type="text" name="aCcode">
                     <input type="submit" name="submit" value="Get College Reports">
-                    <br><a href="../Reports/adminReports.jsp">Complete Reports</a>
+                    <br><a href="../Reports/admin/adminReports.jsp">Complete Reports</a>
                 </form>
                 <% }else{
                      int cCode=Integer.parseInt(request.getParameter("aCcode"));
@@ -66,16 +66,17 @@
            if(rs.next())
             {
                %>
-               <table>
-            <tr>
-                          <td><h1><a href="aindex.jsp">1.</a></h1></td>
-                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="reports.jsp">4.</a></h1></td>
-                         
-                      
-                      </tr>
-        </table>
+               <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button class="active" onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button onclick="location.href = 'reports.jsp'">REPORTS</button></td>
+                                 
+                            </tr>
+                        </table>
+                    </nav>
                <form action="upload.jsp" method="POST">
               <table>  
                   

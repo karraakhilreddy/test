@@ -8,6 +8,7 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
+   
 </head>
 <body style="background: black">
   <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
@@ -52,19 +53,22 @@
            if(rs.next())
             {
                %>
+               <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button class="active" onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
+                                 <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
+                                 <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
+                                 
+                            </tr>
+                        </table>
+                    </nav>
                <form action="upload.jsp" method="POST">
-              <table >  
-                  <center>
-                      <tr>
-                           <td><h1><a href="basicDetails.jsp">1.</a></h1></td>
-                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="inspectionCalculation.jsp">4.</a></h1></td>
-                          <td><h1><a href="affiliationCalculation.jsp">5.</a></h1></td>
-                       <td><h1><a href="Reports/reports.jsp">6.</a></h1></td>
-                      </tr>
-                  </center>
-              </table>
+                   
+              
                    <table>
                         <tr>
                               <td>College code:</td>

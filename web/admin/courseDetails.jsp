@@ -58,16 +58,17 @@
                     <input type="text" name="aCcode" value="<%=aCcode%>">
                     <input type="submit" name="submit">
                 </form>
-    <table>
-                      <tr>
-                          <td><h1><a href="aindex.jsp">1.</a></h1></td>
-                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="reports.jsp">4.</a></h1></td>
-                         
-                      
-                      </tr>
-    </table>
+                <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button  onclick="location.href = 'aindex.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button class="active" onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button onclick="location.href = 'reports.jsp'">REPORTS</button></td>
+                                 
+                            </tr>
+                        </table>
+                    </nav>
             <table border="1">
                 
             <tr>

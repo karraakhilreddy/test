@@ -55,16 +55,20 @@ function myFunction() {
         <center>
     <div class="mainBackground">
         <!-- code -->
-        <table>
-                      <tr>
-                          <td><h1><a href="basicDetails.jsp">1.</a></h1></td>
-                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="inspectionCalculation.jsp">4.</a></h1></td>
-                          <td><h1><a href="affiliationCalculation.jsp">5.</a></h1></td>
-                       <td><h1><a href="Reports/reports.jsp">6.</a></h1></td>
-                      </tr>
-    </table>
+        <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button  onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button class="active" onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
+                                 <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
+                                 <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
+                                 
+                            </tr>
+                        </table>
+                    </nav>
+        
 
     <form action=""  method="post">
          <center><h1>Add new Course</h1></center>
@@ -231,6 +235,7 @@ function myFunction() {
                 <td>Medium</td>
                 <td>Intake Sanctioned</td>
                 <td>Status</td>
+                <td>Action</td>
                
                 
             </tr>
@@ -254,6 +259,12 @@ function myFunction() {
                     <td><%=rs.getString("cMedium") %></td>
                     <td><%=rs.getString("cIntakeSanctioned") %></td>
                     <td><%=rs.getString("cStatus") %></td>
+                    
+                    <% if(rs.getString("cStatus").equals("Inspection fee pending"))
+                            {  
+                                     String url="<td><a href=\"upload.jsp?name=delete&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
+                                     out.print(url);
+                           }%>
                     
                     
                     </tr>

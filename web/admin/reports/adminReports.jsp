@@ -8,13 +8,13 @@
 <head>
 	 <meta charset="utf-8">
 	<title>cdc</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/indexCSS.css">
 </head>
 <body style="background: black">
   <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
       <div>
-           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+           <div ><img src="../../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="../../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
           <h3 style="color:navyblue; font-family: Bookman Old Style; ">COLLEGE DEVELOPMENT COUNCIL</h3>
           <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>UNIVERSITY HOSTELS</b></h1>
           <h4><strong><b>KAKATIYA UNIVERSITY, </b></strong><spam>Warangal-506 009,Telangana</spam></h4>

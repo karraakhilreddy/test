@@ -54,14 +54,20 @@
         <center>
     <div class="mainBackground">
         <!-- code -->
-         <table>
-          <td><h1><a href="basicDetails.jsp">1.</a></h1></td>
-                          <td><h1><a href="facultyDetails.jsp">2.</a></h1></td>
-                          <td><h1><a href="courseDetails.jsp">3.</a></h1></td>
-                          <td><h1><a href="inspectionCalculation.jsp">4.</a></h1></td>
-                          <td><h1><a href="affiliationCalculation.jsp">5.</a></h1></td>
-                           <td><h1><a href="Reports/reports.jsp">6.</a></h1></td>
-        </table>
+        <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button  onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button class="active" onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
+                                 <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
+                                 <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
+                                 
+                            </tr>
+                        </table>
+                    </nav>
+        
          <table border="1">
              <p>Inspection fee to  be paid for the following</p> <br> 
             <tr>

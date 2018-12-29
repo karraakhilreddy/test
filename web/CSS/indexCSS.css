@@ -135,3 +135,42 @@ th{
     color: red;
 }
 
+
+
+.nav2 {
+    overflow: hidden;
+    border: 1px solid black;
+    
+}
+
+/* Style the buttons that are used to open the tab content */
+.nav2 button {
+   font-size: 15px;
+   width: 120px;
+    height: 60px;
+    border-radius: 75px;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: black;
+   
+}
+
+/* Change background color of buttons on hover */
+.nav2 button:hover {
+    background-color: green;
+    color: black;
+        
+}
+
+/* Create an active/current tablink class */
+.nav2 button.active {
+    background-color: green;
+}
+.nav2 tr{
+    background-color: #fff;
+    
+}
