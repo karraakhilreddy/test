@@ -26,7 +26,7 @@
          <div class="navbuttons">
              <ul>
                 <button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+                <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -38,7 +38,9 @@
         </nav>
     
         
-    <div>
+   <div class="main">    
+        <center>
+    <div class="mainBackground">
         <!-- code -->
         <% 
             int cCode=(int)session.getAttribute("cCode");
@@ -51,7 +53,7 @@
             {
                %>
                <form action="upload.jsp" method="POST">
-              <table>  
+              <table >  
                   <center>
                       <tr>
                            <td><h1><a href="basicDetails.jsp">1.</a></h1></td>
@@ -62,7 +64,8 @@
                        <td><h1><a href="Reports/reports.jsp">6.</a></h1></td>
                       </tr>
                   </center>
-                         
+              </table>
+                   <table>
                         <tr>
                               <td>College code:</td>
                               <td><input type="number" value="<%=rs.getInt("cCode") %>" readonly="true" ></td>
@@ -83,7 +86,7 @@
                         </tr>
                         
                         <tr>
-                            <td>Address:</td>
+                            <td>Address of the Sponsoring society:</td>
                             <td><input type="text" name="sAddress" placeholder="society address"  value="<%=rs.getString("sAddress") %>"required="required" ></td>
                         </tr>
                         <tr>
@@ -107,7 +110,7 @@
                         </tr>
                         
                <tr>
-                           <td>Registration no:</td>
+                           <td>Society Registration no:</td>
                            <td><input type="text" name="sRegNo" value="<%=rs.getString("sRegNo") %>" required="required"></td>
                          </tr>
                          
@@ -152,17 +155,14 @@
                                 <option value="owned" <% if(rs.getString("valOwnBuilding").equals("owned")){ out.println("selected");} %>>Owned</option>
                                 <option value="leased" <% if(rs.getString("valOwnBuilding").equals("leased")){ out.println("selected");} %>>Leased</option>
                                        </select></td>
-                                       <td></td>
-                            
-                                   
-                          
+                                       
                             </tr>
                        
                         
               </table>
                  <br><hr> 
                     
-                         <div class="hidden" id="hidden">
+                         
                         <table>
                            
                             <tr>
@@ -170,19 +170,19 @@
                                  <td><b>if leased please fillup these details</b> </td>
                            
                                 <td>Details of lease(lessor/lessee/Period/Survey No):</td>
-                                <td><input type="text" name="lLessor" required="required" value="<%=rs.getString("lLessor") %>" class="hidden">lLessor</td>
-                                <td><input type="text" name="lLessee" required="required" value="<%=rs.getString("lLessee") %>" class="hidden">lLessee</td>
-                                <td><input type="number" name="lPeriod" required="required" value="<%=rs.getInt("lPeriod") %>"  class="hidden">lPeriod</td>
-                                <td><input type="text" name="lSurveyNo" required="required" value="<%=rs.getString("lSurveyNo") %>" class="hidden">lSurveyNo</td>
+                                <td><input type="text" name="lLessor" required="required" value="<%=rs.getString("lLessor") %>" class="hidden">Lessor</td>
+                                <td><input type="text" name="lLessee" required="required" value="<%=rs.getString("lLessee") %>" class="hidden">Lessee</td>
+                                <td><input type="number" name="lPeriod" required="required" value="<%=rs.getInt("lPeriod") %>"  class="hidden">Period</td>
+                                <td><input type="text" name="lSurveyNo" required="required" value="<%=rs.getString("lSurveyNo") %>" class="hidden">SurveyNo</td>
                                 
-                                <td><input type="text" name="lRegNo" required="required" value="<%= rs.getString("lRegNo") %>" >lRegNo</td>
+                                <td><input type="text" name="lRegNo" required="required" value="<%= rs.getString("lRegNo") %>" >RegNo</td>
                                
-                                <td><input type="date" name="lRegDate" required="required" value="<%=rs.getDate("lRegDate") %>" class="hidden">lRegDate</td>
+                                <td><input type="date" name="lRegDate" required="required" value="<%=rs.getDate("lRegDate") %>" class="hidden">RegDate</td>
                                
                             </tr>
                         
                         </table>
-                     </div>
+                     
                             <table>
                             
                        <hr>    
@@ -290,65 +290,64 @@
                                                        <hr>
                                      <h1>Particulars of Land and Builidngs</h1>
                 
-          <div class="table2">
+          
                   <table> 
                    <tr>
                        <td>Total land in acres:</td>
-                       <td><input type="number" name="totalLand" value="<%=rs.getInt("totalLand") %>" required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="totalLand" value="<%=rs.getInt("totalLand") %>" required="required" autocomplete="false"></td>
                    </tr>
                    
                     <tr>
                         <td>Building plinth raea in Sq.ft.:</td>
-                        <td><input type="number" name="bPlinthArea" value="<%=rs.getInt("bPlinthArea") %>"  required="required" autocomplete="false"></td>
+                        <td colspan="2"><input type="number" name="bPlinthArea" value="<%=rs.getInt("bPlinthArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    
                    <tr>
                        <td>Principal room in Sq.ft.:</td>
-                       <td><input type="number" name="priRoomArea" value="<%=rs.getInt("priRoomArea") %>"  required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="priRoomArea" value="<%=rs.getInt("priRoomArea") %>"  required="required" autocomplete="false"></td>
                   </tr>
                   <tr>
                        <td>Office room in Sq.ft.:</td>
-                       <td><input type="number" name="offRoomArea" value="<%=rs.getInt("offRoomArea") %>"  required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="offRoomArea" value="<%=rs.getInt("offRoomArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
                        <td>Staff room in sq.ft.:</td>
-                       <td><input type="number" name="staffRoomArea" value="<%=rs.getInt("staffRoomArea") %>" required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="staffRoomArea" value="<%=rs.getInt("staffRoomArea") %>" required="required" autocomplete="false"></td>
                    </tr>
                    
                    <tr>
                        <td>Games Room in sq.ft.:</td>
-                       <td><input type="number" name="gamesRoomArea" value="<%=rs.getInt("gamesRoomArea") %>"  required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="gamesRoomArea" value="<%=rs.getInt("gamesRoomArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
                        <td>Ladies Waiting Room in sq.ft.:</td>
-                       <td><input type="number" name="lWaitingRoom" value="<%=rs.getInt("lWaitingRoom") %>" required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="lWaitingRoom" value="<%=rs.getInt("lWaitingRoom") %>" required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
                        <td>Toilets in Sq.ft.:</td>
-                       <td><input type="number" name="toiletsRoomArea" value="<%=rs.getInt("toiletsRoomArea") %>" required="required" autocomplete="false"></td>
+                       <td colspan="2"><input type="number" name="toiletsRoomArea" value="<%=rs.getInt("toiletsRoomArea") %>" required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
                        <td>Library in sq.ft.:</td>
-                       <td><input type="number" name="libraryArea" value="<%=rs.getInt("libraryArea") %>"  required="required" autocomplete="false"></td>
+                       <td colspan="2" ><input type="number" name="libraryArea" value="<%=rs.getInt("libraryArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
-                       <td>No of Class Rooms :</td>
-                       <td><input type="number" name="noClassRooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">&emsp;</td>
-                       <td>Approximate size of each classroom in sq.ft.:
-                       <input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
+                       <td>No of Class Rooms and size of each room in sq.ft</td>
+                       <td><input type="number" name="noClassRooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">
+                           <input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
-                      <td>No of Lab Rooms :</td>
-                      <td><input type="number" name="noLabRooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">&emsp;</td>
-                      <td>Approximate size of Each Lab Room in sq.ft:<input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
+                      <td>No of Lab Rooms and size of each room in sq.ft</td>
+                      <td><input type="number" name="noLabRooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">
+                      <input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
                    </tr>
             
                
                </table> 
-             </div>    
+            
                                              <hr>
                                    <h1>Library details</h1>
-          <div class="table3">
+          
                     
                          
                 <table>
@@ -369,13 +368,13 @@
                         <td><input type="number" name="noPeriodicals" value="<%=rs.getInt("noPeriodicals") %>"  required="required" autocomplete="false"></td>
                      </tr>
                 </table> 
-         </div>    
+        
                 
               
                
                                                  <hr>
                                           <h1>Staff details</h1>
-          <div class="table4">
+         
                  <table>
                     <tr>
                           <td>No of Teaching Staff:<input type="number" value="<%=rs.getInt("noTeachingStaff") %>" name="noTeachingStaff"  required="required"                   autocomplete="false">&emsp;&emsp;
@@ -384,13 +383,13 @@
                     </tr>
                    
                  </table>
-           </div>
+          
                                   
                                                 <hr>
                                       <h1>Details of Corpus Fund Deposited</h1>
                 
                       
-          <div class="table5">
+         
                    <table>
                       <tr>
                           <th>FDR/BG NO</th>
@@ -411,7 +410,7 @@
                      </tr>
                  
                    </table>
-          </div>
+         
                
                 
           <div class="buttons">
@@ -436,7 +435,7 @@
             
             
             
-        </div>
+    </div></center></div>
        
         <footer>
             <p id="copyright"> Copyrights reserved by Kakatiya University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="developers.jsp">Developers</a></p>

@@ -38,7 +38,9 @@
        
     </nav>
     
-    <div>
+     <div class="main">    
+        <center>
+    <div class="mainBackground">
         
          <table>
           <td><h1><a href="../basicDetails.jsp">1.</a></h1></td>
@@ -71,25 +73,14 @@
                     %>
         
                           <table width="100%" border="0">
-                            <tr bgcolor="royalblue">
-                                <td>
-                                    <center>
-                                        <font color="white">View Delegation</font>
-                                    </center>
-                                </td>
-                            </tr>
+                           
                             </table>
                                     <table width="100%" border="1">
-                            <tr>
-                                    <td align="right"><a href="role.jsp" style ="text-decoration:none;"><font size="2" color="red"> Back</font></a> 
-                                    <a href="Home.jsp" style ="text-decoration:none;"><font size="2" color="red">Home</font></a> 
-                                    <a href="Logout.jsp" onclick="fun()" style ="text-decoration:none;"> <font size="2" color="red"> Logout</font></a> 
-                                    </td>
-                            </tr>
+                           
                             </table><br>
                         <center>
                         <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
-                            <tr bgcolor="royalblue">
+                            <tr bgcolor="">
                                 <td><b>Type</b></td>
                                 <td><b>Course</b></td>
                                 <td><b>Combination</b></td>
@@ -160,25 +151,12 @@
                     %>
         
                           <table width="100%" border="0">
-                            <tr bgcolor="royalblue">
-                                <td>
-                                    <center>
-                                        <font color="white">View Delegation</font>
-                                    </center>
-                                </td>
-                            </tr>
+                            
                             </table>
-                                    <table width="100%" border="1">
-                            <tr>
-                                    <td align="right"><a href="role.jsp" style ="text-decoration:none;"><font size="2" color="red"> Back</font></a> 
-                                    <a href="Home.jsp" style ="text-decoration:none;"><font size="2" color="red">Home</font></a> 
-                                    <a href="Logout.jsp" onclick="fun()" style ="text-decoration:none;"> <font size="2" color="red"> Logout</font></a> 
-                                    </td>
-                            </tr>
-                            </table><br>
+                             <br>
                         <center>
                         <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
-                            <tr bgcolor="royalblue">
+                            <tr bgcolor="">
                                 <td>Name</td>
                                 <td>Type</td>
                                 <td>Designation</td>
@@ -279,26 +257,10 @@
                     rs = st.executeQuery("SELECT cdc_college_details.cCode,cName,cType,cCourse,cCombination,cMedium,cIntakeSanctioned,cStudentsAdmitted,cStatus FROM  cdc_college_details  LEFT JOIN  courses ON cdc_college_details.ccode=courses.cCode Order by cdc_college_details.cCode ;");
                     %>
         
-                          <table width="100%" border="0">
-                            <tr bgcolor="royalblue">
-                                <td>
-                                    <center>
-                                        <font color="white">View Delegation</font>
-                                    </center>
-                                </td>
-                            </tr>
-                            </table>
-                                    <table width="100%" border="1">
-                            <tr>
-                                    <td align="right"><a href="role.jsp" style ="text-decoration:none;"><font size="2" color="red"> Back</font></a> 
-                                    <a href="Home.jsp" style ="text-decoration:none;"><font size="2" color="red">Home</font></a> 
-                                    <a href="Logout.jsp" onclick="fun()" style ="text-decoration:none;"> <font size="2" color="red"> Logout</font></a> 
-                                    </td>
-                            </tr>
-                            </table><br>
+                          
                         <center>
                         <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
-                            <tr bgcolor="royalblue">
+                            <tr bgcolor="">
                                 <td>Code</td>
                                 <td>Name</td>
                                 <td>Type</td>
@@ -392,6 +354,7 @@
         %>
         
     </div>
+        </center></div>
        
               
                   

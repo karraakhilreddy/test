@@ -23,10 +23,16 @@ button{
     font-size: 20px;
     margin-right: 8px;
     background-color: deepskyblue;
+   
     
     
     
     
+}
+.active{
+     border: 1px solid white;
+    background-color: black;
+    color: white;
 }
 .secondline{
                         background-color: deepskyblue;
@@ -89,5 +95,43 @@ iframe{
            color:white;
            text-decoration: none;
            
+}
+.main{
+    background-color:brown  ;
+    text-align: center;
+    align-content: center;
+}
+.mainBackground{
+    background-color:white ;
+}
+table, th, td{
+    border-bottom: 4px solid #ddd;
+    border-color:rgb ;
+    align-content: center;
+     padding: 10px;
+  text-align: left;
+  
+  
+    
+}
+table {
+  border-collapse: collapse;
+  border: 10;
+  
+}
+tr:hover 
+{
+    background-color: #30cfd0;
+}
+tr:nth-child(even) 
+{
+    background-color: #f2f2f2;
+}
+th{
+    font-weight: 900;
+}
+.tablinks2
+{
+    color: red;
 }
 

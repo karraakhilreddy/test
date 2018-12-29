@@ -27,7 +27,7 @@
               <ul>
                 <button class="tablinks" onclick="window.location='../home.jsp'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='../login.jsp'"><li>College Login</li></button>
-                <button class="tablinks" onclick="window.location='../admin/aindex.jsp'"><li>Admin Login</li></button>
+                <button class="active" onclick="window.location='../admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='../dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
                 <button class="tablinks" onclick="window.location='../help.jsp'"><li>Help</li></button>
@@ -47,15 +47,17 @@
                 </form>
                 <% }else{
                        request.setAttribute("aCcode", request.getParameter("aCcode"));
-                    String aCcode=(String)session.getAttribute("aCcode");
+                    int aCcode=(int)session.getAttribute("aCcode");
                 %>
-                <form action="courseDetails.jsp" method="post">
+                
+                     
+<div onload="createTable()" class="main">    
+        <center>
+    <div class="mainBackground">
+        <form action="courseDetails.jsp" method="post">
                     <input type="text" name="aCcode" value="<%=aCcode%>">
                     <input type="submit" name="submit">
                 </form>
-                     
-<div onload="createTable()">
-    
     <table>
                       <tr>
                           <td><h1><a href="aindex.jsp">1.</a></h1></td>
@@ -137,10 +139,11 @@
     
     
     
-</div>
+    </div></center>
         
         
     </div>
+            
        
               
                   

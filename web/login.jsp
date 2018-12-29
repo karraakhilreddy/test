@@ -22,7 +22,7 @@
          <nav>
         <div class="navbuttons">
              <ul><button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+                <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -38,11 +38,12 @@
 
      
          
-            
-    <div>
+    <div class="main">    
+        <center>
+    <div class="mainBackground">
         <!-- code -->
         <center>
-        <form action="loginAction.jsp" method="post">
+        <form action="loginAction.jsp" method="post" id="sonu ">
            
             <table>
                 <tr>
@@ -54,17 +55,17 @@
                     <td><input type="password" name="password" value="qwertyuiop" required="required" ></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="submit" name="button" value="login"></td>
+                    <td><input type="submit" name="button" value="login"></td>
+                     <td><p><a href="#">Forget Password</a> </p></td>
                 </tr>
-                <tr>
-                    <p><a href="#">Forget Password</a> </p>
-                </tr>
+               
             
             </table>
         </form>
             </center>
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-        
+    </div>        
+            </center>
+        </div>   
         
     
     <script>
