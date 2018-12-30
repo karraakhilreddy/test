@@ -15,9 +15,8 @@
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
           <h3 style="color:navyblue; font-family: Bookman Old Style; ">COLLEGE DEVELOPMENT COUNCIL</h3>
-          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>UNIVERSITY HOSTELS</b></h1>
-          <h4><strong><b>KAKATIYA UNIVERSITY, </b></strong><spam>Warangal-506 009,Telangana</spam></h4>
-          <h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
+          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY.</b></h1>
+          <h4><spam>Warangal-506 009,Telangana</spam></h4><h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
       </div>
       <a href="login.php">
        <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
