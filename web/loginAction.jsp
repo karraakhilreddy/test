@@ -7,6 +7,7 @@
 
 <%@page import="javafx.scene.control.Alert"%>
 <%@page import="javax.sound.midi.SysexMessage"%>
+<%@page import="cdc.logs"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +28,7 @@
                                     try{
                                     Connection con= Database.getConnection();
 
-                                    int cCode=Integer.parseInt(request.getParameter("cCode"));
+                                    String cCode=(String)request.getParameter("cCode");
                                     String password=request.getParameter("password");
 
                                     String insertTableSQL = "select cCode,cPassword from cdc_college_details where cCode=?;";
@@ -36,7 +37,7 @@
 
 
                                      //ps=con.prepareStatement("select cCode,password from cdc_college_details where cCode=?;");
-                                    ps.setInt(1,cCode);
+                                    ps.setString(1,cCode);
 
 
                                     ResultSet rs=ps.executeQuery();
@@ -45,6 +46,9 @@
                                         //out.println("welcome"+rs.getString(1));
                                         if(rs.getString("cPassword").equals(password)){
                                             session.setAttribute("cCode", cCode);
+                                            logs l=new logs();
+                                            l.updateLog(cCode, "loginAction.jsp", "Log In");
+                                            
                                             response.sendRedirect("basicDetails.jsp");
 
                                         }else
@@ -73,7 +77,7 @@
                                          ResultSet rs=stmt.executeQuery(query);
                                          if(rs.next())
                                          {
-                                             tCCode = 1+ rs.getInt("cCode");
+                                             tCCode = 1+ rs.getInt("MAX(cCode)");
                                          }  
                         
                       
@@ -95,7 +99,8 @@
                         int res = ps.executeUpdate();
                          if(res > 0)
                          {
-                             
+                           logs l=new logs();
+                           l.updateLog(String.valueOf(tCCode), "loginAction.jsp", "Register");  
                          response.sendRedirect("loginPage.jsp"); 
                          }
                        else

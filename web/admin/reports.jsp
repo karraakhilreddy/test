@@ -62,6 +62,10 @@
                     <td>Faculty</td>
                     <td><input type="submit" name="button" value="Faculty"></td>
                 </tr>
+                <tr>
+                <td>Logs</td>
+                <td><input type="submit" name="button" value="Logs"></td>
+            </tr>
             </table>
             
             

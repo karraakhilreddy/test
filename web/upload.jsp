@@ -9,6 +9,7 @@
 <%@page import="com.mysql.cj.util.StringUtils"%>
 <%@page import="java.sql.*"%>
 <%@page import="cdc.Database"%>
+<%@page import="cdc.logs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
     </head>
     <body>
         <% 
-            int cCode=(int)session.getAttribute("cCode");
+            String cCode=(String)session.getAttribute("cCode");
             
             String name=(String)request.getParameter("name");
             
@@ -66,7 +67,7 @@
                                     for(int i=0;i<1;i++)
                                     {
 
-                                                  ps.setInt(1, cCode);
+                                                  ps.setString(1, cCode);
                                                   ps.setString(2, tName);
                                                   ps.setString(3, tType);
                                                   ps.setString(4, tDesignation);
@@ -86,7 +87,8 @@
 
                                                   // execute insert SQL stetement
                                                   ps.executeUpdate();
-
+                                                  logs l=new logs();
+                                                    l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "inserted Faculty Details"); 
                                                   System.out.println("Record is inserted into DBUSER table!");
                                     }
 
@@ -123,7 +125,7 @@
                     try {
                                     
 
-                                                  ps.setInt  (1, cCode);
+                                                  ps.setString(1, cCode);
                                                   ps.setString(2, type);
                                                   ps.setString(3, course);
                                                   ps.setString(4, combination);
@@ -138,7 +140,9 @@
 
                                                   // execute insert SQL stetement
                                                   ps.executeUpdate();
-
+                                                   logs l=new logs();
+                                                    l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "inserted Course Details"); 
+                                                  
                                                   System.out.println("Record is inserted into DBUSER table!");
                                     
 
@@ -323,6 +327,9 @@
                             int i=ps.executeUpdate();
                             if(i==1)
                             {
+                                 logs l=new logs();
+                               l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details"); 
+                                                  
                                 %> <script>alert ( "Update succesfull" );
                                 window.location='basicDetails.jsp';</script><%
 
@@ -338,6 +345,42 @@
                         %> <script>alert ( "Update failed : " );</script><%
                         System.out.println(e.getMessage());       
                     } 
+                    break;
+
+                      case "delete" :
+                    
+                    String place=(String)request.getParameter("place");
+                    int sno=Integer.parseInt(request.getParameter("sno"));
+                    
+                  switch(place){
+
+                        case "faculty":
+                                try{
+                                        Statement st = con.createStatement();
+                                        st.executeUpdate("DELETE  FROM faculty WHERE sno="+sno);
+                                        out.print("Deleted");
+                                         logs l=new logs();
+                                         l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "deleted Faculty Details"); 
+                                                 
+                                        response.sendRedirect("facultyDetails.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                           break;
+                        case "course":
+                                try{
+                                        Statement st = con.createStatement();
+                                        st.executeUpdate("DELETE  FROM courses WHERE sno="+sno);
+                                        out.print("Deleted");
+                                        logs l=new logs();
+                                        l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "deleted course Details"); 
+                                          
+                                        response.sendRedirect("courseDetails.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                           break;
+                    }
                     break;
             }
         %>

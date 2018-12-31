@@ -9,6 +9,7 @@ package cdc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -27,5 +28,9 @@ public class Database {
         }//?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
         //?verifyServerCertificate=false&useSSL=true
         return con;
+    }
+
+    PreparedStatement prepareStatement(String insertTableSQL) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -79,7 +79,7 @@
                 
             </tr>
             <%
-                int cCode=(int)session.getAttribute("cCode");
+                String cCode=(String)session.getAttribute("cCode");
             try
             {
            

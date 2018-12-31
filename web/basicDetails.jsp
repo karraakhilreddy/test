@@ -43,7 +43,7 @@
     <div class="mainBackground">
         
         <% 
-            int cCode=(int)session.getAttribute("cCode");
+            String cCode=(String)session.getAttribute("cCode");
             //int cCode=Integer.parseInt(scCode);
             session.setAttribute("cCode", cCode);
              Connection con=Database.getConnection();
@@ -72,7 +72,7 @@
                    <table >
                         <tr>
                               <td>College code:</td>
-                              <td><input type="number" value="<%=rs.getInt("cCode") %>" readonly="true" ></td>
+                              <td><input type="number" value="<%=rs.getString("cCode") %>" readonly="true" ></td>
                             
                          </tr>
                           <tr>

@@ -18,7 +18,7 @@ public class feeCalculation {
     long amount=0;
     long aamount=0;
     
-    public long InspectionCalculation(int cCode) throws ClassNotFoundException, SQLException{
+    public long InspectionCalculation(String cCode) throws ClassNotFoundException, SQLException{
         
        
         Connection conn=Database.getConnection();
@@ -183,7 +183,7 @@ public class feeCalculation {
         }
         return amount;
     }
-    public long AffiliationCalculation(int cCode) throws ClassNotFoundException, SQLException{
+    public long AffiliationCalculation(String cCode) throws ClassNotFoundException, SQLException{
         
        
         Connection conn=Database.getConnection();

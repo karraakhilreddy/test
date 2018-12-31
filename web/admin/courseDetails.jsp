@@ -46,7 +46,7 @@
                 </form>
                 <% }else{
                        request.setAttribute("aCcode", request.getParameter("aCcode"));
-                    int aCcode=(int)session.getAttribute("aCcode");
+                    String aCcode=(String)session.getAttribute("aCcode");
                 %>
                 
                      

@@ -48,17 +48,21 @@
         
         <h1>Admin Page</h1>
         
-        <% if(session.getAttribute("aCcode")==null)
+        <% if(session.getAttribute("aCcode")==null && request.getParameter("aCcode")==null)
                 { %>
                 <form action="aindex.jsp" method="post">
                     <input type="text" name="aCcode">
                     <input type="submit" name="submit" value="Get College Reports">
-                    <br><a href="../Reports/admin/adminReports.jsp">Complete Reports</a>
+                    <br><a href="reports/adminReports.jsp">Complete Reports</a>
                 </form>
                 <% }else{
-                     int cCode=(int)session.getAttribute("aCcode");
-            //int cCode=Integer.parseInt(scCode);
-            session.setAttribute("aCcode", cCode);
+                if(session.getAttribute("aCcode")==null){
+                     session.setAttribute("aCcode", request.getParameter("aCcode"));
+                     out.print(session.getAttribute("aCcode"));
+                }
+                
+            String cCode=(String)session.getAttribute("aCcode");
+            out.print(cCode);
              Connection con=Database.getConnection();
           PreparedStatement ps=con.prepareStatement("select * from cdc_college_details   where cCode='"+cCode+"'");
          ResultSet rs=ps.executeQuery();

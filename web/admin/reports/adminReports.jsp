@@ -37,7 +37,10 @@
        
     </nav>
     
-    <div>
+     <div class="main">    
+        <center>
+    <div class="mainBackground">
+        
         
          <h1>Reports</h1>
         <form action="generateReportsPDF.jsp" method="post">
@@ -54,11 +57,17 @@
                 <td>College-Amount</td>
                 <td><input type="submit" name="button" value="adminCollegeAmount"></td>
             </tr>
+            <tr>
+                <td>Logs</td>
+                <td><input type="submit" name="button" value="Logs"></td>
+            </tr>
             
         </table>
             </form>
         
     </div>
+        </center>
+     </div>
        
               
                   

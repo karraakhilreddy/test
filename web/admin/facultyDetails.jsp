@@ -47,7 +47,7 @@
                 </form>
                 <% }else{
                        request.setAttribute("aCcode", request.getParameter("aCcode"));
-                    int aCcode=(int)session.getAttribute("aCcode");
+                    String aCcode=(String)session.getAttribute("aCcode");
                     session.setAttribute("aCcode",aCcode);
                 %>
                 <form action="facultyDetails.jsp" method="post">

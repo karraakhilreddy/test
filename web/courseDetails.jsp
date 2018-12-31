@@ -239,7 +239,7 @@ function myFunction() {
                 
             </tr>
             <%
-                String cCode="567";//(String)session.getAttribute("cCode");
+                String cCode=(String)session.getAttribute("cCode");
             try
             {
            
@@ -261,8 +261,11 @@ function myFunction() {
                     
                     <% if(rs.getString("cStatus").equals("Inspection fee pending"))
                             {  
-                                     String url="<td><a href=\"upload.jsp?name=delete&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
-                                     out.print(url);
+                                
+                                          if(rs.getString("cStatus").equals("Inspection fee pending")){
+                                            String url="<td><a href=\"upload.jsp?name=delete&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
+                                            out.print(url);
+                                }
                            }%>
                     
                     
