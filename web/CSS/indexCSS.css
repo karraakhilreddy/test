@@ -8,6 +8,7 @@ ul li{
    
 }
 
+
 ul{
     padding-left:0px; 
     border: 2px solid black;
@@ -97,16 +98,19 @@ iframe{
            
 }
 .main{
+    
     background-color:brown  ;
     text-align: center;
     align-content: center;
 }
 .mainBackground{
     background-color:white ;
+    background-image: url("../IMG/bg2.jpg");
+    
 }
 table, th, td{
-    border-bottom: 4px solid #ddd;
-    border-color:rgb ;
+    
+    
     align-content: center;
      padding: 10px;
   text-align: left;
@@ -116,17 +120,14 @@ table, th, td{
 }
 table {
   border-collapse: collapse;
-  border: 10;
+  border:1px solid black;
   
 }
 tr:hover 
 {
-    background-color: #30cfd0;
+    background-color: white;
 }
-tr:nth-child(even) 
-{
-    background-color: #f2f2f2;
-}
+
 th{
     font-weight: 900;
 }
@@ -139,9 +140,7 @@ th{
 
 .nav2 {
     overflow: hidden;
-    border: 1px solid black;
-    
-}
+ }
 
 /* Style the buttons that are used to open the tab content */
 .nav2 button {
@@ -156,21 +155,28 @@ th{
     padding: 14px 16px;
     transition: 0.3s;
     color: black;
-   
+    background-color:deepskyblue;
 }
+
 
 /* Change background color of buttons on hover */
 .nav2 button:hover {
-    background-color: green;
-    color: black;
+    background-color: black;
+    color: white;
+    outline: none;
+    
         
 }
 
 /* Create an active/current tablink class */
 .nav2 button.active {
-    background-color: green;
+    background-color:black;
+    color:white;
 }
-.nav2 tr{
-    background-color: #fff;
-    
+.nav2 tr:hover{
+    background-image: url("../IMG/bg2.jpg");
 }
+.main table{
+    border: 1px solid black;
+}
+

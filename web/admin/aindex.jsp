@@ -15,8 +15,8 @@
       <div>
            <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h3 style="color:navyblue; font-family: Bookman Old Style; ">COLLEGE DEVELOPMENT COUNCIL</h3>
-          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY.</b></h1>
+           <h3 style="color:navyblue; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h3>
+          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
           <h4><spam>Warangal-506 009,Telangana</spam></h4><h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
       </div>
       <a href="#">
@@ -48,7 +48,7 @@
         
         <h1>Admin Page</h1>
         
-        <% if(request.getParameter("aCcode")==null)
+        <% if(session.getAttribute("aCcode")==null)
                 { %>
                 <form action="aindex.jsp" method="post">
                     <input type="text" name="aCcode">
@@ -56,7 +56,7 @@
                     <br><a href="../Reports/admin/adminReports.jsp">Complete Reports</a>
                 </form>
                 <% }else{
-                     int cCode=Integer.parseInt(request.getParameter("aCcode"));
+                     int cCode=(int)session.getAttribute("aCcode");
             //int cCode=Integer.parseInt(scCode);
             session.setAttribute("aCcode", cCode);
              Connection con=Database.getConnection();

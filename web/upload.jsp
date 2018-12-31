@@ -4,6 +4,7 @@
     Author     : akhil
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="com.mysql.cj.util.StringUtils"%>
 <%@page import="java.sql.*"%>
@@ -27,11 +28,33 @@
             
             switch(name){
                 case "faculty" :
-                    int row=Integer.parseInt(request.getParameter("rows"));
-                    String array=(String)request.getParameter("array");
-                    String data[]=array.split(",");
+                    //int row=Integer.parseInt(request.getParameter("rows"));
+                    //String array=(String)request.getParameter("array");
+                   // String data[]=array.split(",");
+                   
                     
-                    out.println(data);
+                    String tName=(String)request.getParameter("tName");
+                    String tType=(String)request.getParameter("tType");
+                    String tDesignation=(String)request.getParameter("tDesignation");
+                    String tQualification=(String)request.getParameter("tQualification");
+                     String startDate=(String)request.getParameter("tDate");
+                    
+                     //String startDate="12-31-2014";
+                    SimpleDateFormat sdf1 = new SimpleDateFormat("MM-dd-yyyy");
+                    java.util.Date date = sdf1.parse(startDate);
+                    java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+                   
+                    String tNature=(String)request.getParameter("tNature");
+                    String tModeApp=(String)request.getParameter("tModeApp");
+                    String tScale=(String)request.getParameter("tScale");
+                    String tModePay=(String)request.getParameter("tModePay");
+                    String tBank=(String)request.getParameter("tBank");
+                    String tPan=(String)request.getParameter("tPAN");
+                    String tAadhar=(String)request.getParameter("tAadhar");
+                    String tMobile=(String)request.getParameter("tMobile");
+                    
+                    
+                   // out.println(data);
                      
                      String insertTableSQL = "INSERT INTO `cdc`.`faculty` (`cCode`, `tName`, `tType`, `tDesignation`, `tQualification`, `tDate`, `tNature`, `tModeApp`, `tScale`, `tModePay`,`tBank`, `tPan`, `tAadhar`, `tMobile`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -40,23 +63,23 @@
                       
 
                     try {
-                                    for(int i=0;i<row;i++)
+                                    for(int i=0;i<1;i++)
                                     {
 
                                                   ps.setInt(1, cCode);
-                                                  ps.setString(2, data[(i*12)+0+i]);
-                                                  ps.setString(3, data[(i*12)+1+i]);
-                                                  ps.setString(4, data[(i*12)+2+i]);
-                                                  ps.setString(5, data[(i*12)+3+i]);
-                                                  ps.setString(6, data[(i*12)+4+i]);
-                                                  ps.setString(7, data[(i*12)+5+i]);
-                                                  ps.setString(8, data[(i*12)+6+i]);
-                                                  ps.setString(9, data[(i*12)+7+i]);
-                                                  ps.setString(10, data[(i*12)+8+i]);
-                                                  ps.setString(11, data[(i*12)+9+i]);
-                                                  ps.setString(12, data[(i*12)+10+i]);
-                                                  ps.setString(13, data[(i*12)+11+i]);
-                                                  ps.setString(14, data[(i*12)+12+i]);
+                                                  ps.setString(2, tName);
+                                                  ps.setString(3, tType);
+                                                  ps.setString(4, tDesignation);
+                                                  ps.setString(5, tQualification);
+                                                  ps.setDate(6, sqlStartDate);
+                                                  ps.setString(7, tNature);
+                                                  ps.setString(8, tModeApp);
+                                                  ps.setString(9, tScale);
+                                                  ps.setString(10, tModePay);
+                                                  ps.setString(11, tBank);
+                                                  ps.setString(12, tPan);
+                                                  ps.setString(13, tAadhar);
+                                                  ps.setString(14, tMobile);
                                                   
                                                  
                                                  
@@ -70,6 +93,7 @@
                     } catch (Exception e) {
 
                                System.out.println(e.getMessage());
+                               out.println(e.getMessage());
 
                     } finally {
 
