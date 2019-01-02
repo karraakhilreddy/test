@@ -63,7 +63,7 @@
                                  <td><button class="active" onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
                                  <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
                                  <td><button onclick="location.href = 'reports.jsp'">REPORTS</button></td>
-                                 
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
                     </nav>

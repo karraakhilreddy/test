@@ -62,7 +62,7 @@
                                  <td><button class="active" onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
                                  <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
                                  <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
-                                 
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
                     </nav>
@@ -121,40 +121,22 @@
                  amount=is.InspectionCalculation(cCode);
                  out.print("is = " +amount);
                  System.out.print(amount);
-        
-        %>
-        
+         %>
+         <form action="paymentGateway.jsp" method="POST">
+             <input type="text" name="amount" value=<%= amount %> hidden>
+             <input type="text" name="cCode" value=<%= cCode %> hidden>
+             <input type="text" name="name" value="inspection" hidden>
+             <input type="submit" name="" value="Pay Now" >
+             
+         </form>
     </div>    
         </center>
     </div>
         
         
     
-    <script>
-            
-            function openCont(evt,contName){
-              var i,tabcontent,tablinks;
-                
-              tabcontent=document.getElementsByClassName("tabcontent");
-                for(i=0;i<tabcontent.length;i++){
-                    tabcontent[i].style.display="none";
-                }
-                
-                
-                tablinks=document.getElementsByClassName("tablinks");
-               for(i=0;i<tablinks.length;i++){
-                    tablinks[i].className=tablinks[i].className.replace("active","");
-                }
-                document.getElementById(contName).style.display="block";
-                evt.currentTarget.className +="active";
-            }
-            
-        </script>
-        <div>
-            
-            
-            
-        </div>
+   
+      
        
         <footer>
             <p id="copyright"> Copyrights reserved by Kakatiya University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="developers.jsp">Developers</a></p>

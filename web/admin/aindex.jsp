@@ -76,7 +76,7 @@
                                  <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
                                  <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
                                  <td><button onclick="location.href = 'reports.jsp'">REPORTS</button></td>
-                                 
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
                     </nav>
@@ -353,15 +353,14 @@
                        <td><input type="number" name="libraryArea" value="<%=rs.getInt("libraryArea") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
-                       <td>No of Class Rooms :</td>
-                       <td><input type="number" name="noClassRooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">&emsp;</td>
-                       <td>Approximate size of each classroom in sq.ft.:
-                       <input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
+                       <td>No of Class Rooms and size in sq.ft :</td>
+                       <td colspan="2"><input type="number" name="noClassRooms"  value="<%=rs.getInt("noClassRooms") %>" required="required" autocomplete="false">&emsp;
+                        <input type="number" name="classSize" value="<%=rs.getInt("classSize") %>"  required="required" autocomplete="false"></td>
                    </tr>
                    <tr>
                       <td>No of Lab Rooms :</td>
-                      <td><input type="number" name="noLabRooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">&emsp;</td>
-                      <td>Approximate size of Each Lab Room in sq.ft:<input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
+                      <td colspan="2"><input type="number" name="noLabRooms"  value="<%=rs.getInt("noLabRooms") %>" required="required" autocomplete="false">&emsp;
+                      <input type="number" name="labSize" value="<%=rs.getInt("labSize") %>"   required="required" autocomplete="false"></td>
                    </tr>
             
                

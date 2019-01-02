@@ -63,7 +63,7 @@ function myFunction() {
                                  <td><button onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
                                  <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
                                  <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
-                                 
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
                     </nav>

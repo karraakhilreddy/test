@@ -62,6 +62,7 @@
                                  <td><button onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
                                  <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
                                  <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
                                  
                             </tr>
                         </table>
@@ -120,13 +121,13 @@
                          
                          <tr>
                             <td>Year of registration:</td>
-                            <td><input type="date_date_set"  name="sYear" value="<%=rs.getInt("sYear") %>" required="required"></td>
+                            <td><input type="number"  name="sYear" value="<%=rs.getInt("sYear") %>" required="required"></td>
                          </tr>
                     
                          
                          <tr>
                              <td>Year of Establishment of College:</td>
-                             <td><input type="date_date_set" name="cEstd"  value="<%=rs.getDate("cEstd") %>" required= "required"></td>
+                             <td><input type="date" name="cEstd"  value="<%=rs.getDate("cEstd") %>" required= "required"></td>
                          </tr>
                          <tr>
                              <td>Name of the Secretary/Correspondent: </td>
@@ -420,9 +421,8 @@
           <div class="buttons">
                  <table>
                     <tr>
-                        <td><input type="submit" name="name" value="basicDetails" </td>
-                         <td><button><b>EDIT</b></button> </td>
-                         <td><button><b>SAVE and CONTINUE</b></button> </td>
+                        <td><input type="submit" name="name" value="basicDetails" ></td>
+                         
                      
                     </tr>
                  </table>
