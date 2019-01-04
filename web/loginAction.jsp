@@ -22,6 +22,10 @@
 
         <%
             String button=request.getParameter("button");
+            String ipAddress = request.getHeader("X-FORWARDED-FOR");  
+            if (ipAddress == null) {  
+                    ipAddress = request.getRemoteAddr();  
+            }
             switch(button){
                 
                 case "login":
@@ -47,7 +51,8 @@
                                         if(rs.getString("cPassword").equals(password)){
                                             session.setAttribute("cCode", cCode);
                                             logs l=new logs();
-                                            l.updateLog(cCode, "loginAction.jsp", "Log In");
+                                            
+                                            l.updateLog(cCode, "loginAction.jsp", "Login",ipAddress);
                                             
                                             response.sendRedirect("basicDetails.jsp");
 
@@ -100,7 +105,7 @@
                          if(res > 0)
                          {
                            logs l=new logs();
-                           l.updateLog(String.valueOf(tCCode), "loginAction.jsp", "Register");  
+                           l.updateLog(String.valueOf(tCCode), "loginAction.jsp", "Register",ipAddress);  
                          response.sendRedirect("loginPage.jsp"); 
                          }
                        else

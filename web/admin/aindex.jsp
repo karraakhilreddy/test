@@ -181,7 +181,7 @@
                        
                         
               </table>
-                 <br><hr> 
+                 <br> 
                     
                          <div class="hidden" id="hidden">
                         <table>
@@ -206,7 +206,7 @@
                      </div>
                             <table>
                             
-                       <hr>    
+                           
                      <tr>         
                          <td>Land Survey Number:</td>
                          <td><input type="text" name="landSurveyNumber"  value="<%=rs.getString("landSurveyNumber") %>" required="required"></td>
@@ -308,7 +308,7 @@
            
                
                     
-                                                       <hr>
+                                                     
                                      <h1>Particulars of Land and Builidngs</h1>
                 
           <div class="table2">
@@ -366,7 +366,7 @@
                
                </table> 
              </div>    
-                                             <hr>
+                                           
                                    <h1>Library details</h1>
           <div class="table3">
                     
@@ -393,7 +393,7 @@
                 
               
                
-                                                 <hr>
+                                                
                                           <h1>Staff details</h1>
           <div class="table4">
                  <table>
@@ -406,7 +406,7 @@
                  </table>
            </div>
                                   
-                                                <hr>
+                                               
                                       <h1>Details of Corpus Fund Deposited</h1>
                 
                       

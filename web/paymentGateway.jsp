@@ -42,6 +42,16 @@
 
                       %>
                 <h1>Hello World!</h1>
+                <table border="1">
+                    <tr>
+                        <td>College code</td>
+                        <td><%=cCode %></td>
+                    </tr>
+                    <tr>
+                        <td>Amount to be paid</td>
+                        <td><%=amount %></td>
+                    </tr>
+                </table>
                 <form name="ecom" method="post" action="https://test.sbiepay.com/secure/AggregatorHostedListener">
                         <input type="hidden" name="EncryptTrans" value="<%= EncryptTrans %>">
                         

@@ -27,7 +27,13 @@
             Connection con=Database.getConnection();
             PreparedStatement ps;
             
+            
+            String ipAddress = request.getHeader("X-FORWARDED-FOR");  
+             if (ipAddress == null) {  
+                   ipAddress = request.getRemoteAddr();  
+             }
             switch(name){
+                
                 case "faculty" :
                     //int row=Integer.parseInt(request.getParameter("rows"));
                     //String array=(String)request.getParameter("array");
@@ -88,7 +94,10 @@
                                                   // execute insert SQL stetement
                                                   ps.executeUpdate();
                                                   logs l=new logs();
-                                                    l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "inserted Faculty Details"); 
+                                                
+                                            
+                                            l.updateLog(cCode, "facultyDetails.jsp", "inserted Faculty Details",ipAddress);
+                                                   
                                                   System.out.println("Record is inserted into DBUSER table!");
                                     }
 
@@ -141,7 +150,7 @@
                                                   // execute insert SQL stetement
                                                   ps.executeUpdate();
                                                    logs l=new logs();
-                                                    l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "inserted Course Details"); 
+                                                    l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "inserted Course Details",ipAddress); 
                                                   
                                                   System.out.println("Record is inserted into DBUSER table!");
                                     
@@ -328,7 +337,7 @@
                             if(i==1)
                             {
                                  logs l=new logs();
-                               l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details"); 
+                               l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
                                                   
                                 %> <script>alert ( "Update succesfull" );
                                 window.location='basicDetails.jsp';</script><%
@@ -360,7 +369,7 @@
                                         st.executeUpdate("DELETE  FROM faculty WHERE sno="+sno);
                                         out.print("Deleted");
                                          logs l=new logs();
-                                         l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "deleted Faculty Details"); 
+                                         l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "deleted Faculty Details",ipAddress); 
                                                  
                                         response.sendRedirect("facultyDetails.jsp");
                                     }catch(Exception e){
@@ -373,7 +382,7 @@
                                         st.executeUpdate("DELETE  FROM courses WHERE sno="+sno);
                                         out.print("Deleted");
                                         logs l=new logs();
-                                        l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "deleted course Details"); 
+                                        l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "deleted course Details",ipAddress); 
                                           
                                         response.sendRedirect("courseDetails.jsp");
                                     }catch(Exception e){

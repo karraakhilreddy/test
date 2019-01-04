@@ -29,7 +29,7 @@ public class logs {
      public logs() throws ClassNotFoundException {
         this.con = Database.getConnection();
     }
-    public static void updateLog(String cCode,String in,String action) throws SocketException, ClassNotFoundException {
+    public static void updateLog(String cCode,String in,String action,String IP) throws SocketException, ClassNotFoundException {
         
             
             
@@ -40,20 +40,15 @@ public class logs {
 
             String currentTime = sdf.format(dt);
             
-            String ip;
+            
              
             System.out.println(currentTime);  
             
             
-            try(final DatagramSocket socket = new DatagramSocket()){
-                try {
-                    socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-                } catch (UnknownHostException ex) {
-                    Logger.getLogger(logs.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                 ip = socket.getLocalAddress().getHostAddress();
-                System.out.println("IP="+ip+"cCode="+cCode+"\ntime="+currentTime+"\nin="+in+"\n action="+action);
-            }     
+            
+            
+             
+            
 
                     try {
                         
@@ -64,7 +59,7 @@ public class logs {
 
                             ps.setString(1, cCode);
                             ps.setString(2, currentTime);
-                            ps.setString(3, ip);
+                            ps.setString(3, IP);
                             ps.setString(4, in);
                             ps.setString(5, action);
 
