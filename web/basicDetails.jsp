@@ -127,7 +127,7 @@
                          
                          <tr>
                              <td>Year of Establishment of College:</td>
-                             <td><input type="date" name="cEstd"  value="<%=rs.getDate("cEstd") %>" required= "required"></td>
+                             <td><input type="number" name="cEstd"  value="<%=rs.getInt("cEstd") %>" required= "required"></td>
                          </tr>
                          <tr>
                              <td>Name of the Secretary/Correspondent: </td>

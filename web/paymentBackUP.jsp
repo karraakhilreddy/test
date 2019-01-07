@@ -16,26 +16,25 @@
     </head>
     <body>
         <% 
-                    String cCode="567";//request.getParameter("cCode");
+                    String cCode=request.getParameter("cCode");
                     long amount=200;//Long.parseLong(request.getParameter("amount"));
                     String name=request.getParameter("name");
-                    String  requestparameter = "1000003|DOM|IN|INR|200|Other|https://test.sbiepay.com/secure/sucess3.jsp|https://test.sbiepay.com/secure/fail3.jsp|SBIEPAY|2|2|NB|ONLINE|ONLINE";
-                    //http://162.241.200.162:8080/test_1_1_1/paymentGatewayResponse.jsp
+                    String  requestparameter = "1000356|DOM|IN|INR|"+amount+"|Other|https://test.sbiepay.com/secure/sucess3.jsp|https://test.sbiepay.com/secure/fail3.jsp|SBIEPAY|KU14589|2|NB|ONLINE|ONLINE";
                     //String billingDtls= cCode+"|Telangana|Warangal|506002|"+name+"|+91|222|1234567|9892456281|biller@gmail.com|N";
                     //String shippingDtls="ShipperName|Mayuresh Enclave, Sector 20, Plat A-211, Nerul west,Navi-Mumbai,403706|Mumbai|Maharastra|India|403706|+91|222|30988373|9812345678|N";
       
-                    String    Key="fBc5628ybRQf88f/aqDUOQ==";
+                    String    Key="BUEPMt7xhYV/BxluRa39gQ==";
             
             
                         String   EncryptTrans = AES128Bit.encrypt(requestparameter, Key);
                         
-                           // String MultiAccountInstructionDtls="200|INR|POST";
-                           // String   EncryptTrans2 = AES128Bit.encrypt(MultiAccountInstructionDtls, Key);
+                            String MultiAccountInstructionDtls="200|INR|POST";
+                            String   EncryptTrans2 = AES128Bit.encrypt(MultiAccountInstructionDtls, Key);
                         //String   EncryptbillingDetails = AES128EnDc.encrypt(billingDtls, Key);
                         //String   EncryptshippingDetais = AES128EnDc.encrypt(shippingDtls, Key);
                         //String   EncryptpaymentDetails = AES128EnDc.encrypt(PaymentDtls, Key);
                             EncryptTrans = EncryptTrans.replaceAll("\n","");
-                         //   EncryptTrans2 = EncryptTrans2.replaceAll("\n","");
+                            EncryptTrans2 = EncryptTrans2.replaceAll("\n","");
                          //   EncryptbillingDetails = EncryptbillingDetails.replaceAll("\n","");
                          // EncryptshippingDetais = EncryptshippingDetais.replaceAll("\n","");
                          //  EncryptpaymentDetails = EncryptpaymentDetails.replaceAll("\n","");
@@ -56,8 +55,8 @@
                 <form name="ecom" method="post" action="https://test.sbiepay.com/secure/AggregatorHostedListener">
                         <input type="hidden" name="EncryptTrans" value="<%= EncryptTrans %>">
                         
-                       <!-- <input type="text" name="MultiAccountInstructionDtls" value="//= EncryptTrans2 %>" hidden> -->
-                        <input type="hidden" name="merchIdVal" value ="1000003"/>
+                        <input type="text" name="MultiAccountInstructionDtls" value="<%= EncryptTrans2 %>" hidden>
+                        <input type="hidden" name="merchIdVal" value ="1000356"/>
                         <input type="submit" name="submit" value="Submit"> 
                 </form>
        </body>
