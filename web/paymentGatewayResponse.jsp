@@ -54,9 +54,21 @@
         <div class="main">    
             <center>
                 <div class="mainBackground">
-                    
+                    <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button  onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button class="active" onclick="location.href = 'inspectionCalculation.jsp'">INSPECTION DETAILS</button></td>
+                                 <td><button onclick="location.href = 'affiliationCalculation.jsp'">AFFILIATION</button></td>
+                                 <td><button onclick="location.href = 'Reports/reports.jsp'">REPORTS</button></td>
+                                 <td><button onclick="location.href = 'logout.jsp'">LOGOUT</button></td>
+                            </tr>
+                        </table>
+                    </nav>
                    <%
-                    String cCode="567";//(String)session.getAttribute("cCode");
+                    String cCode=(String)session.getAttribute("cCode");
                     String encData=(String)request.getParameter("encData");
                     //"7OuNG4OlchGQjNFa6cbaTH6jz4rKiRqweXSiTK0gBwBcByVP0Is222w+xPJXrnbkY/p5WA2TFPR7wl9K60cobi/7iqtma/gf42Okz3eiClxO29uMaMPMq8llV50drYvY4+I2LG6CdUkdMh/6T+NipOVH3as172QI6n8IjUSF/DiAuO/mh35uOy++dxu1HHa11/DNK95tdIKIf6MyW0zrWzgQAI54GVlqjlpZCxWSOeiK8EZsRDtw/JBgxIZE3r5qxW0UhEsXig8oMhnp9PEOhToNjSmZWLrmMdbnPWVWTPs="; //
                     String    Key="fBc5628ybRQf88f/aqDUOQ==";
@@ -82,10 +94,10 @@
                     }
                     Connection con=Database.getConnection();
                     PreparedStatement ps=null;                   
-                    for(int i=0;i<15;i++){
+                    /*for(int i=0;i<15;i++){
                       out.println(i+"."+data[i]);
                        out.print("<br>");
-                    }
+                    }*/
                   
                      
                      
@@ -223,7 +235,7 @@
                                             
                                             
                                             <%
-                    char place='1';//data[0].charAt(0);
+                    char place=data[0].charAt(0);
                     
                     switch(place){
                         case '1':

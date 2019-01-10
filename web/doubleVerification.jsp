@@ -22,7 +22,7 @@
         <%}else if(request.getParameter("merchantOrderID")!=null){
 
                 String merchantOrderID=request.getParameter("merchantOrderID");
-                String requestparameter = "5877309384731|1000003|"+merchantOrderID+"|http://localhost:8084/test_1_1_1/doubleVerificationReport.jsp";
+                String requestparameter = "|1000003|"+merchantOrderID+"|http://localhost:8084/test_1_1_1/doubleVerificationReport.jsp";
 
                 String Key="fBc5628ybRQf88f/aqDUOQ==";
                 String EncryptTrans = AES128Bit.encrypt(requestparameter, Key);

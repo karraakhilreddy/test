@@ -427,7 +427,7 @@
                                         logs l=new logs();
                                         l.updateLog("ADMIN", "courseDetails.jsp", "UPDATED course Details sno="+sno,ipAddress); 
                                            %><Script>alert("dsa");</script><%
-                                        //response.sendRedirect("./admin/courseDetails.jsp");
+                                        response.sendRedirect("./admin/courseDetails.jsp");
                                     }catch(Exception e){
                                          out.print("Problem is"+e.getMessage());
                                     }
