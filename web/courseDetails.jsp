@@ -259,10 +259,10 @@ function myFunction() {
                     <td><%=rs.getString("cIntakeSanctioned") %></td>
                     <td><%=rs.getString("cStatus") %></td>
                     
-                    <% if(rs.getString("cStatus").equals("Inspection fee pending"))
+                    <% if(rs.getString("cStatus").equals("Inspection fee Pending"))
                             {  
                                 
-                                          if(rs.getString("cStatus").equals("Inspection fee pending")){
+                                          if(rs.getString("cStatus").equals("Inspection fee Pending")){
                                             String url="<td><a href=\"upload.jsp?name=delete&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
                                             out.print(url);
                                 }

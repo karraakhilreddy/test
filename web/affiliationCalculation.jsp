@@ -74,7 +74,7 @@
             try
             {
            
-            String query="select * from courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending'  ORDER BY cType ASC;";
+            String query="select * from courses where cCode='"+cCode+"' and cstatus='Inspection Success'  ORDER BY cType ASC;";
             Connection conn=Database.getConnection();
             Statement stmt=conn.createStatement();
             ResultSet rs=stmt.executeQuery(query);
@@ -96,7 +96,9 @@
 
             }
             %>
-            </table><br>
+            </table>
+            
+            <br>
                 <%
                 rs.close();
                 stmt.close();
@@ -105,7 +107,7 @@
             catch(Exception e)
             {
                 e.printStackTrace();
-                }
+            }
 
         
                  long amount=0;
@@ -115,37 +117,24 @@
                  System.out.print(amount);
         
         %>
+        <form action="paymentGateway.jsp" method="POST">
+             <input type="text" name="amount" value=<%= amount %> hidden>
+             <input type="text" name="cCode" value=<%= cCode %> hidden>
+             <input type="text" name="name" value="affiliation" hidden>
+             <input type="submit" name="" value="Pay Now" >
+             
+         </form>
+             <form action="doubleVerification.jsp" method="post">
+                 <input type="submit" name="" value="Verify the payment" >
+             </form>
     </div>    
         </center>
     </div>
         
         
     
-    <script>
-            
-            function openCont(evt,contName){
-              var i,tabcontent,tablinks;
-                
-              tabcontent=document.getElementsByClassName("tabcontent");
-                for(i=0;i<tabcontent.length;i++){
-                    tabcontent[i].style.display="none";
-                }
-                
-                
-                tablinks=document.getElementsByClassName("tablinks");
-               for(i=0;i<tablinks.length;i++){
-                    tablinks[i].className=tablinks[i].className.replace("active","");
-                }
-                document.getElementById(contName).style.display="block";
-                evt.currentTarget.className +="active";
-            }
-            
-        </script>
-        <div>
-            
-            
-            
-        </div>
+  
+      
        
         <footer>
             <p id="copyright"> Copyrights reserved by Kakatiya University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="developers.jsp">Developers</a></p>

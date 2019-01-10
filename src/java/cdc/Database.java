@@ -27,6 +27,7 @@ public class Database {
             ex.printStackTrace();
         }//?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
         //?verifyServerCertificate=false&useSSL=true
+        //,V}xNtFkMi2c
         return con;
     }
 

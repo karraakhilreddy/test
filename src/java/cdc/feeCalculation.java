@@ -187,7 +187,7 @@ public class feeCalculation {
         
        
         Connection conn=Database.getConnection();
-        String query="SELECT cType, COUNT(*) as cCount FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' GROUP BY cType ;";
+        String query="SELECT cType, COUNT(*) as cCount FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' GROUP BY cType ;";
         
         Statement stmt=conn.createStatement();
         ResultSet rs=stmt.executeQuery(query);
@@ -199,7 +199,7 @@ public class feeCalculation {
                 
                 case "Pharmacy": //if type == pharmacy
                   
-                     String query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='Pharmacy' group by cCourse;";
+                     String query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Pharmacy' group by cCourse;";
         
                      Statement stmt2=conn.createStatement();
                      ResultSet rs2=stmt2.executeQuery(query2);
@@ -227,7 +227,7 @@ public class feeCalculation {
                      stmt2.close();
                     break;
                 case "Engineering":
-                     query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='Engineering' group by ccourse;";
+                     query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Engineering' group by ccourse;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -255,7 +255,7 @@ public class feeCalculation {
                      
                     break;
                     case "Education":
-                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='Education';";
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Education';";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -269,7 +269,7 @@ public class feeCalculation {
                     break;
                     case "M.B.A.":
                      
-                        query2="SELECT cIntakeSanctioned FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='M.B.A.';";
+                        query2="SELECT cIntakeSanctioned FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='M.B.A.';";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -285,7 +285,7 @@ public class feeCalculation {
                     case "M.C.A.":
                      
                             
-                        query2="SELECT cIntakeSanctioned FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='M.C.A.';";
+                        query2="SELECT cIntakeSanctioned FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='M.C.A.';";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -299,7 +299,7 @@ public class feeCalculation {
                     break;
                     case "Law":
                         
-                      query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='Law' group by ccourse;";
+                      query2="SELECT cCourse,count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Law' group by ccourse;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -328,12 +328,12 @@ public class feeCalculation {
                      
                     break;
                     case "UG":
-                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='UG' ;";
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='UG' ;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
                       
-                      String query3="SELECT sum(cIntakeSanctioned) as tIntake FROM courses where cCode='567' and cstatus='Affiliation fee pending' and cType='UG';";
+                      String query3="SELECT sum(cIntakeSanctioned) as tIntake FROM courses where cCode='567' and cstatus='Inspection Success' and cType='UG';";
         
                       Statement stmt3=conn.createStatement();
                       ResultSet rs3=stmt3.executeQuery(query3);
@@ -366,7 +366,7 @@ public class feeCalculation {
                     case "PG":
                         
                         int totalPGcourses=0,totalLabCourses=0,totalNonLabCourses=0;
-                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='PG' ;";
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='PG' ;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -375,7 +375,7 @@ public class feeCalculation {
                          totalPGcourses=rs2.getInt("tCourse");
                       
                       }
-                     query2="SELECT count(cCourse) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Affiliation fee pending' and cType='PG' and cCourse='M.Sc.' ;";
+                     query2="SELECT count(cCourse) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='PG' and cCourse='M.Sc.' ;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);

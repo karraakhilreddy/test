@@ -129,6 +129,9 @@
              <input type="submit" name="" value="Pay Now" >
              
          </form>
+             <form action="doubleVerification.jsp" method="post">
+                 <input type="submit" name="" value="Verify the payment" >
+             </form>
     </div>    
         </center>
     </div>

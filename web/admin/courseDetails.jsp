@@ -5,6 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 <head>
+
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
@@ -72,6 +73,7 @@
                             </tr>
                         </table>
                     </nav>
+                         
             <table border="1">
                 
             <tr>
@@ -99,6 +101,7 @@
             {
 
             %>
+          
                 <tr>
                     <td><%=rs.getString("cType") %></td>
                     <td><%=rs.getString("cCourse") %></td>
@@ -106,25 +109,27 @@
                     <td><%=rs.getString("cMedium") %></td>
                     <td><%=rs.getString("cIntakeSanctioned") %></td>
                     <td><%=rs.getString("cStatus") %></td>
-                    <td> <% if(rs.getString("cStatus").equals("Inspection fee pending")){ %>
-                        <select>
-                            <option value="Inspection success">Inspection success</option>
-                            <option value="Inspection failed">Inspection failed</option>
-                        </select> 
-                        <% } else if(rs.getString("cStatus").equals("affiliation fee pending")){ %>
-                        <select>
-                            <option value="Affiliation success">Affiliation success</option>
-                            <option value="Affiliation failed">Affiliation failed</option>
-                        </select>  
+                
+                     <% if(rs.getString("cStatus").equals("Inspection fee Paid")){ %>
+                     <td><a href="../upload.jsp?place=course&&name=Update&&sno=<%=rs.getString("sno") %>&&option=Inspection success">Inspection success</a></td>
+                     <td><a href="../upload.jsp?place=course&&name=Update&&sno=<%=rs.getString("sno") %>&&option=Inspection failed">Inspection failed</a></td>
+                         
+                        <% } else if(rs.getString("cStatus").equals("Affiliation fee Paid")){ %>
+                            <td><a href="../upload.jsp?place=course&&name=Update&&sno=<%=rs.getString("sno") %>&&option=Affiliation success">Affiliation success</a></td>
+                            <td><a href="../upload.jsp?place=course&&name=Update&&sno=<%=rs.getString("sno") %>&&option=Affiliation failed">Affiliation failed</a></td>
+                     
+                
                          <% } %>
                     </td>
-                    <td><a href="update.jsp"><input type="button" name="cdc" value="done"></a></td>
-                    
-                    
-                    </tr>
                    
+           
+                      </tr>
+                  
            <% } %>
-            </table><br>
+            </table>
+            
+                   
+            <br>
                 <%
                   
                 rs.close();

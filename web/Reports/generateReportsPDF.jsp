@@ -79,14 +79,16 @@
 
             con = Database.getConnection();
             st = con.createStatement();
-
+            String cCode=(String)session.getAttribute("cCode");
+             File tempFile = File.createTempFile(cCode+"report", ".pdf");
             Document document = new Document(PageSize.A4);
-                    String f="D://table.pdf";
+            
+                    String f=tempFile.getAbsolutePath();//"D://table.pdf";
     
         
             switch(button){
                 case "Course" :
-                    String cCode=(String)session.getAttribute("cCode");
+                     cCode=(String)session.getAttribute("cCode");
                     rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+";");
                     %>
         
@@ -109,8 +111,8 @@
                                 </tr>
                     <%
 
-                    
-                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                   
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
 
                     String[] headers = new String[] {"Type", "Course", "Combination", "Medium","Intake", "Admitted"};
@@ -153,7 +155,9 @@
                     System.out.println(f);
                     %>
                         </TABLE>
+                        
                          <a href="download.jsp?ff=<%=f%>">Download the  as PDF</a>
+                         
                         <a href="excelData.jsp?button=Course">Download as Excel file</a>
                         </center>
         
@@ -194,7 +198,7 @@
                     <%
 
                     
-                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
 
                     String[] headers2 = new String[] {"Name","Type", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
@@ -295,7 +299,7 @@
                     <%
 
                     
-                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
                                                                     
                     String[] headers3 = new String[] {"Code","Name","Type", "Course", "Combination", "Medium","Intake sanctioned", "Students admitted","Status"};
@@ -389,7 +393,7 @@
                     <%
 
                     
-                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
 
                     String[] headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};
@@ -831,7 +835,7 @@
                    
 
                     
-                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
 
                     //headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};

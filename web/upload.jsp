@@ -141,7 +141,7 @@
                                                   ps.setString(5, medium);
                                                   ps.setString(6, intake);
                                                   ps.setString(7, "0");
-                                                  ps.setString(8, "Inspection fee pending");
+                                                  ps.setString(8, "Inspection fee Pending");
                                                  
                                                  
                                                  
@@ -387,6 +387,49 @@
                                         response.sendRedirect("courseDetails.jsp");
                                     }catch(Exception e){
                                          out.print("Problem");
+                                    }
+                           break;
+                    }
+                    break;
+                  case "Update" :
+                     out.print("1");
+                     place=(String)request.getParameter("place");
+                     sno=Integer.parseInt(request.getParameter("sno"));
+                    
+                  switch(place){
+                    
+                        case "faculty":
+                                try{
+                                    out.print("2");
+                                        Statement st = con.createStatement();
+                                        st.executeUpdate("DELETE  FROM faculty WHERE sno="+sno);
+                                        out.print("Deleted");
+                                         logs l=new logs();
+                                         l.updateLog(String.valueOf(cCode), "facultyDetails.jsp", "deleted Faculty Details",ipAddress); 
+                                                 
+                                        response.sendRedirect("facultyDetails.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                           break;
+                        case "course":
+                                    out.print("3");
+                                try{
+                                        String option= request.getParameter("option");
+                                         sno= Integer.parseInt(request.getParameter("sno"));
+                                       // Statement st = con.createStatement();
+                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='"+option+"' WHERE `sno` =?;";
+                                     ps=con.prepareStatement(insertTableSQL);
+
+                                                  ps.setInt(1, sno);
+                                                  ps.executeUpdate();
+                                                
+                                        logs l=new logs();
+                                        l.updateLog("ADMIN", "courseDetails.jsp", "UPDATED course Details sno="+sno,ipAddress); 
+                                           %><Script>alert("dsa");</script><%
+                                        //response.sendRedirect("./admin/courseDetails.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem is"+e.getMessage());
                                     }
                            break;
                     }
