@@ -210,7 +210,7 @@ function myFunction() {
                           
                      </td>
                       <td>
-                          <input type="button"  onclick="myFunction()">
+                          <input type="button"  value="Add" onclick="myFunction()">
                          
                      </td>
                      

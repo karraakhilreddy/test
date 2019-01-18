@@ -62,8 +62,8 @@
                 }else if(request.getParameter("name").equals("affiliation")){
                     place="2";
                 }
-                String cCode="567";//request.getParameter("cCode");
-                long amount=200;//Long.parseLong(request.getParameter("amount"));
+                String cCode=request.getParameter("cCode");
+                long amount=Long.parseLong(request.getParameter("amount"));
                 String randomNo="KKU";
                 int random = (int )(Math.random() * 998 + 1);
                 randomNo=place+cCode+randomNo+random;

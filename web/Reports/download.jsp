@@ -39,4 +39,5 @@ public static String getMimeType(String fileUrl)
                         outs.flush();
                     outs.close();
                     in.close(); 
+                    f.delete();
             %>

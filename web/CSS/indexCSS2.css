@@ -1,0 +1,235 @@
+ul li{
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+   text-align:center;
+    
+    
+   
+}
+
+
+ul{
+    padding-left:0px; 
+    border: 2px solid black;
+   text-align:center;
+    background-color:black;
+}
+
+button{
+    width: 200px;
+    border: 1px solid transparent;
+    cursor:pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-right: 8px;
+    background-color: deepskyblue;
+   
+    
+    
+    
+    
+}
+.active{
+     border: 1px solid white;
+    background-color: black;
+    color: white;
+}
+.secondline{
+                        background-color: deepskyblue;
+}
+
+
+button:hover{
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+}
+
+
+.navbuttons{
+    padding:10;
+}
+
+.tabcontent{
+    
+    display: none;
+}
+iframe{
+   
+    background-color: white;
+    width: 1200px;
+    height: 700px;
+
+    
+    border-radius: 10px;
+   
+   
+}
+.frames{
+         margin-top:1.5em;
+        
+        
+         
+    margin-left: 1em;
+    
+     
+       height: 630px;
+}
+
+.box1{
+    background-color:black;
+}
+.box2{
+    background-color: white;
+}
+.welcome{
+    
+    text-align: center;
+    font-size: 100px;
+    color: white;
+}
+#copyright{
+           
+           color:white;
+           text-decoration: none;
+           
+}
+.main{
+    
+    background-color:brown  ;
+    text-align: center;
+    align-content: center;
+}
+.mainBackground{
+  background-color: white;
+    background-image: url("../IMG/bg2.jpg");
+    
+}
+table, th, td{
+    
+  
+    align-content: center;
+     padding: 10px;
+     text-align: left;
+  
+  
+    
+}
+table {
+  border-collapse: collapse;
+ 
+  margin-bottom: 20px;
+ 
+}
+tr:hover 
+{
+    background-color: white;
+}
+
+th{
+    font-weight: 900;
+}
+.tablinks2
+{
+    color: red;
+}
+
+
+
+.nav2 {
+    overflow: hidden;
+    padding-top: 10px;
+   
+ }
+
+/* Style the buttons that are used to open the tab content */
+.nav2 button {
+   font-size: 15px;
+   width: 120px;
+    height: 60px;
+    border-radius: 75px;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color: black;
+    background-color:deepskyblue;
+    
+}
+
+
+/* Change background color of buttons on hover */
+.nav2 button:hover {
+    background-color: black;
+    color: white;
+    outline: none;
+    
+        
+}
+
+/* Create an active/current tablink class */
+.nav2 button.active {
+    background-color:black;
+    color:white;
+}
+.nav2 tr:hover{
+    background-image: url("../IMG/bg2.jpg");
+}
+.main table{
+    border: 1px solid black;
+   
+}
+#basic{
+    width:150px;
+    height:30px;
+    background-color: black;
+    color:white;
+    border: transparent;
+    cursor:pointer;
+    
+}
+input{
+   border-radius: 5px;
+   border:1px solid black;
+   
+}
+button{
+    cursor:pointer;
+    outline:none;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background-color:white;
+    color: black;
+   
+   
+    
+}
+
+.tabcontent button{
+    background-color: black;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    color:white;
+       
+}
+
+footer{
+    
+    background-color: grey;
+    height: 100px;
+   
+}
+
+
+

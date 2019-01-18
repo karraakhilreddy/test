@@ -1,0 +1,48 @@
+body{
+    
+    background-color:black;
+}
+
+
+.dean table{
+  border: 1px solid black;
+    width: 800px;
+  
+   
+} 
+.dean table td{
+    border: 1px solid black;
+    text-align: center;
+    font-size: 15pt;
+    
+    
+}
+h1{
+    text-align: center;
+    background-color:white ;
+    height: 50px;
+    line-height: 50px;
+    color: green;
+}
+
+.dean{
+    border:5px solid grey;
+    border-radius: 8px;
+    height: 450px;
+    background-color: white;
+    padding: 4px;
+}
+.image{
+    background-image: url("../IMG/dean.jpg");
+    background-repeat: no-repeat;
+    height:200px;
+    width: 200px;
+    background-size: cover;
+    background-position: center;
+    
+    
+}
+p{
+    margin-top: 0px;
+}
+

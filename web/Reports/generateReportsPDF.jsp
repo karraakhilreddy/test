@@ -1511,7 +1511,68 @@
 
 
                     break;
+                    case "Transactions":
+
+                           
+                       cCode=(String)session.getAttribute("cCode");
+            
+            
+             
+                    ps=con.prepareStatement("select * from payments where cCode='"+cCode+"'");
+                    rs=ps.executeQuery();
+                    %><table>
+                        <tr>
+                            <td>Merchant order No.</td>
+                            <td>Fee of</td>
+                            <td>Reference ID</td>
+                            <td>Status</td>
+                            <td>Amount</td>
+                            <td>Paymode</td>
+                            <td>Bank Code</td>
+                            <td>Bank Reference No</td>
+                            <td>Transaction Date</td>
+                            <td>CIN</td>
+                            <td>Download</td>
+                           
+                        </tr>
+                        
+                        <%
+                            String feeFor="";
+                     while(rs.next())
+                      {
+                          
+                            if(rs.getString("merchantOrderNo").charAt(0)=='1'){
+                                feeFor="Inspection";
+                            }else if(rs.getString("merchantOrderNo").charAt(0)=='2'){
+                                feeFor="Affiliation";
+                            }
+                            else if(rs.getString("merchantOrderNo").charAt(0)=='3'){
+                                feeFor="AcademicAudit";
+                            }
+                    %>
+                            
+                        <tr>
+                              <td><%=rs.getString("merchantOrderNo") %></td>
+                              <td><%=feeFor %></td>
+                              <td><%=rs.getString("SBIePayReferenceID") %></td>
+                              <td><%=rs.getString("status") %></td>
+                              <td><%=rs.getString("amount") %></td>
+                              <td><%=rs.getString("payMode") %></td>
+                              <td><%=rs.getString("bankCode") %></td>
+                              <td><%=rs.getString("bankReferenceNumber") %></td>
+                              <td><%=rs.getString("transactionDate") %></td>
+                              <td><%=rs.getString("CIN") %></td>
+                              <td><a href="receipts.jsp?merchantOrderNo=<%=rs.getString("merchantOrderNo") %>&&feeFor=<%=feeFor%>&&SBIePayReferenceID=<%=rs.getString("SBIePayReferenceID") %>&&status=<%=rs.getString("status") %>&&amount=<%=rs.getString("amount") %>&&payMode=<%=rs.getString("payMode") %>&&bankCode=<%=rs.getString("bankCode") %>&&bankReferenceNumber=<%=rs.getString("bankReferenceNumber") %>&&transactionDate=<%=rs.getString("transactionDate") %>&&CIN=<%=rs.getString("CIN") %>">Download</a></td>
+                              
+                        </tr>
+                   
+                    <% } %>
+                    </table>
+                    <%
+                    
+                    break;
             }
+
         
         
         

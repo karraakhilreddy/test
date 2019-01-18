@@ -237,26 +237,23 @@
                                             <%
                     char place=data[0].charAt(0);
                     
-                    switch(place){
-                        case '1':
-                                        try {
-
-                                                         String insertTableSQL = "INSERT INTO `cdc`.`payments`(`merchantOrderNo`,`SBIePayReferenceID`,`status`,`amount`,`currency`,`payMode`,`otherDetails`,`reason`,`bankCode`,`bankReferenceNumber`,`transactionDate`,`country`,`cin`)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                     String insertTableSQL = "INSERT INTO `cdc`.`payments`(`cCode`,`merchantOrderNo`,`SBIePayReferenceID`,`status`,`amount`,`currency`,`payMode`,`otherDetails`,`reason`,`bankCode`,`bankReferenceNumber`,`transactionDate`,`country`,`cin`)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
                                                          ps=con.prepareStatement(insertTableSQL);
 
-                                                                      ps.setString(1, data[0]);
-                                                                      ps.setString(2, data[1]);
-                                                                      ps.setString(3, data[2]);
-                                                                      ps.setString(4, data[3]);
-                                                                      ps.setString(5, data[4]);
-                                                                      ps.setString(6, data[5]);
-                                                                      ps.setString(7, data[6]);
-                                                                      ps.setString(8, data[7]);
-                                                                      ps.setString(9, data[8]);
-                                                                      ps.setString(10, data[9]);
-                                                                      ps.setTimestamp(11, date);
-                                                                      ps.setString(12, data[11]);
-                                                                      ps.setString(13, data[12]);
+                                                                      ps.setString(1, cCode);
+                                                                      ps.setString(2, data[0]);
+                                                                      ps.setString(3, data[1]);
+                                                                      ps.setString(4, data[2]);
+                                                                      ps.setString(5, data[3]);
+                                                                      ps.setString(6, data[4]);
+                                                                      ps.setString(7, data[5]);
+                                                                      ps.setString(8, data[6]);
+                                                                      ps.setString(9, data[7]);
+                                                                      ps.setString(10, data[8]);
+                                                                      ps.setString(11, data[9]);
+                                                                      ps.setTimestamp(12, date);
+                                                                      ps.setString(13, data[11]);
+                                                                      ps.setString(14, data[12]);
 
 
 
@@ -270,6 +267,12 @@
                                                                 l.updateLog(cCode, "Made Inspection Payment", "Made Payment of Rs."+data[3],ipAddress);
 
                                                                       out.println("Record is inserted into PAYMENT table!");
+                    
+                    switch(place){
+                        case '1':
+                                        try {
+
+                                                        
 
 
 
@@ -309,38 +312,7 @@
                         case '2':
                             
                             try{
-                              String insertTableSQL = "INSERT INTO `cdc`.`payments`(`merchantOrderNo`,`SBIePayReferenceID`,`status`,`amount`,`currency`,`payMode`,`otherDetails`,`reason`,`bankCode`,`bankReferenceNumber`,`transactionDate`,`country`,`cin`)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
-                              ps=con.prepareStatement(insertTableSQL);
-
-                                                                      ps.setString(1, data[0]);
-                                                                      ps.setString(2, data[1]);
-                                                                      ps.setString(3, data[2]);
-                                                                      ps.setString(4, data[3]);
-                                                                      ps.setString(5, data[4]);
-                                                                      ps.setString(6, data[5]);
-                                                                      ps.setString(7, data[6]);
-                                                                      ps.setString(8, data[7]);
-                                                                      ps.setString(9, data[8]);
-                                                                      ps.setString(10, data[9]);
-                                                                      ps.setTimestamp(11, date);
-                                                                      ps.setString(12, data[11]);
-                                                                      ps.setString(13, data[12]);
-
-
-
-
-
-                                                                      // execute insert SQL stetement
-                                                                      ps.executeUpdate();
-                                                                      logs l=new logs();
-
-
-                                                                l.updateLog(cCode, "Made Affiliation Payment", "Made Payment of Rs."+data[3],ipAddress);
-
-                                                                      out.println("Record is inserted into PAYMENT table!");
-
-
-
+                             
                                                          insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Affiliation fee Paid' WHERE (`cCode` =? and `cStatus`='Inspection success');";
                                                          ps=con.prepareStatement(insertTableSQL);
 

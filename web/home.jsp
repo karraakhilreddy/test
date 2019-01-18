@@ -3,24 +3,46 @@
 <head>
 	 <meta charset="utf-8">
 	<title>cdc</title>
-    <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
+    
+    <link rel="stylesheet" type="text/css" href="CSS/indexCSS2.css">
+    
+    <script>
+            
+            function openCont(evt,contName){
+              var i,tabcontent,tablinks;
+                
+              tabcontent=document.getElementsByClassName("tabcontent");
+                for(i=0;i<tabcontent.length;i++){
+                    tabcontent[i].style.display="none";
+                }
+                
+                
+                tablinks=document.getElementsByClassName("tablinks");
+               for(i=0;i<tablinks.length;i++){
+                    tablinks[i].className=tablinks[i].className.replace("active","");
+                }
+                document.getElementById(contName).style.display="block";
+                evt.currentTarget.className +="active";
+            }
+            
+        </script>
 </head>
 <body style="background: black">
   <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
       <div>
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h3 style="color:navyblue; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h3>
-          <h1 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
-          <h4><spam>Warangal-506 009,Telangana</spam></h4><h5><b>Ph: 9440163189. drchr18@yahoo.com</b></h5>
+          <h2 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;" >Online Services</h2>
+          <h1 style="color:black; text-shadow: 2px 2px 50px orange; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
+          <h4>Warangal,506009</h4>
+
       </div>
-      <a href="#">
-       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
+      <a href="login.php">
+       <p style="color:black; border-style: white; text-align: center; background-color: deepskyblue;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services-Kakatiya University</i></b></marquee></p></a>
   </div>
     <nav>
         <div class="navbuttons">
-             <ul>
-                <button class="active" onclick="window.location='home.jsp'" ><li>About</li></button>
+             <ul><button class="active" onclick="window.location='home.jsp'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
@@ -31,11 +53,27 @@
         </div>
        
     </nav>
+    <div class="navbuttons">
+             <ul><button class="tablinks" onclick="openCont(event,'CDC')" ><li>CDC</li></button>
+                <button class="tablinks" onclick="openCont(event,'ACADEMIC_AUDIT')"><li>Academic Audit</li></button>
+                
+            
+            
+            </ul>
+        <center>
+         <div id="CDC" class="tabcontent">
+         <iframe src="aboutCDC.html"  scroll="auto"></iframe>
+        
+        </div>
+          <div id="ACADEMIC_AUDIT" class="tabcontent">
+         <iframe src="aboutAcademicaudit.html"  scroll="auto"></iframe>
+            </div>
+            
+            </center>
+        </div>
+       
     
-    <div>
-        
-        
-    </div>
+     
        
               
                   
@@ -45,8 +83,10 @@
         
        
         <footer>
-            <p id="copyright"> Copyrights reserved by Kakatiya University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="developers.jsp">Developers</a></p>
-            
+            <center>
+            <p id="copyright"> Copyrights reserved by Kakatiya University<br>
+                <a href="developers.jsp">Developers</a></p>
+            </center>
             
         </footer>
 </body>
