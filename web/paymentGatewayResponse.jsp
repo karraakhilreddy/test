@@ -313,7 +313,7 @@
                             
                             try{
                              
-                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Affiliation fee Paid' WHERE (`cCode` =? and `cStatus`='Inspection success');";
+                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Affiliation fee Paid' WHERE (`cCode` =? and `cStatus`='Inspection Success');";
                                                          ps=con.prepareStatement(insertTableSQL);
 
                                                                       ps.setString(1, "567");

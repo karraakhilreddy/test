@@ -4,12 +4,15 @@
     Author     : Harika Bale
 --%>
 
+<%@page import="cdc.mail_Senddd"%>
+<%@page import="cdc.GenerateRandomString"%>
+<%@page import="cdc.Database"%>
 <!DOCTYPE html>
 <%@page import="java.sql.*"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@page import="com.kk.fingerprint.action.mail_Senddd"%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,26 +21,29 @@
     <body>
      <%  
           
-          int cCode=567;//Integer.parseInt(request.getParameter("cCode"));
-         // Connection con=Database.getConnection();
-          //PreparedStatement ps=con.prepareStatement("select cEmail from cdc_college_details where cCode=?");
-          //ps.setInt(1 ,cCode);
-          //ResultSet rs=ps.executeQuery();
-          //if(rs.next())
-            // out.println( rs.getString("cEmail") );
-          
-     %>
-     <%
-          try{
-                        //GenerateRandomString grs = new GenerateRandomString();   
-                        //out.println(grs.randomAlphaNumeric());
-                        mail_Senddd.sendMail("myMessage","KKK","akhil.reddyK99@gmail.com");
+          int cCode=Integer.parseInt(request.getParameter("cCode"));
+         Connection con=Database.getConnection();
+          PreparedStatement ps=con.prepareStatement("select sno,cEmail from cdc_college_details where cCode=?");
+          ps.setInt(1 ,cCode);
+          ResultSet rs=ps.executeQuery();
+         if(rs.next())
+         {  
+               try{
+                        String msg="College Login Details\n";
+                        GenerateRandomString grs = new GenerateRandomString();
+                        String newPassword="qwertyuiop";//grs.randomAlphaNumeric();
+                        out.println(newPassword);
+                        Statement stmt = con.createStatement();
+                            String sql = "UPDATE cdc_college_details SET cPassword='"+newPassword+"' WHERE sno="+rs.getInt("sno");
+                            stmt.executeUpdate(sql);
+                            msg=msg+"College Code : "+cCode+"\nPassword : "+newPassword;
+                        mail_Senddd.sendMail(msg,"KKK",rs.getString("cEmail"));
 
-                        //StringUtils su=new StringUtils();
-                        //out.println(su.generateRandomPassword());
-     }catch(Exception e){
+                        
+            }catch(Exception e){
              out.println(e.getMessage());
              }
+         }
        %>  
     </body>
 </html>

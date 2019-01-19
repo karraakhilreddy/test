@@ -275,7 +275,7 @@ public class feeCalculation {
                       rs2=stmt2.executeQuery(query2);
                      if(rs2.next())
                      {
-                            aamount=aamount+((int) Math.ceil((rs2.getInt("cIntakeSanctioned")/60)))*20000; //if type == Education and course==B. Ed || M. Ed
+                            aamount=aamount+((int) Math.ceil((rs2.getInt("cIntakeSanctioned")/60)))*20000; 
                      }
                       rs2.close();
                      stmt2.close();

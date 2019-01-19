@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                     <td><input type="submit" name="button" value="login"></td>
-                     <td><p><a href="#">Forget Password</a> </p></td>
+                    <td><p><a href="temp/forgotPassword.html">Forgot/Generate Password</a> </p></td>
                 </tr>
                
             
