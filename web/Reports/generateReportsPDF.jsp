@@ -1499,13 +1499,8 @@
 
                     document.close();
                     System.out.println(f);
-                    %>
-                        </TABLE>
-                         <a href="download.jsp?ff=<%=f%>">Download the  as PDF</a>
-                        <a href="excelData.jsp?button=Course">Download as Excel file</a>
-                        </center>
-        
-                    <%
+                    response.sendRedirect("download.jsp?ff="+f);
+                   
                     
 
 

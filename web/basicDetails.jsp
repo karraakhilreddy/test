@@ -99,7 +99,7 @@
                             <td><input type="number" name="sPostalAddress" placeholder="society postal address"  value="<%=rs.getInt("sPostalAddress") %>"  ></td>
                         </tr>
                          <tr>
-                            <td> Type of the college :</td>
+                            <td> Nature of the college :</td>
                                     <td><select name="typeOfCollege" value="<%=rs.getString("typeOfCollege") %>" >
                                             <option>-------</option>
                                             <option value="university" <% if(rs.getString("typeOfCollege").equals("university")){ out.println("selected");} %>>University</option>
