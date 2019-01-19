@@ -82,12 +82,18 @@
                 
         
        
-        <footer>
-            <center>
-            <p id="copyright"> Copyrights reserved by Kakatiya University<br>
-                <a href="developers.jsp">Developers</a></p>
-            </center>
-            
-        </footer>
+        <div class="footer">
+  <div id="button"></div>
+<div id="container">
+<div id="cont">
+<div class="footer_center">
+    <div > 
+<div class="left">Copyrights reserved by Kakatiya University</div>
+<div class="right"><a href="developers.jsp">Developers</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

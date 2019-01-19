@@ -1,9 +1,3 @@
-
-<%-- 
-    Document   : testform
-    Created on : 3 Oct, 2018, 12:35:43 PM
-    Author     : akhil
---%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +60,7 @@
     </div>
     
        
-        <div class="footer">
+         <div class="footer">
   <div id="button"></div>
 <div id="container">
 <div id="cont">

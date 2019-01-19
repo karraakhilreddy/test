@@ -5,8 +5,8 @@
 --%>
 
 
-<%@page import="javafx.scene.control.Alert"%>
-<%@page import="javax.sound.midi.SysexMessage"%>
+
+
 <%@page import="cdc.logs"%>
 <!DOCTYPE html>
 <html>
