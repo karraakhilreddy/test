@@ -43,35 +43,26 @@
     <div class="main">    
         <center>
     <div class="mainBackground">
+        <h1>Hello World!</h1>
         
-        <form action="../loginAction.jsp" method="post" >
-           
+        <form action="basicDetails.jsp" method="post">
             <table>
                 <tr>
-                    <td> <p >Admin Email</p></td>
-                    <td><input type="text" name="aEmail"  value="a@g.c" required="required" ></td>
-                </tr>
-                 <tr>
-                    <td><p>Password</p></td>
-                    <td><input type="password" name="apassword" value="qwertyuiop" required="required" ></td>
+                    <td>College Code</td>
+                    <td><input type="text" name="aCcode" value="567"></td>
                 </tr>
                 <tr>
-                    <td><button name="button" value="alogin" type="submit">Login</button></td>
-                    
-                    <td><p><a href="temp/forgotPassword.html">Forgot/Generate Password</a> </p></td>
+                    <td><td><button name="button" value="alogin" type="submit">Get Reports</button></td></td>
                 </tr>
-               
-            
+                <tr>
+                    <td colspan="2"><a href="reports/adminReports.jsp">Complete Reports</a></td></td>
+                </tr>
             </table>
         </form>
-       
-        
+         
         
     </div>
-            
-        </center>
-            
-    </div>
+        </center></div>
        
               
                   

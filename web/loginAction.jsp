@@ -68,7 +68,51 @@
                                     }catch(Exception e){
                                         System.out.print(e.getMessage());
                                     }
-                                    break;
+                    break;
+                case "alogin":
+                    out.println("1");
+                                    try{
+                                    Connection con= Database.getConnection();
+
+                                    String aEmail=(String)request.getParameter("aEmail");
+                                    String apassword=request.getParameter("apassword");
+
+                                    String insertTableSQL = "SELECT * FROM cdc.admin where Email=?;";
+
+                                       PreparedStatement      ps=con.prepareStatement(insertTableSQL);
+
+
+                                     //ps=con.prepareStatement("select cCode,password from cdc_college_details where cCode=?;");
+                                    ps.setString(1,aEmail);
+
+                                    out.println("2");
+                                    ResultSet rs=ps.executeQuery();
+                                    if(rs.next())
+                                    {
+                                        
+                                        //out.println("welcome"+rs.getString(1));
+                                        if(rs.getString("Password").equals(apassword)){
+                                            session.setAttribute("Admin_Role", rs.getString("role"));
+                                            logs l=new logs();
+                                            
+                                            l.updateLog( rs.getString("role"), "loginAction.jsp", "Login",ipAddress);
+                                            
+                                            response.sendRedirect("admin/aWelcome.jsp");
+                                            out.println("3");
+                                        }else
+                                            
+                                            out.print("password doesnt match");
+
+                                    }
+                                    else
+                                    {
+                                        out.print("user doesnt exists");
+                                    }
+                                        //response.sendRedirect("loginPage.html");
+                                    }catch(Exception e){
+                                        out.print(e.getMessage());
+                                    }
+                    break;
             
                     case "register" :  
                                         

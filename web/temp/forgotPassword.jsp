@@ -38,7 +38,11 @@
                             stmt.executeUpdate(sql);
                             msg=msg+"College Code : "+cCode+"\nPassword : "+newPassword;
                         mail_Senddd.sendMail(msg,"KKK",rs.getString("cEmail"));
-
+                        %> <script>
+                                window.alert("Password sent to registered mail.");
+                                window.location = "../login.jsp";
+                            </script>
+                            <%
                         
             }catch(Exception e){
              out.println(e.getMessage());

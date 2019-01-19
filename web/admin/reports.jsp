@@ -39,7 +39,7 @@
         <nav class="nav2">
                         <table>
                              <tr>
-                                 <td><button  onclick="location.href = 'aindex.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
                                  <td><button  onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
                                  <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
                                  <td><button class="active" onclick="location.href = 'reports.jsp'">REPORTS</button></td>

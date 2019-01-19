@@ -40,26 +40,20 @@
     <div class="mainBackground">
        
         <% if(session.getAttribute("aCcode")==null)
-                { %>
-                <form action="facultyDetails.jsp" method="post">
-                    <input type="text" name="aCcode">
-                    <input type="submit" name="submit">
-                </form>
-                <% }else{
+                {
+                     response.sendRedirect("aWelcome.jsp");
+                }else{
                        request.setAttribute("aCcode", request.getParameter("aCcode"));
                     String aCcode=(String)session.getAttribute("aCcode");
                     session.setAttribute("aCcode",aCcode);
                 %>
-                <form action="facultyDetails.jsp" method="post">
-                    <input type="text" name="aCcode" value="<%=aCcode%>">
-                    <input type="submit" name="submit">
-                </form>
+               
 <div onload="createTable()">
     
     <nav class="nav2">
                         <table>
                              <tr>
-                                 <td><button  onclick="location.href = 'aindex.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = 'basicDetails.jsp';">COLLEGE DETAILS</button></td>
                                  <td><button class="active" onclick="location.href = 'facultyDetails.jsp'">FACULTY DETAILS</button></td>
                                  <td><button onclick="location.href = 'courseDetails.jsp'">COURSE DETAILS</button></td>
                                  <td><button onclick="location.href = 'reports.jsp'">REPORTS</button></td>
