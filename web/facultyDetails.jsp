@@ -7,20 +7,36 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
+    <script>
+        function dateset(){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+             if(dd<10){
+                    dd='0'+dd
+                } 
+                if(mm<10){
+                    mm='0'+mm
+                } 
+
+            today = yyyy+'-'+mm+'-'+dd;
+                        document.getElementById("datefield").setAttribute("max", today);
+           }
+    </script>
 </head>
 
-<body onload="createTable()" style="background-color: black;">
-  <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
+<body onload="createTable()" >
+  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h2 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;" >Online Services</h2>
-          <h1 style="color:black; text-shadow: 2px 2px 50px orange; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
-          <h4>Warangal,506009</h4>
-
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
       </div>
-      <a href="login.php">
-       <p style="color:black; border-style: white; text-align: center; background-color: deepskyblue;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services-Kakatiya University</i></b></marquee></p></a>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
      <nav>
         <div class="navbuttons">
@@ -39,7 +55,7 @@
             
      <div class="main">    
         <center>
-    <div class="mainBackground">
+            <div class="mainBackground" >
         <!-- code -->
         <nav class="nav2">
                         <table>
@@ -55,7 +71,8 @@
                         </table>
                     </nav>
     </table>
-            <table border="1">
+    <br>
+            <table border="1" id="facultytable">
                 
             <tr>
                 <td>Name</td>
@@ -101,7 +118,7 @@
                     <td><%=rs.getString("tPAN") %></td>
                     <td><%=rs.getString("tAadhar") %></td>
                     <td><%=rs.getString("tMobile") %></td>
-                    <td><a href="upload.jsp?name=delete&&place=faculty&&sno=<% out.print(rs.getInt("sno"));%>">Remove</a></td>
+                    <td><a href="upload.jsp?name=delete&&place=faculty&&sno=<% out.print(rs.getInt("sno"));%>" style="text-decoration: none;">Remove</a></td>
                     
                 </tr>
                     <%
@@ -131,62 +148,96 @@
     <br><br><h2>Add New Faculty</h2><br><br>
     <div id="cont"></div>
     <form action="upload.jsp" method="post">
-    <table border="1">
+    <table  id="facultytable">
         <tr>
             <td>Name of the Teacher</td>
-            <td>Type</td>
-            <td>Designation</td>
-            <td>Qualification with specialization</td>
-            <td>Date of Appointment</td>
-            <td>Nature of Appointment</td>
-            <td>Mode of Appointment</td>
-        </tr>
-       
-        <tr>
             <td><input type="text" name="tName"></td>
-            <td> <select name="tType">
+            
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td> <select name="tType" required="required">
                     <option value="Principal">Principal</option>
                     <option value="Teaching">Teaching</option>
                     <option value="Non-Teaching">Non-Teaching</option>
                  </select>
             </td>
-            <td><input type="text" name="tDesignation"></td>
-            <td><input type="text" name="tQualification"></td>
-            <td><input type="date" name="tDate"></td>
-            <td> <select name="tNature">
-                    <option value="Permanent">Permanent</option>
-                    <option value="Temporary">Temporary</option>
+        </tr>
+        <tr>
+            <td>Designation</td>
+             <td><input type="text" name="tDesignation" required="required"></td>
+        </tr>
+        <tr>
+        
+            <td>Qualification with specialization</td>
+            <td><input type="text" name="tQualification" required="required"></td>
+             </tr>
+        <tr>
+            <td>Date of Appointment</td>
+<td><input type="date" name="tDate" onclick="dateset()" id="datefield" min="1899-11-11" max="2019-02-12"></td>             </tr>
+        <tr>
+            <td>Nature of Appointment</td>
+             <td> <select name="tNature" required="required">
+                    <option value="Permanent" >Permanent</option>
+                    <option value="Temporary" >Temporary</option>
                     
                  </select>
             </td>
-            <td> <select name="tModeApp">
+             </tr>
+        <tr>
+            <td>Mode of Appointment</td>
+             <td> <select name="tModeApp" required="required">
+                    
                     <option value="Ratifed">Ratifed</option>
                     <option value="Non-Ratifed">Non-Ratifed</option>
                  </select>
             </td>
         </tr>
-         <tr>
-            <td>Scale of pay</td>
-            <td>Mode of payment</td>
-            <td>Bank account Number</td>
-            <td>PAN card Number</td>	
-            <td>Aadhar card Number</td>
-            <td>Mobile No</td>
-       </tr>
+       
         <tr>
-            <td><input type="text" name="tScale"></td>
-            <td><select name="tModePay">
+            <td>Scale of pay</td>
+            <td><input type="number" name="tScale" required="required"></td>
+             </tr>
+         <tr>
+            <td>Mode of payment</td>
+            <td><select name="tModePay" required="required">
                     <option value="Cash">Cash</option>
                     <option value="Check">Check</option>
                 </select>
             </td>
-            <td><input type="text" name="tBank"></td>
-            <td><input type="text" name="tPAN"></td>
-            <td><input type="text" name="tAadhar"></td>
-            <td><input type="text" name="tMobile"></td>
-        </tr>
-    </table>
-        <input type="submit" name="name" value="faculty">
+             </tr>
+         <tr>
+            <td>Bank account Number</td>
+            <td><input type="number" name="tBank" required="required"></td>
+             </tr>
+         <tr>
+            <td>PAN card Number</td>
+            <td><input type="text" name="tPAN" required="required"></td>
+             </tr>
+         <tr>
+            <td>Aadhar card Number</td>
+             <td><input type="number" name="tAadhar" required="required"></td>
+             </tr>
+         <tr>
+            <td>Mobile No</td>
+            <td><input type="number" name="tMobile" required="required"></td>
+       </tr>
+       
+            
+            
+            
+            
+           
+            
+       
+    </table> 
+         <br>
+        <br>
+        <input type="submit" name="name" value="faculty"  id="facultysubmit">
+        <button name ="name" value="faculty" type="submit" id="facultysubmit">Add Faculty</button>
+         <br>
+        <br>
+        <br>
         
      </form>   
     </div></center></div>

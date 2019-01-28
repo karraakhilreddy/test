@@ -4,13 +4,9 @@ body{
     background-size:1000px 300px;
     background-repeat: no-repeat;
     font-family:sans-serif;
-    background-image: url("../IMG/bg2.jpeg");
+    
 }
-img{
-    position: absolute;
-    width: 100px;
-    border-radius: 50%;
-}
+
 .loginbox{
     position: absolute;
     top: 50%;

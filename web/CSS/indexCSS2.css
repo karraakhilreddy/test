@@ -11,9 +11,9 @@ ul li{
 
 ul{
     padding-left:0px; 
-    border: 2px solid black;
+   
    text-align:center;
-    background-color:black;
+    background-color:white;
 }
 
 button{
@@ -58,23 +58,18 @@ button:hover{
 iframe{
    
     background-color: white;
-    width: 1200px;
+    width: 1450px;
     height: 700px;
 
+    margin-top: 0px;
     
-    border-radius: 10px;
    
    
 }
 .frames{
-         margin-top:1.5em;
-        
-        
-         
+    margin-top:1.5em;
     margin-left: 1em;
-    
-     
-       height: 630px;
+    height: 630px;
 }
 
 .box1{
@@ -121,10 +116,6 @@ table {
  
   margin-bottom: 20px;
  
-}
-tr:hover 
-{
-    background-color: white;
 }
 
 th{
@@ -200,29 +191,7 @@ button{
     outline:none;
 }
 
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-    background-color:white;
-    color: black;
-   
-   
-    
-}
 
-.tabcontent button{
-    background-color: black;
-    font-size: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    color:white;
-       
-}
 
 .footer #button{
 	width:35px;
@@ -254,7 +223,7 @@ button{
 	left:0;
 	position:fixed;
     width: 100%;
-    height: 2em;
+    height: 1em;
     overflow:hidden;
     margin:0 auto;
 	-webkit-transition: all 1s ease;
@@ -270,7 +239,7 @@ button{
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-	height: 10em;
+	height: 4em;
 }
 .footer #container{
 	margin-top:5px;
@@ -308,6 +277,13 @@ height:100%;
     display:inline-block; 
     float:right
 }
-
+.square1{
+    
+    
+    
+}
+.square2{
+        
+}
 
 

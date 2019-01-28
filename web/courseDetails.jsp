@@ -8,7 +8,7 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
-</head>
+
 <script>
 function myFunction() {
    var type=document.getElementById("type").value;
@@ -18,12 +18,15 @@ function myFunction() {
    var intake=document.getElementById("intake").value;
    //alert(type+"\n"+course+"\n"+combination+"\n"+medium+"\n"+intake);
    var str="upload.jsp?name=course&type="+type+"&course="+course+"&combination="+combination+"&medium="+medium+"&intake="+intake;
-   window.location.replace(str);
+   // alert("Type="+type+"Course=\n"+course+"Combination=\n"+combination+"medium=\n"+medium+"Intake=\n"+intake);
+       if(type!==0 && course!==0 && combination!==0 && medium!==0 && intake!==60)
+        window.location.replace(str);
    
 }
 </script>
-<body style="background: black">
-  <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
+</head>
+<body >
+  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
@@ -72,7 +75,7 @@ function myFunction() {
 
     <form action=""  method="post">
          <center><h1>Add new Course</h1></center>
-         <table border="1"> 
+         <table border="1" id="facultytable"> 
              <tr>
                  <td>Type</td>
                  <td>Course</td>
@@ -82,8 +85,8 @@ function myFunction() {
                  <td>Action</td>
              </tr>
              <tr>
-                 <td> <select name="type" id="type" onchange="this.form.submit()"> 
-                            <option value="0">select type</option>
+                 <td> <select  name="type" id="type" onchange="this.form.submit()"  required> 
+                            <option value="0"></option>
                            <%
                                 try{
                                         String query="select distinct Type from course_structure order by Type asc;";
@@ -111,8 +114,8 @@ function myFunction() {
                      </select> 
                  </td>
                      <td>
-                          <select name="course" id="course" onchange="this.form.submit()">
-                              <option value="0">select course</option>
+                          <select name="course" id="course" onchange="this.form.submit()" required="required">
+                              <option value="0"></option>
                               <%
                                 try{
                                         String query="select distinct Course from course_structure where Type=? order by Course asc";
@@ -141,8 +144,8 @@ function myFunction() {
                           </select>
                      </td>
                      <td>
-                          <select name="combination" id="combination" onchange="this.form.submit()">
-                              <option value="0">select course</option>
+                          <select name="combination" id="combination" onchange="this.form.submit()" required="required">
+                              <option value="0"></option>
                               <%
                                 try{
                                         String query="select distinct Combination from course_structure where Type=? and Course=? order by Combination ASC";
@@ -172,8 +175,8 @@ function myFunction() {
                           </select>
                      </td>
                      <td>
-                          <select name="medium" id="medium" onchange="this.form.submit()">
-                              <option value="0">select course</option>
+                          <select name="medium" id="medium" onchange="this.form.submit()" required="">
+                              <option value="0" ></option>
                               <%
                                 try{
                                         String query="select distinct medium from course_structure where Type=? and Course=? and Combination=? order by medium ASC";
@@ -207,7 +210,7 @@ function myFunction() {
                           </select>
                      </td>
                      <td>
-                          <input type="number" name="intake" id="intake" >
+                          <input type="number" name="intake" id="intake" value="60" required="required">
                           
                      </td>
                       <td>
@@ -220,13 +223,13 @@ function myFunction() {
          </form>
                           
                          
-    </form>
+    
         
     
                           <br><br>
                           <center><h1>Existing Course</h1></center>
                           
-            <table border="1">
+            <table border="1" id="facultytable">
                 
             <tr>
                 <td>Type</td>

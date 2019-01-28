@@ -25,9 +25,9 @@ public class Database {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cdc","root","root");
         } catch (Exception ex) {
             ex.printStackTrace();
-        }//?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
-        //?verifyServerCertificate=false&useSSL=true
+        }
         //,V}xNtFkMi2c
+        //cdcaa,cdcaa321
         return con;
     }
 

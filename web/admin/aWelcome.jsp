@@ -11,19 +11,18 @@
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
 </head>
-<body style="background: black">
-  <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
+<body >
+  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
-           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h2 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;" >Online Services</h2>
-          <h1 style="color:black; text-shadow: 2px 2px 50px orange; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
-          <h4>Warangal,506009</h4>
-
+           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
       </div>
-      <a href="login.php">
-       <p style="color:black; border-style: white; text-align: center; background-color: deepskyblue;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services-Kakatiya University</i></b></marquee></p></a>
-  </div> 
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
+  </div>
     <nav>
         <div class="navbuttons">
              <div class="navbuttons">

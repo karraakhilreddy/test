@@ -9,20 +9,18 @@
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
 </head>
-<body style="background: black">
-  <div style="text-align: center; background:linear-gradient(#34e89e,#0f3443);">
+<body >
+  <div style="text-align: center; background:linear-gradient(#96deda,#50c9c3); margin-top: -1em;">
       <div>
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
             <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h2 style="color:black; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;" >Online Services</h2>
-          <h1 style="color:black; text-shadow: 2px 2px 50px orange; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
-          <h4>Warangal,506009</h4>
-
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
       </div>
-      <a href="login.php">
-       <p style="color:black; border-style: white; text-align: center; background-color: deepskyblue;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services-Kakatiya University</i></b></marquee></p></a>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
-    <nav>
          <nav>
         <div class="navbuttons">
              <ul><button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
@@ -127,11 +125,13 @@
              <input type="text" name="amount" value=<%= amount %> hidden>
              <input type="text" name="cCode" value=<%= cCode %> hidden>
              <input type="text" name="name" value="inspection" hidden>
-             <input type="submit" name="" value="Pay Now" >
+             <button> <input type="submit" name="" value="Pay Now" style="background-color: white;"></button>
+          
              
          </form>
+                <br>
              <form action="doubleVerification.jsp" method="post">
-                 <input type="submit" name="" value="Verify the payment" >
+                 <button>  <input type="submit" name="" value="Verify the payment" style="background-color: white;" ></button>
              </form>
     </div>    
         </center>
