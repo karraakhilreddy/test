@@ -1,7 +1,4 @@
-body{
-    
-    background-color:black;
-}
+
 
 h2{
     text-align: center;
@@ -12,20 +9,20 @@ h2{
      
 }
 p{
-     font-size: 15pt;
+     font-size: 13pt;
      color:black;
    padding: 2px;
 }
 .lists  ul li{
-   font-size: 15pt;
+   font-size: 14pt;
     color: black;
 }
 .lists ol li{
-    font-size: 15pt;
+    font-size: 14pt;
      color: black;
 }
 .lists{
-    border:5px solid grey;
+    border:1px solid grey;
     border-radius: 8px;
     background-color: white;
     padding: 2px;
@@ -33,9 +30,9 @@ p{
 .pic{
     background-image: url("../IMG/Juri.jpg");
     background-repeat: no-repeat;
-    border:5px solid grey;
+    border:1px solid grey;
     border-radius: 8px;
-    height: 1600px;
+    height: 1100px;
     background-size: cover;
     background-position: center;
     

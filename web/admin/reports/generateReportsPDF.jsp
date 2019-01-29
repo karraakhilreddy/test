@@ -22,25 +22,22 @@
       <a href="#">
        <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
-    <nav>
-        <div class="navbuttons">
-             <ul>
-                <button class="tablinks" onclick="window.location='../../home.jsp'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='../../login.jsp'"><li>College Login</li></button>
-                <button class="active" onclick="window.location='../../admin/aindex.jsp'"><li>Admin Login</li></button>
-                <button class="tablinks" onclick="window.location='../../dean.jsp'"><li>Dean</li></button>
-                <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
-                <button class="tablinks" onclick="window.location='../../help.jsp'"><li>Help</li></button>
-            
-            </ul>
-        </div>
-       
-    </nav>
+   
     
      <div class="main">    
         <center>
     <div class="mainBackground">
-        
+         <nav class="nav2">
+                        <table>
+                             <tr>
+                                 <td><button  onclick="location.href = '../basicDetails.jsp';">COLLEGE DETAILS</button></td>
+                                 <td><button  onclick="location.href = '../facultyDetails.jsp'">FACULTY DETAILS</button></td>
+                                 <td><button onclick="location.href = '../courseDetails.jsp'">COURSE DETAILS</button></td>
+                                 <td><button class="active" onclick="location.href = '../reports.jsp'">REPORTS</button></td>
+                                 <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
+                            </tr>
+                        </table>
+                    </nav>
                    
         <%
             String button=request.getParameter("button");
@@ -345,7 +342,7 @@
                     
                     case "Logs" :
                     
-                    rs = st.executeQuery("SELECT * FROM cdc.logs ;");
+                    rs = st.executeQuery("SELECT * FROM cdc.logs where cCode="+cCode+";");
                     %>
         
                           <table width="100%" border="0">

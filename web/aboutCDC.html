@@ -3,13 +3,102 @@
 
     <head>
     
-      <link href="CSS/about.css" rel="stylesheet" type="text/css">
+       <meta charset="utf-8">
+	<title>cdc</title>
     
-    
+    <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
+    <style>
+        .tabcontent{
+            background-color: white;
+        }
+       
+p{
+     font-size: 13pt;
+     color:black;
+   padding: 2px;
+}
+.lists  ul li{
+   font-size: 14pt;
+    color: black;
+}
+.lists ol li{
+    font-size: 14pt;
+     color: black;
+}
+.lists{
+    border:1px solid grey;
+    border-radius: 8px;
+    background-color: white;
+    padding: 2px;
+}
+    </style>
+     <script>
+        
+        
+            function openCont(evt, contName,from) {
+                    // Declare all variables
+                    var i, tabcontent, tablinks;
+
+                    // Get all elements with class="tabcontent" and hide them
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinks = document.getElementsByClassName("tablinks");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    document.getElementById(contName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                    if(from==='but1')
+                        button1.className +=" active";
+                    
+            }
+     
+    </script>
     </head>
-<body>
-    <div class="lists"> 
-        <marquee  behavior="scroll" onmouseout="this.start()" scrolldelay="60"><img src="IMG/1.png"></marquee>
+    <body style="background-color: white;">
+
+   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div>
+           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+          <h2 style="color:black; font-family: Bookman Old Style; ">Online Services</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
+          <h3><spam>Warangal-506009,Telangana</spam>
+      </div>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services Kakatiya University</i></b></marquee></p></a>
+  </div>
+<center>
+   
+    <div class="container">
+
+             
+                 
+        <div class="tab">
+  <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">About </button>
+  <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Dean</button>
+ <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Help </button>
+ 
+</div>
+        
+               <center>
+
+
+<!-- Tab content -->
+<div id="generalDetails" class="tabcontent active">
+    
+      <div class="lists"> 
+        <marquee  behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="60">
+            <img src="IMG/1.png">
+            <img src="IMG/cdcBuilding.JPG" width="300" height="220">
+        </marquee>
+        
     
     
     
@@ -24,8 +113,8 @@ The College Development Council accords permission/affiliation to establish and 
     
    
     
-                           <!__Fuctions__>
-          <h2>FUNCTIONS OF THE COLLEGE DEVELOPMENT COUNCIL</h2>
+                           
+    <h2 style="color: green;">FUNCTIONS OF THE COLLEGE DEVELOPMENT COUNCIL</h2>
 <div class="lists"> 
    
 <ul>
@@ -51,7 +140,7 @@ The College Development Council accords permission/affiliation to establish and 
     
                        <!__Procedure__>
     
-      <h2> PROCEDURE FOR ESTABLISHMENT OF A NEW DEGREE COLLEGE</h2>
+      <h2 style="color: green;"> PROCEDURE FOR ESTABLISHMENT OF A NEW DEGREE COLLEGE</h2>
     
 <div class="lists">    
    
@@ -78,11 +167,161 @@ The College Development Council accords permission/affiliation to establish and 
     
   </div>
         
-                 <h2>JURISDICTION OF THE UNIVERSITY</h2>
-    <div class="pic">
+                 <h2 style="color: green;">JURISDICTION OF THE UNIVERSITY</h2>
+                 <center><div><img src="IMG/Juri.jpg" width="900" height="900"> </div></center>
+   
+</div>
+
+                         
+<div id="buildingDetails" class="tabcontent" >
+     
     
-         
+     <h1>DEAN</h1>
+    <div class="dean">
+        
+        <center>
+           
+            <img src="IMG/dean.jpg" width="200" height="250">
+             <p><b>NAME:</b>Prof. Ch. Rajesham<br>
+			<b>CONTACT:</b> 9440163189<br>
+			<b>e-mail :</b> drchr18@yahoo.com </p>
+    </center>
+    
     </div>
+    
+    
+    
+    
+              <h1>TENURE OF DEANS</h1>
+ <div class="dean">
+     <center>
+        <table>
+            <tr>
+            
+                <td rowspan="2"><b>SL.NO</b></td>
+                <td rowspan="2"><b>Name of the Dean</b></td>
+                <td colspan="2"><b>Period of deanship</b></td>
+                
+            </tr>
+            <tr>
+                
+                <td><b>from</b></td>
+                <td><b>to</b></td>
+            </tr>
+             <tr>
+                <td>1</td>
+                 <td>Prof.T Vasudev</td>
+                <td>March,1982</td>
+                <td>August,1982</td>
+            </tr>
+            <tr>
+                <td>2</td>		
+                <td>Prof. A. Amruth Rao	</td> 
+                <td>June,1987</td>
+                <td>June, 1989</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Prof. Dinkar Sir Deshmukh</td>
+                <td>July, 1989</td>
+                <td>May, 1995</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Prof. P. Venkat Reddy	</td>
+                <td>July, 1995</td>
+                <td>August, 1998</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Prof. C. Janaiah</td>
+                <td>September, 1998	</td>
+                <td>August, 2000</td>
+            </tr>
+            <tr>
+                <td>6</td>	
+                <td>Prof. A. Shankaraiah</td>
+                <td>September, 2000	</td>
+                <td>February, 2002</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Prof. A. Purushotham Rao</td>
+                <td>March, 2002</td>	
+                <td>July, 2005</td>
+            </tr>
+            <tr>
+                <td>8</td>	
+                <td>Prof. T. Bhaskar Rao</td>
+                <td>August, 2005</td>	
+                <td>August, 2008</td>
+            </tr>
+            <tr>
+                <td>9</td>		
+                <td>Prof. N. Satyanarayana</td>
+                <td>September, 2008</td>	
+                <td>May, 2009</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Prof. S. Jagannatha Swamy</td>
+                <td>May, 2009</td>
+                <td>April, 2012</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Prof. M.A. Singara Charya</td>
+                <td>May, 2012	</td>
+                <td>July, 2015</td>
+            </tr>
+            <tr>
+                <td>12</td>	
+                <td>Prof. G. Damodar</td>
+                <td>August, 2015</td>
+                <td>January, 2017</td>
+            </tr>
+            <tr>
+                <td>13</td>		
+                <td>Prof. G. Gangadhar Reddy	</td>
+                <td>February, 2017</td>
+                <td>January, 2018</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>	Prof. Ch. Rajesham</td>
+                <td>	February, 2018	</td>
+                <td>present</td>
+            </tr>
+              
+           
+        </table>
+         <br><br><br><br><br>
+     </center>
+</div>
+                 
+</div>
+                        
+
+
+    
+               </center>
+    </div>
+</center>
+        <div class="footer">
+  <div id="button"></div>
+<div id="container">
+<div id="cont">
+<div class="footer_center">
+    <div > 
+<div class="left">Copyrights reserved by Kakatiya University</div>
+<div class="right"><a href="developers.jsp">Developers</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    
+    
 </body>
 
 </html>

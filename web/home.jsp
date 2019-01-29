@@ -16,8 +16,8 @@
             background-color: white;
         }
         .edit{
-            height: 300px;
-            width: 400px;
+            height:150px;
+            width: 200px;
         }
         
         

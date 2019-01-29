@@ -2,7 +2,7 @@
 <%@page import="java.sql.*"%>
 <%@page import="cdc.Database"%>
 <%@ page import="java.io.*"%>
-<%@page import="com.lowagie.text.*,com.lowagie.text.pdf.*"%>;
+<%@page import="com.lowagie.text.*,com.lowagie.text.pdf.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html>
@@ -30,9 +30,7 @@
                 <button class="tablinks" onclick="window.location='../home.jsp'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='../login.jsp'"><li>College Login</li></button>
                 <button class="active" onclick="window.location='../admin/aindex.jsp'"><li>Admin Login</li></button>
-                <button class="tablinks" onclick="window.location='../dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
-                <button class="tablinks" onclick="window.location='../help.jsp'"><li>Help</li></button>
             
             </ul>
         </div>

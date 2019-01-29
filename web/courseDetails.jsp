@@ -39,19 +39,7 @@ function myFunction() {
        <p style="color:black; border-style: white; text-align: center; background-color: deepskyblue;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services-Kakatiya University</i></b></marquee></p></a>
   </div>
     
-        <nav>
-        <div class="navbuttons">
-             <ul><button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
-                <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
-                <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
-                <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
-                <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
-                <button class="tablinks" onclick="window.location='help.jsp'"><li>Help</li></button>
-            
-            </ul>
-        </div>
-       
-    </nav>
+    
     
             
      <div class="main">    
