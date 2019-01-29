@@ -59,7 +59,12 @@ public class feeCalculation {
                                      amount=amount+40000;
                                  
                                  break;
-                                 
+                                 case "Pharm. D":    //if type == pharmacy and course==m.pharmacy
+                                        amount=amount+25000;
+                                  break;
+                                 case "Pharm. PB":    //if type == pharmacy and course==m.pharmacy
+                                        amount=amount+25000;
+                                  break; 
                          }
                          
                      }
@@ -219,6 +224,18 @@ public class feeCalculation {
                                  aamount=aamount+rs2.getInt("tCourse")*15000;
                                  
                                  break;
+                                 case "Pharm. D":    //if type == pharmacy and course==m.pharmacy
+                                 
+                                 
+                                 aamount=aamount+50000;
+                                 
+                                 break;
+                                 case "Pharm. PB":    //if type == pharmacy and course==m.pharmacy
+                                 
+                                 
+                                 aamount=aamount+50000;
+                                 
+                                 break;
                                  
                          }
                          
@@ -333,7 +350,7 @@ public class feeCalculation {
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
                       
-                      String query3="SELECT sum(cIntakeSanctioned) as tIntake FROM courses where cCode='567' and cstatus='Inspection Success' and cType='UG';";
+                      String query3="SELECT sum(cIntakeSanctioned) as tIntake FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='UG';";
         
                       Statement stmt3=conn.createStatement();
                       ResultSet rs3=stmt3.executeQuery(query3);
