@@ -9,15 +9,15 @@
         
        
          table td{
-            border:40px solid lightgrey;
+            border:20px solid lightgrey;
             width:250px;
             height: 250px;
             text-align: center;
             background-color: white;
         }
         .edit{
-            height: 300px;
-            width: 400px;
+            height: 150px;
+            width: 200px;
         }
         
         
@@ -49,7 +49,7 @@
             
         </script>
 </head>
-<body >
+<body  >
    <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
@@ -81,6 +81,9 @@
             <tr >
                 <td><img class="edit" src="IMG\cdc.jpg"  align="inherit"/><br/><br/> <button class="tablinks" onclick="openCont(event,'CDC')" style="width:200px;height:55px; background-color:  darkgrey;" >CDC</button></td> 
                 <td> <img class="edit" src="IMG\audit.jpg"  align="inherit"/><br/><br/><button class="tablinks" onclick="openCont(event,'ACADEMIC_AUDIT')" style="width:200px;height:55px; background-color:  darkgrey;">Academic Audit</button></td>
+            <br>
+            <br>
+            <br>
             
             </tr>
             
@@ -89,7 +92,12 @@
          
         </div>
         <center>
+             <br>
+            <br>
+            <br>
+            
          <div id="CDC" class="tabcontent">
+             
          <iframe src="deanCDC.html"  scroll="auto"></iframe>
         
         </div>

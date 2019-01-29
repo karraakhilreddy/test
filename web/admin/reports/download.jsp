@@ -35,8 +35,10 @@ public static String getMimeType(String fileUrl)
                     }
                         } catch (IOException ioe) {
                         ioe.printStackTrace(System.out);
-                    }
+                    }finally{
                         outs.flush();
                     outs.close();
                     in.close(); 
+                    f.delete();
+                   }
             %>

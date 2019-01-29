@@ -13,7 +13,7 @@
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
 </head>
-<body style="background: black">
+<body >
  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
            <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
@@ -60,7 +60,7 @@
                    
         <%
             String button=request.getParameter("button");
-            out.print(button);
+            out.print("<h2>"+button+"</h2>");
             
             
              Connection con = null;
@@ -821,7 +821,7 @@
                     
                     case "Basic":
                     
-                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode=567;");
+                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
                    
 
                     
@@ -878,8 +878,8 @@
                     
                        
                     
-                    table4.addCell("Addrress of the sponsering society");
-                    table4.addCell(rs.getString("sPostalAddress"));
+                    table4.addCell("Area of the college");
+                    table4.addCell(rs.getString("areaOfCollege"));
                     table4.completeRow();
                     
                        
@@ -1188,7 +1188,7 @@
                     document.add(Chunk.NEWLINE);
                     document.add(p);
                   
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode=567;");
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+";");
                    
                     
                     headers = new String[] {"Type", "Course", "Combination", "Medium","Intake", "Admitted"};
@@ -1226,7 +1226,7 @@
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
 
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode=567 and tType!='Non-Teaching';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType!='Non-Teaching';");
                     
                      headers2 = new String[] {"Name","Type", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
@@ -1278,7 +1278,7 @@
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                       document.add(Chunk.NEWLINE);
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode=567 and tType='Non-Teaching';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Non-Teaching';");
                     
                      headers2 = new String[] {"Name","Type", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
@@ -1505,7 +1505,8 @@
              
                     ps=con.prepareStatement("select * from payments where cCode='"+cCode+"'");
                     rs=ps.executeQuery();
-                    %><table>
+                    %>
+                    <table border="1">
                         <tr>
                             <td>Merchant order No.</td>
                             <td>Fee of</td>
@@ -1547,7 +1548,7 @@
                               <td><%=rs.getString("bankReferenceNumber") %></td>
                               <td><%=rs.getString("transactionDate") %></td>
                               <td><%=rs.getString("CIN") %></td>
-                              <td><a href="receipts.jsp?merchantOrderNo=<%=rs.getString("merchantOrderNo") %>&&feeFor=<%=feeFor%>&&SBIePayReferenceID=<%=rs.getString("SBIePayReferenceID") %>&&status=<%=rs.getString("status") %>&&amount=<%=rs.getString("amount") %>&&payMode=<%=rs.getString("payMode") %>&&bankCode=<%=rs.getString("bankCode") %>&&bankReferenceNumber=<%=rs.getString("bankReferenceNumber") %>&&transactionDate=<%=rs.getString("transactionDate") %>&&CIN=<%=rs.getString("CIN") %>">Download</a></td>
+                              <td><a href="receipts.jsp?merchantOrderNo=<%=rs.getString("merchantOrderNo") %>&&feeFor=<%=feeFor%>&&SBIePayReferenceID=<%=rs.getString("SBIePayReferenceID") %>&&status=<%=rs.getString("status") %>&&amount=<%=rs.getString("amount") %>&&payMode=<%=rs.getString("payMode") %>&&bankCode=<%=rs.getString("bankCode") %>&&bankReferenceNumber=<%=rs.getString("bankReferenceNumber") %>&&transactionDate=<%=rs.getString("transactionDate") %>&&CIN=<%=rs.getString("CIN") %>" style="text-decoration: none;">Download</a></td>
                               
                         </tr>
                    

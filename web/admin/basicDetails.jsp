@@ -9,13 +9,13 @@
 <head>
 	 <meta charset="utf-8">
 	<title>cdc</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+        <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css">
 </head>
 <body >
   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
-           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
           <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
           <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
           <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
@@ -95,7 +95,7 @@
                          </tr>
                           <tr>
                              <td>Address of the college:</td>
-                             <td><input type="text" name="cAddress" placeholder="college address"  value="<%=rs.getString("cAddress") %>"  required="required"></td>
+                             <td><input type="text" name="cAddress" placeholder="college address"  value="<%=rs.getString("cAddress") %>"  required="required" style="width: 180px;"></td>
                          </tr>
                          
                         <tr>
@@ -108,8 +108,8 @@
                             <td><input type="text" name="sAddress" placeholder="society address"  value="<%=rs.getString("sAddress") %>"required="required" ></td>
                         </tr>
                         <tr>
-                            <td>Postal Address of the college :</td>
-                            <td><input type="number" name="sPostalAddress" placeholder="society postal address"  value="<%=rs.getInt("sPostalAddress") %>"  ></td>
+                            <td>Area of the college :</td>
+                            <td><input type="text" name="areaOfCollege"   value="<%=rs.getString("areaOfCollege") %>"  ></td>
                         </tr>
                          <tr>
                             <td> Type of the college :</td>

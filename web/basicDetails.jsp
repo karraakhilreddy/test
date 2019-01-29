@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
     <script>
         
-         document.getElementById("button1").click();
-       
+        // document.getElementById("button1").click();
+       datePickerId.max = new Date().toISOString().split("T")[0];
         function dateset(){
             var today = new Date();
             var dd = today.getDate();
@@ -61,24 +61,38 @@
     if(val==="owned")
     {
      
-        document.getElementById("lLessor").disabled = true;
-        document.getElementById("lLessee").disabled = true;
-        document.getElementById("lPeriod").disabled = true;
-        document.getElementById("lSurveyNo").disabled = true;
-        document.getElementById("lRegNo").disabled = true;
-        document.getElementById("lRegDate").disabled = true;
+        document.getElementById("lLessor").style.visibility= "hidden";
+        
+        document.getElementById("lLessee").style.visibility= "hidden";
+        
+        document.getElementById("lPeriod").style.visibility= "hidden";
+        
+        document.getElementById("lSurveyNo").style.visibility= "hidden";
+        
+        document.getElementById("lRegNo").style.visibility= "hidden";
+        
+        document.getElementById("lRegDate").style.visibility= "hidden";
+        
     }
 
      else if(val==="leased") {
-        document.getElementById("lLessor").disabled = false;
-        document.getElementById("lLessee").disabled = false;
-        document.getElementById("lPeriod").disabled = false;
-        document.getElementById("lSurveyNo").disabled = false;
-        document.getElementById("lRegNo").disabled = false;
-        document.getElementById("lRegDate").disabled = false;
+        document.getElementById("lLessor").style.visibility= "";
+        
+        document.getElementById("lLessee").style.visibility= "";
+        
+        document.getElementById("lPeriod").style.visibility= "";
+        
+        document.getElementById("lSurveyNo").style.visibility= "";
+        
+        document.getElementById("lRegNo").style.visibility= "";
+        
+        document.getElementById("lRegDate").style.visibility= "";
+        
      }
  }
-   
+   function set(val){
+       alert(val);
+   }
    
   
     
@@ -145,7 +159,7 @@
   <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">General Details </button>
   <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Building Details </button>
  <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Staff Details </button>
-  <button  id="button4" class="tablinks" onclick="openCont(event, 'corpusFundDetails')">Corpus Fund Details </button>
+  <button  id="button4" class="tablinks" onclick="openCont(event, 'corpusFundDetails')">CorpusFundDetails </button>
   <button  id="button5" class="tablinks" onclick="openCont(event, 'additionalDetails')">Additional Details </button>
  
 </div>
@@ -269,6 +283,8 @@
   
                  <br><br>
 </div>
+</form>
+                         <form action="upload.jsp" method="POST">
 <div id="buildingDetails" class="tabcontent" >
      
     
@@ -277,7 +293,7 @@
      <table>
          <tr>
               <td>  whether the college building is owned by society(owned/rented)                       </td>
-              <td><select id="valOwnBuilding" name="valOwnBuilding" onchange="enableDisable(this.value)" value="<%=rs.getString("valOwnBuilding") %>" required="required">
+              <td><select id="valOwnBuilding" name="valOwnBuilding" onload="set(this.value)" onclick="enableDisable(this.value)" value="<%=rs.getString("valOwnBuilding") %>" required="required">
                                 <option></option>
                                 <option value="owned" <% if(rs.getString("valOwnBuilding").equals("owned")){ out.println("selected");} %>>Owned</option>
                                 <option value="leased" <% if(rs.getString("valOwnBuilding").equals("leased")){ out.println("selected");} %>>Leased</option>
@@ -313,7 +329,7 @@
          </tr>
          <tr>
              <td>&nbsp;RegDate ]</td>
-             <td><input type="date" name="lRegDate" id="lRegDate"  value="<%=rs.getDate("lRegDate") %>" class="hidden" onclick="dateset()" id="datefield1" min="1899-11-11" max="2019-02-12"></td>
+             <td><input type="date" name="lRegDate"   value="<%=rs.getDate("lRegDate") %>" class="hidden"  onclick="dateset();" id="datefield1" min="1899-11-11" max="2019-02-12"></td>
          </tr>
                   
                             
@@ -477,7 +493,8 @@
 <button name="name" value="buildingDetails" type="submit">UPDATE</button>                     
    <br><br>
 </div>
-
+                         </form>
+<form action="upload.jsp" method="POST">
 <div id="staffDetails" class="tabcontent">
      
     <h1> Library Details</h1>
@@ -522,6 +539,8 @@
                      <br><br>
                
           </div>
+                           </form>
+<form action="upload.jsp" method="POST">
 <div id="corpusFundDetails" class="tabcontent">
      
          
@@ -541,7 +560,7 @@
                           <td><input type="number" name="CFDAmount"  required="required" value="<%=rs.getInt("CFDAmount") %>" ></td>
                           <td><input type="text" name="CFDIssuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" ></td>
                           <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" onclick="dateset()" id="datefield4" min="1899-11-11" max="2019-02-12" ></td>
-                          <td><input type="date" name="CFDRenewalDate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required" ></td>
+                          <td><input type="date" name="CFDRenewalDate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required"   ></td>
                      </tr>
                  
                    </table>
@@ -554,6 +573,8 @@
                    
                
           </div>
+                      </form>
+<form action="upload.jsp" method="POST">
           <div id="additionalDetails" class="tabcontent" >
               
               
@@ -601,6 +622,7 @@
             <br><br>
 
           </div>
+                   
                     </form>
                    </center>
 </div>

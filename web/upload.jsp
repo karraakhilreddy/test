@@ -371,7 +371,7 @@
                        }
                            catch(Exception e){
                                 %> <script>alert ( "Update failed : " );</script><%
-                                //out.println(e.getMessage());       
+                                out.println(e.getStackTrace());       
                             } 
 
                     break;

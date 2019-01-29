@@ -279,7 +279,7 @@
                                                          insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Inspection fee Paid' WHERE `cCode` =?;";
                                                          ps=con.prepareStatement(insertTableSQL);
 
-                                                                      ps.setString(1, "567");
+                                                                      ps.setString(1, cCode);
                                                                       ps.executeUpdate();
                                                                       l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
 
@@ -316,7 +316,7 @@
                                                          insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Affiliation fee Paid' WHERE (`cCode` =? and `cStatus`='Inspection Success');";
                                                          ps=con.prepareStatement(insertTableSQL);
 
-                                                                      ps.setString(1, "567");
+                                                                      ps.setString(1, cCode);
                                                                       ps.executeUpdate();
                                                                       l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
 

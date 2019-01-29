@@ -13,8 +13,8 @@
 <body >
    <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div>
-           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+           <div ><img src="../../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="../../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
           <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
           <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
           <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
@@ -45,7 +45,7 @@
         <%
             String button=request.getParameter("button");
             out.print(button);
-             String cCode=(String)session.getAttribute("cCode");
+             String cCode=(String)session.getAttribute("aCcode");
             
              Connection con = null;
             Statement st = null;
@@ -482,7 +482,7 @@
 
 
                                 table4.addCell("Addrress of the sponsering society");
-                                table4.addCell(rs.getString("sPostalAddress"));
+                                table4.addCell(rs.getString("areaOfCollege"));
                                 table4.completeRow();
 
 
@@ -1095,12 +1095,10 @@
                                 response.sendRedirect("download.jsp?ff="+f);
                                
                                 break;
-                                case "adminCollege" :
+                                 case "adminCollege" :
                                 
-                                
-                                %><a href="excelData.jsp?button=Faculty">Download as Excel file</a><%
-                                
-                                
+                                response.sendRedirect("excelData.jsp?button=adminCollege");
+                               
                                 break;
             }
         

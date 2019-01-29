@@ -26,9 +26,10 @@
           PreparedStatement ps=con.prepareStatement("select sno,cEmail from cdc_college_details where cCode=?");
           ps.setInt(1 ,cCode);
           ResultSet rs=ps.executeQuery();
+          try{
          if(rs.next())
          {  
-               try{
+               
                         String msg="College Login Details\n";
                         GenerateRandomString grs = new GenerateRandomString();
                         String newPassword="qwertyuiop";//grs.randomAlphaNumeric();
@@ -43,11 +44,11 @@
                                 window.location = "../login.jsp";
                             </script>
                             <%
-                        
+              }          
             }catch(Exception e){
-             out.println(e.getMessage());
+             System.out.println(e.getMessage());
              }
-         }
+         
        %>  
     </body>
 </html>
