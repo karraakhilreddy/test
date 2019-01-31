@@ -1,0 +1,95 @@
+.tab1 {
+    overflow: hidden;
+    border: 1px transparent;
+    background-color: deepskyblue;
+    margin-right: 10em;
+    margin-left: 10em;
+     vertical-align: middle;
+     text-align: center;
+     
+    
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab1 button {
+    background-color: deepskyblue;
+    margin-left :1em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 50px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    
+   
+    transition: 0.3s;
+    color: white;
+}
+
+/* Change background color of buttons on hover */
+.tab1 button:hover {
+    background-color: grey;
+    color:white;
+}
+
+/* Create an active/current tablink class */
+.tab1 button.active {
+   background-color: #b9b992;
+    color:white;
+}
+
+/* Style the tab content */
+.tabcontent1 {
+    display: none;
+    
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+    background-color:#b9b992;
+    color: black;
+   padding-top: 10px;
+    margin-left:10em;
+    margin-right: 10em;
+    text-align: center;
+}
+
+.tabcontent1 button{
+    background-color:  deepskyblue;
+    font-size: 20px;
+    border: 1px transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 14px;
+    transition: 0.3s;
+    color:white;
+       
+}
+button{
+    width: 200px;
+    border: 1px solid transparent;
+    cursor:pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-right: 8px;
+    background-color: deepskyblue;
+}
+.pic{
+    background-image: url("../IMG/Juri.jpg");
+    background-repeat: no-repeat;
+    border:5px solid grey;
+    border-radius: 8px;
+    height: 1600px;
+    background-size: cover;
+    background-position: center;
+    
+    
+}
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30 Jan, 2019, 11:44:12 AM
+    Author     : dwive
+*/
+

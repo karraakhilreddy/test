@@ -66,7 +66,7 @@
                                     }
                                         //response.sendRedirect("loginPage.html");
                                     }catch(Exception e){
-                                        System.out.print(e.getMessage());
+                                        out.print(e.getMessage());
                                     }
                     break;
                 case "alogin":

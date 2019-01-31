@@ -524,10 +524,7 @@
                             <td>Mobile Number of the Principal:</td>
                              <td><input type="text" maxlength="10" name="cPPhNo" value="<%=rs.getString("cPPhNo")%>"  required="required"></td>
                          </tr>
-                         <tr>
-                             <td>Experience as Principal(in years)</td>
-                             <td><input type="number" name="cExperiencePrincipal"  value="<%=rs.getInt("cExperiencePrincipal") %>" required="required" autocomplete="false"></td> 
-                         </tr>
+                         
                           <tr>
                                
                                    <td>  whether the college building is owned by society(owned/rented)                       </td>
@@ -823,6 +820,10 @@
                     document.add(Chunk.NEWLINE);
                     document.add(Chunk.NEWLINE);
                     Paragraph p=new Paragraph("College Development Council");
+                    float fntSize, lineSpacing;
+                    fntSize = 15f;
+                    lineSpacing = 10f;
+                    p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     p=new Paragraph("KAKATIYA UNIVERSITY\nWarangal-506001");
@@ -835,7 +836,9 @@
                     image.setAbsolutePosition(85f, 740f);
                     document.add(image);
 
-                     p=new Paragraph("Inspection Report for the academic year 20 -20  .");
+                     //p=new Paragraph("Inspection Report for the academic year 20 -20  .");
+                    p = new Paragraph(new Phrase(lineSpacing,"Inspection Report for the academic year 20 -20  .",FontFactory.getFont(FontFactory.COURIER, fntSize)));
+                    
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                      document.add(Chunk.NEWLINE);
@@ -851,8 +854,11 @@
                     table4.addCell("Name of the college");
                     table4.addCell(rs.getString("cName"));
                     table4.completeRow();
-                    
-                       
+                   
+                    table4.addCell("Email");
+                    table4.addCell(rs.getString("cEmail"));
+                    table4.completeRow();
+                                           
                    
                     table4.addCell("Address of the College");
                     table4.addCell(rs.getString("cAddress"));
@@ -872,74 +878,72 @@
                     
                        
                    
-                    table4.addCell("Postal address of the college");
-                    table4.addCell("");
+                    table4.addCell("Nature of the college");
+                    table4.addCell(rs.getString("natureOfCollege"));
                     table4.completeRow();
                     
                     table4.addCell("Type of the college");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("typeOfCollege"));
                     table4.completeRow();
                    
                     table4.addCell("Society Registration Number");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("sRegNo"));
                     table4.completeRow();
                    
                     table4.addCell("year of registration");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("sYear"));
                     table4.completeRow();
                    
                     table4.addCell("Year of establishment of college");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("cEstd"));
                     table4.completeRow();
                    
                     table4.addCell("Name of the Secretary/Corresponndent");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("secName"));
                     table4.completeRow();
                    
                     table4.addCell("Mobile no.of Secratary");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("secPhNo"));
                     table4.completeRow();
                    
                     table4.addCell("Name of the Principal");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("cPrincipal"));
                     table4.completeRow();
                    
                     table4.addCell("Mobile no.of Principal");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("cPPhNo"));
                     table4.completeRow();
                    
-                    table4.addCell("Experience as Principal(in Years)");
-                    table4.addCell("");
-                    table4.completeRow();
+                    
                    
                     table4.addCell("Whether the college building is owned by the society");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valOwnBuilding"));
                     table4.completeRow();
                    
                     if(rs.getString("valOwnBuilding").equals("no")){
                         
                          table4.addCell("Lessor");
-                         table4.addCell("");
+                         table4.addCell(rs.getString("lLessor"));
                          table4.completeRow();
                     
                          table4.addCell("Lessee");
-                         table4.addCell("");
+                         table4.addCell(rs.getString("lLessee"));
                          table4.completeRow();
                     
                          table4.addCell("Period");
-                         table4.addCell("");
+                         table4.addCell(rs.getString("lPeriod"));
                          table4.completeRow();
                     
                          table4.addCell("Survey No");
-                         table4.addCell("");
+                         table4.addCell(rs.getString("lSurveyNo"));
                          table4.completeRow();
                     
                          table4.addCell("Reg no");
-                         table4.addCell("");
+                         table4.addCell(rs.getString("lRegNo"));
                          table4.completeRow();
                     
                          table4.addCell("Reg Date");
-                         table4.addCell("");
+                         table4.addCell(rs.getString(rs.getString("lRegDate")));
                          table4.completeRow();
                     
                     }
@@ -947,67 +951,72 @@
                     
 
                     table4.addCell("Land survey No.");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("landSurveyNumber"));
                     table4.completeRow();
                    
                     table4.addCell("Documentation Number");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("landDocNo"));
                     table4.completeRow();
                    
                     table4.addCell("Date of registartion");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("landRegDate"));
                     table4.completeRow();
                    
                     table4.addCell("Whether registered in the name of society");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valRegSociety"));
                     table4.completeRow();
                    
                     table4.addCell("Represented by the Secretary or Member");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valSecMem"));
                     table4.completeRow();
                    
                     table4.addCell("Whether represenative name is in the list of members of the society");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valSocietyMem"));
                     table4.completeRow();
                    
                     table4.addCell("Whether entire land is in single bit");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valSingleBit"));
                     table4.completeRow();
                    
                     table4.addCell("Whether the sketch plan of land is certified by MRO/Tahasildar");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valLandCert"));
                     table4.completeRow();
                    
                     table4.addCell("Permission for grant of construction of building by the competent authority");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("grantPermission"));
                     table4.completeRow();
                    
                     table4.addCell("Building map approved by competent authority");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("mapApproval"));
                     table4.completeRow();
                    
                     table4.addCell("Total built up area shown in the map(Carpet area+corridors+stair case etc");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("mapArea"));
                     table4.completeRow();
                    
                     table4.addCell("Whether play ground is available in/around the college");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valPlayGround"));
                     table4.completeRow();
                    
+                    document.add(table4);
+                    document.newPage();
+                    
+                    table4 =new PdfPTable(2);
+
                     table4.addCell("Is parking area available");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valParkingArea"));
                     table4.completeRow();
                    
                     table4.addCell("Safe drinking water facility available");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valDrinkingWater"));
                     table4.completeRow();
                    
                     table4.addCell("Whether fire safety measures taken");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valFireSafety"));
                     table4.completeRow();
                    
                     table4.addCell("Whether sanitary certificate taken");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("valSanitaryCert"));
                     table4.completeRow();
                    
                     document.add(table4);
@@ -1025,55 +1034,55 @@
                     
                    
                     table4.addCell("Total land in acres");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("totalLand"));
                     table4.completeRow();
                    
                     table4.addCell("Building plinth area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("bPlinthArea"));
                     table4.completeRow();
                    
                     table4.addCell("Principal room area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("priRoomArea"));
                     table4.completeRow();
                    
                     table4.addCell("office room area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("offRoomArea"));
                     table4.completeRow();
                    
                     table4.addCell("Staff room area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("staffRoomArea"));
                     table4.completeRow();
                    
                     table4.addCell("Games room in Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("gamesRoomArea"));
                     table4.completeRow();
                    
                     table4.addCell("Ladies waiting area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("lWaitingRoom"));
                     table4.completeRow();
                    
                     table4.addCell("Toilets area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("toiletsRoomArea"));
                     table4.completeRow();
                    
                     table4.addCell("Library area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("libraryArea"));
                     table4.completeRow();
                    
                     table4.addCell("No.of class rooms");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noClassRooms"));
                     table4.completeRow();
                    
-                    table4.addCell("Size of each room area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell("Size of each class room area In Sq.ft");
+                    table4.addCell(rs.getString("classSize"));
                     table4.completeRow();
                    
                     table4.addCell("No of lab rooms ");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noLabRooms"));
                     table4.completeRow();
 
-                    table4.addCell("Size of each room area In Sq.ft");
-                    table4.addCell("");
+                    table4.addCell("Size of each lab room area In Sq.ft");
+                    table4.addCell(rs.getString("labSize"));
                     table4.completeRow();
                    
                     document.add(table4);
@@ -1091,19 +1100,19 @@
                    
 
                     table4.addCell("Name of the Librarian");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("nLibrarian"));
                     table4.completeRow();
                    
                     table4.addCell("No.of books");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noBooks"));
                     table4.completeRow();
                    
                     table4.addCell("No.of journals");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noJournels"));
                     table4.completeRow();
                    
                     table4.addCell("No.of periodicals");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noPeriodicals"));
                     table4.completeRow();
                    
 
@@ -1121,11 +1130,11 @@
 
 
                     table4.addCell("No.of Teaching staff");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noTeachingStaff"));
                     table4.completeRow();
                    
                     table4.addCell("No.of non-teaching staff");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("noNonteachingStaff"));
                     table4.completeRow();
                    
 
@@ -1141,27 +1150,27 @@
 
                     table4 = new PdfPTable(2);
                     table4.addCell("FDR/BG number");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDNo"));
                     table4.completeRow();
                    
                     table4.addCell("Date");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDDate"));
                     table4.completeRow();
                    
                     table4.addCell("Amount");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDAmount"));
                     table4.completeRow();
                    
                     table4.addCell("Name of the issuing bank");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDIssuingBank"));
                     table4.completeRow();
                    
                     table4.addCell("Date of maturity");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDMaturityDate"));
                     table4.completeRow();
                    
                     table4.addCell("Date of renewal");
-                    table4.addCell("");
+                    table4.addCell(rs.getString("CFDRenewalDate"));
                     table4.completeRow();
 
                     
@@ -1169,7 +1178,9 @@
                     table4.completeRow();
                     
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
-
+                    document.setPageSize(PageSize.A4.rotate());
+                    document.setMargins(0, 0, 0, 0);
+                    document.newPage();
                      p=new Paragraph("Course Details");
                     document.add(Chunk.NEWLINE);
                     p.setAlignment(Paragraph.ALIGN_CENTER);
@@ -1179,7 +1190,7 @@
                     rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+";");
                    
                     
-                    headers = new String[] {"Type", "Course", "Combination", "Medium","Intake", "Admitted"};
+                    headers = new String[] {"Type", "Course", "Combination", "Medium","Intake", "Admitted","Status"};
                     table = new PdfPTable(headers.length);
                                 for (int i = 0; i < headers.length; i++) {
                                     String header = headers[i];
@@ -1196,27 +1207,84 @@
                     String st4=rs.getString("cMedium");
                     String st5=String.valueOf(rs.getInt("cIntakeSanctioned"));
                     String st6=String.valueOf(rs.getInt("cStudentsAdmitted"));
+                    String st7=String.valueOf(rs.getString("cStatus"));
                     table.addCell(st1);
                     table.addCell(st2);
                     table.addCell(st3);
                     table.addCell(st4);
                     table.addCell(st5);
                     table.addCell(st6);
+                    table.addCell(st7);
                     table.completeRow();
                        
                     }
                     document.add(table);
-                   
+                    document.setPageSize(PageSize.A4.rotate());
+                    document.setMargins(-1, -1, -1, -1);
+                    document.newPage();
+                    
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                    document.add(Chunk.NEWLINE);
+                     p=new Paragraph("Principal Details");
+                     document.add(Chunk.NEWLINE);
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Principal';");
+                    
+                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                    table2 = new PdfPTable(headers2.length);
+                                for (int i = 0; i < headers2.length; i++) {
+                                    String header = headers2[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 8, Font.BOLD)));
+                                    table2.addCell(cell);
+                                }
+                                table2.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("tName");
+                    
+                    String st3=rs.getString("tdesignation");
+                    String st4=rs.getString("tQualification");
+                    String st5=rs.getString("tDate");
+                    String st6=rs.getString("tNature");
+                    String st7=rs.getString("tModeApp");
+                    String st8=rs.getString("tScale");
+                    String st9=rs.getString("tModePay");
+                    String st10=rs.getString("tBank");
+                    String st11=rs.getString("tPan");
+                    String st12=rs.getString("tAadhar");
+                    String st13=rs.getString("tMobile");
+                    
+                                   
+                    table2.addCell(st1);
+                    
+                    table2.addCell(st3);
+                    table2.addCell(st4);
+                    table2.addCell(st5);
+                    table2.addCell(st6);
+                    table2.addCell(st7);
+                    table2.addCell(st8);
+                    table2.addCell(st9);
+                    table2.addCell(st10);
+                    table2.addCell(st11);
+                    table2.addCell(st12);
+                    table2.addCell(st13);
+                    table2.completeRow();
+                   
+                    }
+                    table2.setWidthPercentage(95);
+                    document.add(table2);
                     document.add(Chunk.NEWLINE);
                      p=new Paragraph("Faculty Details-Teaching");
                      document.add(Chunk.NEWLINE);
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
 
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType!='Non-Teaching';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Teaching';");
                     
-                     headers2 = new String[] {"Name","Type", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
                                 for (int i = 0; i < headers2.length; i++) {
                                     String header = headers2[i];
@@ -1228,21 +1296,21 @@
                                 table2.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("tName");
-                    String st2=rs.getString("tType");
+                    
                     String st3=rs.getString("tdesignation");
                     String st4=rs.getString("tQualification");
                     String st5=rs.getString("tDate");
-                    String st6=rs.getString("tnature");
+                    String st6=rs.getString("tNature");
                     String st7=rs.getString("tModeApp");
                     String st8=rs.getString("tScale");
                     String st9=rs.getString("tModePay");
                     String st10=rs.getString("tBank");
-                    String st11=rs.getString("tPAN");
+                    String st11=rs.getString("tPan");
                     String st12=rs.getString("tAadhar");
                     String st13=rs.getString("tMobile");
                     
                     table2.addCell(st1);
-                    table2.addCell(st2);
+                    
                     table2.addCell(st3);
                     table2.addCell(st4);
                     table2.addCell(st5);
@@ -1268,7 +1336,7 @@
                       document.add(Chunk.NEWLINE);
                     rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Non-Teaching';");
                     
-                     headers2 = new String[] {"Name","Type", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
                                 for (int i = 0; i < headers2.length; i++) {
                                     String header = headers2[i];
@@ -1280,7 +1348,7 @@
                                 table2.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("tName");
-                    String st2=rs.getString("tType");
+                    
                     String st3=rs.getString("tdesignation");
                     String st4=rs.getString("tQualification");
                     String st5=rs.getString("tDate");
@@ -1289,12 +1357,12 @@
                     String st8=rs.getString("tScale");
                     String st9=rs.getString("tModePay");
                     String st10=rs.getString("tBank");
-                    String st11=rs.getString("tPAN");
+                    String st11=rs.getString("tPan");
                     String st12=rs.getString("tAadhar");
                     String st13=rs.getString("tMobile");
                     
                     table2.addCell(st1);
-                    table2.addCell(st2);
+                    
                     table2.addCell(st3);
                     table2.addCell(st4);
                     table2.addCell(st5);
@@ -1312,7 +1380,8 @@
                     document.add(table2);
 
                     }
-                   
+                   document.setPageSize(PageSize.A4);
+                    document.newPage();
                       document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      p=new Paragraph("Opinion of the Inspection Team");
@@ -1320,9 +1389,12 @@
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                       document.add(Chunk.NEWLINE);
-
+                      
+                      
                     table2=new PdfPTable(2);
 
+                   
+                    
                     table2.addCell("On");
                     table2.addCell("Satisfactory/Average/Poor/Very Poor");
                     table2.completeRow();
@@ -1360,8 +1432,8 @@
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                       document.add(Chunk.NEWLINE);
-
-                    table2=new PdfPTable(2);
+                      float[] widths = {0.1f, 0.9f};
+                    table2=new PdfPTable(widths);
 
                     table2.addCell("Sl.No");
                     table2.addCell("Remarks");
@@ -1374,6 +1446,7 @@
                     }
                     document.add(table2);
 
+                    document.newPage();
 
                     document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
@@ -1401,7 +1474,7 @@
 
 
 
-                     document.add(Chunk.NEWLINE);
+                     
                      document.add(Chunk.NEWLINE);
                      p=new Paragraph("For Office Use Only");
                      document.add(Chunk.NEWLINE);
@@ -1415,10 +1488,7 @@
                     p=new Paragraph("With Conditions,If any");
                                        
                      document.add(p);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
+                     
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);

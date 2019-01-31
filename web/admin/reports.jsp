@@ -6,16 +6,16 @@
     <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
 </head>
 <body >
-  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
-      <div>
-           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+ <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div >
+           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
+            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
           <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
           <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
-          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
+          <h3> <spam>Warangal-506009,Telangana</spam></h3>
       </div>
       <a href="#">
-       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
     
     

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Help Page CDC </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" type="text/css" href="CSS/Help.css">
+        <script>
+             function openCont1(evt, contName,from) {
+                    // Declare all variables
+                    var i, tabcontent1, tablinks1;
+
+                    // Get all elements with class="tabcontent" and hide them
+                    tabcontent1 = document.getElementsByClassName("tabcontent1");
+                    for (i = 0; i < tabcontent1.length; i++) {
+                        tabcontent1[i].style.display = "none";
+                    }
+
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinks1 = document.getElementsByClassName("tablinks1");
+                    for (i = 0; i < tablinks1.length; i++) {
+                        tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+                    }
+
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    document.getElementById(contName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                     if(from==='but11')
+                        button11.className +=" active";
+                    
+                    
+            }
+        </script>
+    </head>
+    <body onload="openCont1(event, 'Office','but11')">
+       <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div>
+           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
+            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
+      </div>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
+  </div>
+        
+         <div class="tab1">
+             <button id="button11"  class="tablinks1" onclick="openCont1(event, 'Office')">Office</button><br>
+         </div>
+         <div id="Office" class="tabcontent1 active">
+            <h2>
+                OFFICE  
+               
+            </h2>
+            <br>
+            <h3>
+                Phone  : 08702438998; 08702461443; <br>
+                E-Mail : deancdcku@gmail.com <br>
+                
+            </h3>
+               <br>
+            <br><br><br>
+       </div>
+         <div class="tab1">
+    <button   class="tablinks1" onclick="openCont1(event, 'Assistant_Registrar')">Assistant Registrar </button> <br>
+         </div>
+         <div id="Assistant_Registrar" class="tabcontent1 active">
+             <h2>
+                ASSITANT REGISTRAR 
+               
+            </h2>
+       
+            
+            <h3>
+                CH.PRANAY KUMAR <br>
+                Mobile : 9849447696 <br>
+                E-Mail : kupranay@gmail.com <br>
+                
+            </h3>
+                   <br>
+            <br><br><br>
+            </div>
+        
+         <div class="tab1">
+    <button    class="tablinks1" onclick="openCont1(event, 'Dean')">Dean </button> <br>
+         </div>
+        
+         <div id="Dean" class="tabcontent1 active">
+            <h2>
+                DEAN  
+               
+            </h2>
+            <br>
+            <h3>
+                Professor Ch.RAJESHAM, M.Com; MBA; M.Phil;.Ph.D. <br>
+                Mobile : 9440163184 <br>
+                E-Mail : drchr18@yahoo.com <br>
+                
+            </h3>
+               <br>
+            <br><br><br>
+            </div>
+           <div class="tab1">
+      <button    class="tablinks1" onclick="openCont1(event, 'FAQ')">FAQ </button>
+    
+ 
+ 
+      </div>
+        
+           
+           
+        <div id="FAQ" class="tabcontent1 active" style="text-align: left">
+            <h2>
+              FREQUENTLY ASKED QUESTIONS ( FAQ )  
+               
+            </h2>
+            <br>
+            <h3>
+                <i>  Q1: HOW TO CREATE A LOGIN? </i><br><br>
+              ANS :   <br>
+            </h3>
+            <h4>
+              &nbsp; 1) FIRSTLY GENERATE A PASSWORD BY CLICKING A GENERATE PASSWORD BUTTON <br>
+                    &nbsp; 2) CHECK THE REGISTERED EMAIL ID FOR A PASSWORD<br> 
+                    &nbsp; 3) USE THE SAME PASSWORD TO LOGIN <br>
+                    &nbsp; 4) AS THE PASSWORD IS NOT CHANGEABLE ITS MANDATORY FOR YOU TO USE THE SAME PASSWORD<br>
+            </h4>
+                    <br>
+                    <h3>
+                    <b><strong> <i> Q2: WHEN DOES STATUS IN COURSE DETAILS PAGE CHANGE?</i></strong></b><br><br>
+              ANS : 
+                    </h3>
+              <h4>
+                    &nbsp;  THE STATUS CHANGES IN FIVE STAGES <br>
+                    &nbsp;  1) WHEN YOU SELECT THE COURSE, THE STATUS CHANGES TO INSPECTION FEE PENDING <br>
+                    &nbsp;  2) ONCE YOU PAY THE INSPECTION FEE, THE STATUS CHANGES TO INSPECTION FEE PAID<br>
+                    &nbsp;  3) AFTER THE ADMINISTRATION GRANTS THE PERMISSION , STATUS CHANGES TO INSPECTION SUCCESS <br>
+                      &nbsp;   OR ELSE IF THEY DENY THE PERMISSION THE STATUS CHANGES TO INSPECTION FAILED<br>
+                   &nbsp;   NOTE : YOU NEED TO PAY AFFILIATION FEE FOR THE COURSES WITH INSPECTION SUCCESS STATUS <br>
+                    &nbsp;  4) AFTER THE PAYMENT OF THE AFFILIATION FEES THE STATUS CHANGES TO AFFILIATION PENDING <br>
+                    &nbsp;  5) AFTER THE ADMINISTRATION GRANTS THE PERMISSION , STATUS CHANGES TO AFFILIATION SUCCESS <br>
+                       OR ELSE IF THEY DENY THE PERMISSION THE STATUS CHANGES TO AFFILIATION FAILED<br>
+              </h4>
+                    <br>
+                     <h3>
+                    <b><strong> <i> Q3:HOW DO I BELIEVE THE FEE GENERATED IS VALID OR NOT?</i></strong></b><br><br>
+              ANS : 
+                    </h3>
+                    <h4>
+                        1) THE FEE GENERATED IS BASED ON THE COURSE FEE CALCULATION TABLE.
+                        2)TO CHECK YOUR DETAILED FEE PARTICULARS TABLE CLICK THE LINK BELOW
+                        
+                    </h4>
+             <h3>
+                    <b><strong> <i> Q4:WHERE DO I CHECK THE INSPECTION/ AFFILIATION REPORT?</i></strong></b><br><br>
+               ANS :  
+            </h3>
+                    <h4> </h4>
+                    <br>
+                    <h3> <b><strong> <i> Q4:WHERE DO  I DOWNLOAD TRANSACTION RECEIPT?</i></strong></b><br><br>
+                        ANS :  </h3>  
+                    <h4>YOUR TRANSACTION RECEIPT CAN BE BE FOUND HERE  <br>
+                        COLLEGE LOGIN--> REPORTS-->TRANSACTIONS-->DOWNLOAD THE RECEIPT 
+                     
+                    </h4>
+                                                                          
+               <br>
+            <br><br><br>
+       </div>
+           
+           
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

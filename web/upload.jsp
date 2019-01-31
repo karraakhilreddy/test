@@ -199,11 +199,10 @@
                             long secPhNo = Long.parseLong(request.getParameter("secPhNo"));
                             String cPrincipal = request.getParameter("cPrincipal");
                             long cPPhNo = Long.parseLong(request.getParameter("cPPhNo"));
-                            int cExperiencePrincipal =Integer.parseInt( request.getParameter("cExperiencePrincipal"));
                             
                             
                             String uQuery="update cdc_college_details set cAddress = ?,typeOfCollege=?,sName=?,sAddress=?,areaOfCollege=?,sregNo=?,sYear=?,"+
-                            "cEstd=?,secName=?,secPhno=?,cPrincipal=?,CPPhNo=?,CExperiencePrincipal=?,natureOfCollege=?,cName=? where sno = ?;";
+                            "cEstd=?,secName=?,secPhno=?,cPrincipal=?,CPPhNo=?,natureOfCollege=?,cName=? where sno = ?;";
 
                             ps = con.prepareStatement(uQuery);
                             ps.setString(1, cAddress);
@@ -218,10 +217,10 @@
                             ps.setLong(10,secPhNo);
                             ps.setString(11,cPrincipal);
                             ps.setLong(12, cPPhNo);
-                            ps.setInt(13,cExperiencePrincipal);
-                            ps.setString(14,natureOfCollege);
-                            ps.setString(15,cName);
-                            ps.setInt(16,sno);
+                            
+                            ps.setString(13,natureOfCollege);
+                            ps.setString(14,cName);
+                            ps.setInt(15,sno);
 
                             int i=ps.executeUpdate();
                             if(i==1)
@@ -366,12 +365,12 @@
                                             %> <script>alert ( "Update failed" );
                                             window.location='basicDetails.jsp';</script><%
 
-                                            out.println("no updation");  
+                                            System.out.println("no updation");  
                                         }                           
                        }
                            catch(Exception e){
                                 %> <script>alert ( "Update failed : " );</script><%
-                                out.println(e.getStackTrace());       
+                                System.out.println(e.getMessage());       
                             } 
 
                     break;

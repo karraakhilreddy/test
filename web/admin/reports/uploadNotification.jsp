@@ -1,14 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<%@page import="java.sql.*"%>
+<%@page import="cdc.Database"%>
+<%@ page import="java.io.*"%>
+<%@page import="com.lowagie.text.*,com.lowagie.text.pdf.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>CDC</title>
+	 <meta charset="utf-8">
+	<title>cdc</title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/indexCSS.css">
 </head>
-<body>
-    <center>
+<body >
+  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div >
+           <div ><img src="../../IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
+            <div ><img src="../../IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3> <spam>Warangal-506009,Telangana</spam></h3>
+      </div>
+      <a href="#">
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
+  </div>
+    
+    
+     <div class="main">    
+        <center>
+    <div class="mainBackground">
+        
+        
+         
+         <center>
         <h1>File Upload to Database Demo</h1>
         <%
                 String message=request.getParameter("message");
@@ -43,5 +65,30 @@
             </table>
         </form>
     </center>
+        
+    </div>
+        </center>
+     </div>
+       
+              
+                  
+            
+                   
+                
+        
+       
+         <div class="footer">
+  <div id="button"></div>
+<div id="container">
+<div id="cont">
+<div class="footer_center">
+    <div > 
+<div class="left">Copyrights reserved by Kakatiya University</div>
+<div class="right"><a href="developers.jsp">Developers</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

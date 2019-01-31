@@ -7,6 +7,7 @@
 	<title>cdc</title>
     
     <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Help.css">
     <style>
         .tabcontent{
             background-color: white;
@@ -58,21 +59,44 @@ p{
                         button1.className +=" active";
                     
             }
-     
+        function openCont1(evt, contName,from) {
+                    // Declare all variables
+                    var i, tabcontent1, tablinks1;
+
+                    // Get all elements with class="tabcontent" and hide them
+                    tabcontent1 = document.getElementsByClassName("tabcontent1");
+                    for (i = 0; i < tabcontent1.length; i++) {
+                        tabcontent1[i].style.display = "none";
+                    }
+
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinks1 = document.getElementsByClassName("tablinks1");
+                    for (i = 0; i < tablinks1.length; i++) {
+                        tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+                    }
+
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    document.getElementById(contName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                     if(from==='but11')
+                        button11.className +=" active";
+                    
+                    
+            }
     </script>
     </head>
     <body style="background-color: white;">
 
-   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
-      <div>
-           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
-          <h2 style="color:black; font-family: Bookman Old Style; ">Online Services</h2>
-          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>KAKATIYA UNIVERSITY</b></h1>
-          <h3><spam>Warangal-506009,Telangana</spam>
+    <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div >
+           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
+            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
+          <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h3> <spam>Warangal-506009,Telangana</spam></h3>
       </div>
       <a href="#">
-       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Online Services Kakatiya University</i></b></marquee></p></a>
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
 <center>
    
@@ -300,6 +324,141 @@ The College Development Council accords permission/affiliation to establish and 
 </div>
                  
 </div>
+<div id="staffDetails" class="tabcontent" >
+    
+    <div class="tab1">
+             <button id="button11"  class="tablinks1" onclick="openCont1(event, 'Office')">Office</button><br>
+         </div>
+         <div id="Office" class="tabcontent1 active">
+            <h2>
+                OFFICE  
+               
+            </h2>
+            <br>
+            <h3>
+                <img src="IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
+                Phone  : 08702438998; 08702461443; <br>
+                E-Mail : deancdcku@gmail.com <br>
+                
+            </h3>
+               <br>
+            <br><br><br>
+       </div>
+         <div class="tab1">
+    <button   class="tablinks1" onclick="openCont1(event, 'Assistant_Registrar')">Assistant Registrar </button> <br>
+         </div>
+         <div id="Assistant_Registrar" class="tabcontent1 active">
+             <h2>
+                ASSITANT REGISTRAR 
+               
+            </h2>
+       
+            
+            <h3>
+                CH.PRANAY KUMAR <br>
+                <img src="IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
+                Mobile : 9849447696 <br>
+                E-Mail : kupranay@gmail.com <br>
+                
+            </h3>
+                   <br>
+            <br><br><br>
+            </div>
+        
+         <div class="tab1">
+    <button    class="tablinks1" onclick="openCont1(event, 'Dean')">Dean </button> <br>
+         </div>
+        
+         <div id="Dean" class="tabcontent1 active">
+            <h2>
+                DEAN  
+               
+            </h2>
+            <br>
+            <h3>
+                 <img src="IMG/dean.jpg" height="230px" width="230px"> <br>
+                Professor Ch.RAJESHAM, M.Com; MBA; M.Phil;.Ph.D. <br>
+               
+                Mobile : 9440163184 <br>
+                E-Mail : drchr18@yahoo.com <br>
+                
+            </h3>
+               <br>
+            <br><br><br>
+            </div>
+           <div class="tab1">
+      <button    class="tablinks1" onclick="openCont1(event, 'FAQ')">FAQ </button>
+    
+ 
+ 
+      </div>
+        
+           
+           
+        <div id="FAQ" class="tabcontent1 active" style="text-align: left">
+            <h2>
+              FREQUENTLY ASKED QUESTIONS ( FAQ )  
+               
+            </h2>
+            <br>
+            <h3>
+                <i>  Q1: HOW TO CREATE A LOGIN?  </i><br><br>
+             ANS :    <br>
+            </h3>
+            <h4>
+                1) Firstly generate a password by clicking a generate password button <br><br>
+                2) Check the registered email id for a password<br><br>
+                3) Use the same password to login <br><br>
+                4) As the password is not changeable its mandatory for you to use the same password<br><br>
+
+            </h4>
+                    <br>
+                    <h3>
+                    <b><strong> <i> Q2: WHEN DOES STATUS IN COURSE DETAILS PAGE CHANGE?</i></strong></b><br><br>
+              ANS : 
+                    </h3>
+              <h4>
+                     THE STATUS CHANGES IN FIVE STAGES  <br><br>
+                     &nbsp; 1) When you select the course, the status changes to inspection fee pending <br><br>
+                        &nbsp; 2) Once you pay the inspection fee, the status changes to inspection fee paid<br><br>
+                      &nbsp;   3) After the administration grants the permission , status changes to inspection success <br><br>
+                        &nbsp; or else if they deny the permission the status changes to inspection failed<br><br>
+
+                      NOTE : You need to pay affiliation fee for the courses with inspection status as success<br><br>
+
+                        &nbsp; 4) After the payment of the affiliation fees the status changes to affiliation pending <br><br>
+                        &nbsp; 5) After the administration grants the permission , status changes to affiliation success <br><br>
+                      or else if they deny the permission the status changes to affiliation failed<br><br>
+
+              </h4>
+                    <br>
+                     <h3>
+                    <b><strong> <i> Q3:HOW DO I BELIEVE THE FEE GENERATED IS VALID OR NOT?</i></strong></b><br><br>
+              ANS : 
+                    </h3>
+                    <h4>
+                        1)The fee generated is based on the course fee calculation table.<br><br>
+                        2)To check your detailed fee particulars table click the link below <br><br>
+
+                        
+                    </h4>
+           
+                    <br>
+                    <h3> <b><strong> <i> Q4:WHERE DO  I DOWNLOAD TRANSACTION RECEIPT?</i></strong></b><br><br>
+                        ANS :  </h3>  
+                    <h4>Your Transactions History/ Receipt can be  found here <br><br>
+                        COLLEGE LOGIN--> REPORTS-->TRANSACTIONS-->DOWNLOAD THE RECEIPT <br><br>
+
+                     
+                    </h4>
+                                                                          
+               <br>
+            <br><br><br>
+       </div>
+    
+    
+</div>
+<br><br><br><br>
                         
 
 

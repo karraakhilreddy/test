@@ -106,16 +106,16 @@
 </head>
 
 <body onload="openCont(event, 'generalDetails','but1')" >
-  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
-      <div>
-           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="120" ></div>
-            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="120" ></div>
+ <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+      <div >
+           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
+            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
           <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
           <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
-          <h3><spam>Warangal-506009,Telangana</spam></h3><h3><b>Ph: 9440163189. drchr18@yahoo.com</b></h3>
+          <h3> <spam>Warangal-506009,Telangana</spam></h3>
       </div>
       <a href="#">
-       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>welcome to college development council</i></b></marquee></p></a>
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
   </div>
    
 <center>
@@ -226,7 +226,7 @@
                         </tr>
                         
                <tr>
-                           <td>Society Registration no:</td>
+                           <td>Society Registration No:</td>
                            <td><input type="text" name="sRegNo" value="<%=rs.getString("sRegNo") %>" required="required"></td>
                          </tr>
                          
@@ -259,10 +259,7 @@
                             <td>Mobile Number of the Principal:</td>
                             <td><input type="text" name="cPPhNo" pattern="(([6-9][0-9]).{8,10})" title="enter a valid Indian Phone Number" value="<%=rs.getLong("cPPhNo")%>" required="required" pattern="(([6-9][0-9]).{8,10})" ></td>
                          </tr>
-                         <tr>
-                             <td>Experience as Principal(in years)</td>
-                             <td><input type="number" name="cExperiencePrincipal"  value="<%=rs.getInt("cExperiencePrincipal") %>" required="required" ></td> 
-                         </tr>
+                         
     </table>
                          <br><br>
 
@@ -338,31 +335,31 @@
                          
                     <tr>     
                         <td>Whether Registered in the name of Society:</td>
-                        <td><input type="radio" name="valRegSociety" value="yes"  required="required"  <% if(rs.getString("valRegSociety").equals("yes")){ out.println("checked");} %>>Yes
-                             <input type="radio" name="valRegSociety" value="no" <% if(rs.getString("valRegSociety").equals("no")){ out.println("checked");} %> >No</td>
+                        <td><input type="radio" name="valRegSociety" value="Yes"  required="required"  <% if(rs.getString("valRegSociety").equals("Yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valRegSociety" value="No" <% if(rs.getString("valRegSociety").equals("No")){ out.println("checked");} %> >No</td>
                     </tr>
                          
                     <tr>     
                         <td>Represented by the Secretary or Member:</td>
-                        <td><input type="radio" name="valSecMem" value="yes"  required="required"<% if(rs.getString("valSecMem").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valSecMem" value="no" <% if(rs.getString("valSecMem").equals("no")){ out.println("checked");} %>>No </td>
+                        <td><input type="radio" name="valSecMem" value="Yes"  required="required"<% if(rs.getString("valSecMem").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSecMem" value="No" <% if(rs.getString("valSecMem").equals("No")){ out.println("checked");} %>>No </td>
                     </tr>
                          
                     <tr>    
                         <td>Whether representative name is in the list of members of the society:</td>
-                         <td><input type="radio" name="valSocietyMem" value="yes" required="required" <% if(rs.getString("valSocietyMem").equals("yes")){ out.println("checked");} %>>Yes
-                             <input type="radio" name="valSocietyMem" value="no" <% if(rs.getString("valSocietyMem").equals("no")){ out.println("checked");} %>>No</td>
+                         <td><input type="radio" name="valSocietyMem" value="Yes" required="required" <% if(rs.getString("valSocietyMem").equals("Yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valSocietyMem" value="No" <% if(rs.getString("valSocietyMem").equals("No")){ out.println("checked");} %>>No</td>
                     </tr>
                          
                     <tr>     
                         <td>Whether entire land is in single bit:</td>
-                        <td><input type="radio" name="valSingleBit" value="yes" required="required" <% if(rs.getString("valSingleBit").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valSingleBit" value="no" <% if(rs.getString("valSingleBit").equals("no")){ out.println("checked");} %>>No</td>
+                        <td><input type="radio" name="valSingleBit" value="Yes" required="required" <% if(rs.getString("valSingleBit").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSingleBit" value="No" <% if(rs.getString("valSingleBit").equals("No")){ out.println("checked");} %>>No</td>
                     </tr>
                      <tr>
                            <td>Whether the sketch plan of land is certified by MRO/Tahasildar:</td>
-                          <td><input type="radio" name="valLandCert" value="yes" required="required" <% if(rs.getString("valLandCert").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valLandCert" value="no" <% if(rs.getString("valLandCert").equals("no")){ out.println("checked");} %> > No </td>
+                          <td><input type="radio" name="valLandCert" value="Yes" required="required" <% if(rs.getString("valLandCert").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valLandCert" value="No" <% if(rs.getString("valLandCert").equals("No")){ out.println("checked");} %> > No </td>
                          </tr>
                          
                          
@@ -392,30 +389,30 @@
                    
                      <tr>    
                          <td>Whether Playground is Available in(or)around the college:</td>
-                         <td><input type="radio" name="valPlayGround" required="required"  value="yes" <% if(rs.getString("valPlayGround").equals("yes")){ out.println("checked");} %>>Yes
-                             <input type="radio" name="valPlayGround" value="no"<% if(rs.getString("valPlayGround").equals("no")){ out.println("checked");} %> >No</td>
+                         <td><input type="radio" name="valPlayGround" required="required"  value="Yes" <% if(rs.getString("valPlayGround").equals("Yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valPlayGround" value="No"<% if(rs.getString("valPlayGround").equals("No")){ out.println("checked");} %> >No</td>
                    </tr>
                       
                     <tr>     
                         <td>Is parking area available:</td>
-                         <td><input type="radio" name="valParkingArea" required="required"  value="yes"<% if(rs.getString("valParkingArea").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valParkingArea"  value="no" <% if(rs.getString("valParkingArea").equals("no")){ out.println("checked");} %> >No</td>
+                         <td><input type="radio" name="valParkingArea" required="required"  value="Yes"<% if(rs.getString("valParkingArea").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valParkingArea"  value="No" <% if(rs.getString("valParkingArea").equals("No")){ out.println("checked");} %> >No</td>
                     </tr>
                     <tr>     
                         <td>Safe Drinking Water Facility Available:</td>
-                        <td><input type="radio" name="valDrinkingWater"  required="required" value="yes" <% if(rs.getString("valDrinkingWater").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valDrinkingWater" value="no" <% if(rs.getString("valDrinkingWater").equals("no")){ out.println("checked");} %> >No</td>
+                        <td><input type="radio" name="valDrinkingWater"  required="required" value="Yes" <% if(rs.getString("valDrinkingWater").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valDrinkingWater" value="No" <% if(rs.getString("valDrinkingWater").equals("No")){ out.println("checked");} %> >No</td>
                     </tr>
                          
                     <tr>     
                         <td>Whether Fire-Safety measures taken:</td>
-                        <td><input type="radio" name="valFireSafety" required="required"  value="yes" <% if(rs.getString("valFireSafety").equals("yes")){ out.println("checked");} %>>Yes
-                             <input type="radio" name="valFireSafety" value="no"<% if(rs.getString("valFireSafety").equals("no")){ out.println("checked");} %> >No</td>
+                        <td><input type="radio" name="valFireSafety" required="required"  value="Yes" <% if(rs.getString("valFireSafety").equals("Yes")){ out.println("checked");} %>>Yes
+                             <input type="radio" name="valFireSafety" value="No"<% if(rs.getString("valFireSafety").equals("No")){ out.println("checked");} %> >No</td>
                     </tr>    
                     <tr>     
                         <td>Whether Sanitary Certificate taken:</td>
-                        <td><input type="radio" name="valSanitaryCert"  required="required" value="yes" <% if(rs.getString("valSanitaryCert").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="valSanitaryCert" value="no" <% if(rs.getString("valSanitaryCert").equals("no")){ out.println("checked");} %> >No</td>
+                        <td><input type="radio" name="valSanitaryCert"  required="required" value="Yes" <% if(rs.getString("valSanitaryCert").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="valSanitaryCert" value="No" <% if(rs.getString("valSanitaryCert").equals("No")){ out.println("checked");} %> >No</td>
                     </tr>
                
                    <tr>
@@ -575,23 +572,23 @@
                    </tr>
                    <tr>
                        <td>Provision of CCTVs</td>
-                       <td><input type="radio" name="cCCTV" value="yes" required="required" <% if(rs.getString("cCCTV").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="cCCTV" value="no" <% if(rs.getString("cCCTV").equals("no")){ out.println("checked");} %> >No</td>
+                       <td><input type="radio" name="cCCTV" value="Yes" required="required" <% if(rs.getString("cCCTV").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="cCCTV" value="No" <% if(rs.getString("cCCTV").equals("No")){ out.println("checked");} %> >No</td>
                    </tr>
                    <tr>
                        <td>Availability of computers</td>
-                       <td><input type="radio" name="cComputers" required="required" value="yes" <% if(rs.getString("cComputers").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="cComputers" value="no" <% if(rs.getString("cComputers").equals("no")){ out.println("checked");} %> >No</td>
+                       <td><input type="radio" name="cComputers" required="required" value="Yes" <% if(rs.getString("cComputers").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="cComputers" value="No" <% if(rs.getString("cComputers").equals("No")){ out.println("checked");} %> >No</td>
                    </tr>
                    <tr>
                        <td>Availability of projectors</td>
-                       <td><input type="radio" name="cProjectors"  required="required"value="yes" <% if(rs.getString("cProjectors").equals("yes")){ out.println("checked");} %>>Yes
-                            <input type="radio" name="cProjectors" value="no" <% if(rs.getString("cProjectors").equals("no")){ out.println("checked");} %>> No</td>
+                       <td><input type="radio" name="cProjectors"  required="required"value="Yes" <% if(rs.getString("cProjectors").equals("Yes")){ out.println("checked");} %>>Yes
+                            <input type="radio" name="cProjectors" value="No" <% if(rs.getString("cProjectors").equals("No")){ out.println("checked");} %>> No</td>
                    </tr>
                    <tr>
                        <td>Whether the college is having NSS unit</td>
-                       <td><input type="radio" name="cNSSUnit" required="required" value="yes" <% if(rs.getString("cNSSUnit").equals("yes")){ out.println("checked");} %> >Yes
-                             <input type="radio" name="cNSSUnit" value="no" <% if(rs.getString("cNSSUnit").equals("no")){ out.println("checked");} %> >No</td>
+                       <td><input type="radio" name="cNSSUnit" required="required" value="Yes" <% if(rs.getString("cNSSUnit").equals("Yes")){ out.println("checked");} %> >Yes
+                             <input type="radio" name="cNSSUnit" value="No" <% if(rs.getString("cNSSUnit").equals("No")){ out.println("checked");} %> >No</td>
                    </tr>
                    <tr>
                        <td>No of programs/camps organized in the last year</td>
@@ -599,8 +596,8 @@
                    </tr>
                    <tr>
                        <td>Whether the college is convening governing body meetings regularly by inviting university nominee</td>
-                       <td><input type="radio" name="cMeetings" required="required" value="yes" <% if(rs.getString("cMeetings").equals("yes")){ out.println("checked");} %>>Yes
-                            <input type="radio" name="cMeetings" value="no" <% if(rs.getString("cMeetings").equals("no")){ out.println("checked");} %>> No</td>
+                       <td><input type="radio" name="cMeetings" required="required" value="Yes" <% if(rs.getString("cMeetings").equals("Yes")){ out.println("checked");} %>>Yes
+                            <input type="radio" name="cMeetings" value="No" <% if(rs.getString("cMeetings").equals("No")){ out.println("checked");} %>> No</td>
                    </tr>
                   
               </table>
@@ -618,6 +615,7 @@
                    
  <%
             }
+
                 %>
 
        
