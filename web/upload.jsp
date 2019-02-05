@@ -118,13 +118,14 @@
                             response.sendRedirect("facultyDetails.jsp");
                     }
                     break;
-                    case "course" :
+                    case "course0" :
                     
                     String type=(String)request.getParameter("type");
                     String course=(String)request.getParameter("course");
                     String combination=(String)request.getParameter("combination");
                     String medium=(String)request.getParameter("medium");
                     String intake=(String)request.getParameter("intake");
+                    String admit=(String)request.getParameter("admit");
                     System.out.println(type+"\n"+course+"\n"+combination+"\n"+medium+"\n"+intake+"\n");
                     insertTableSQL = "INSERT INTO `cdc`.`courses` (`cCode`, `cType`, `cCourse`, `cCombination`, `cMedium`, `cIntakeSanctioned`, `cStudentsAdmitted`, `cStatus`) VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
 
@@ -140,8 +141,8 @@
                                                   ps.setString(4, combination);
                                                   ps.setString(5, medium);
                                                   ps.setString(6, intake);
-                                                  ps.setString(7, "0");
-                                                  ps.setString(8, "Inspection fee Pending");
+                                                  ps.setString(7, admit);
+                                                  ps.setString(8, "Previously Existing Course");
                                                  
                                                  
                                                  
@@ -169,6 +170,61 @@
                                      con.close();
                             }
                               response.sendRedirect("courseDetails.jsp");
+                           
+                    }
+                    break;
+                    case "course1" :
+                    
+                     type=(String)request.getParameter("type");
+                     course=(String)request.getParameter("course");
+                     combination=(String)request.getParameter("combination");
+                     medium=(String)request.getParameter("medium");
+                     intake=(String)request.getParameter("intake");
+                     
+                    System.out.println(type+"\n"+course+"\n"+combination+"\n"+medium+"\n"+intake+"\n");
+                    insertTableSQL = "INSERT INTO `cdc`.`courses` (`cCode`, `cType`, `cCourse`, `cCombination`, `cMedium`, `cIntakeSanctioned`, `cStudentsAdmitted`, `cStatus`) VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
+
+                    ps=con.prepareStatement(insertTableSQL);
+                    
+
+                    try {
+                                    
+
+                                                  ps.setString(1, cCode);
+                                                  ps.setString(2, type);
+                                                  ps.setString(3, course);
+                                                  ps.setString(4, combination);
+                                                  ps.setString(5, medium);
+                                                  ps.setString(6, intake);
+                                                  ps.setString(7, "0");
+                                                  ps.setString(8, "Inspection fee Pending");
+                                                 
+                                                 
+                                                 
+                                                 
+
+                                                  // execute insert SQL stetement
+                                                  ps.executeUpdate();
+                                                   logs l=new logs();
+                                                    l.updateLog(String.valueOf(cCode), "courseDetails1.jsp", "inserted Course Details",ipAddress); 
+                                                  
+                                                  System.out.println("Record is inserted into DBUSER table!");
+                                    
+
+                    } catch (Exception e) {
+
+                               System.out.println(e.getMessage());
+
+                    } finally {
+
+                            if (ps != null) {
+                                     ps.close();
+                            }
+
+                            if (con != null) {
+                                     con.close();
+                            }
+                              response.sendRedirect("courseDetails1.jsp");
                            
                     }
                     break;
@@ -572,8 +628,11 @@
                                         out.print("Deleted");
                                         logs l=new logs();
                                         l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "deleted course Details",ipAddress); 
-                                          
-                                        response.sendRedirect("courseDetails.jsp");
+                                        String to=(String)request.getParameter("to"); 
+                                        if(to.equals("0"))
+                                            response.sendRedirect("courseDetails.jsp");
+                                        else if(to.equals("1"))
+                                            response.sendRedirect("courseDetails1.jsp");
                                     }catch(Exception e){
                                          out.print("Problem");
                                     }

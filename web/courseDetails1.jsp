@@ -16,9 +16,8 @@ function myFunction() {
    var combination=document.getElementById("combination").value;
    var medium=document.getElementById("medium").value;
    var intake=document.getElementById("intake").value;
-   var admit=document.getElementById("admit").value;
    //alert(type+"\n"+course+"\n"+combination+"\n"+medium+"\n"+intake);
-   var str="upload.jsp?name=course0&type="+type+"&course="+course+"&combination="+combination+"&medium="+medium+"&intake="+intake+"&admit="+admit;
+   var str="upload.jsp?name=course1&type="+type+"&course="+course+"&combination="+combination+"&medium="+medium+"&intake="+intake;
    // alert("Type="+type+"Course=\n"+course+"Combination=\n"+combination+"medium=\n"+medium+"Intake=\n"+intake);
        if(type!==0 && course!==0 && combination!==0 && medium!==0 && intake!==60)
         window.location.replace(str);
@@ -64,14 +63,14 @@ function myFunction() {
              
                  
         <div class="tab">
-  <button id="button1"  class="active" onclick="">Existing Courses </button>
-  <button  id="button2" class="tablinks" onclick="location.href='courseDetails1.jsp'">New Courses</button>
+  <button id="button1"  class="tablinks" onclick="location.href='courseDetails.jsp'">Existing Courses </button>
+  <button  id="button2" class="active" onclick="">New Courses</button>
 
  
-
- </div>
+</div>
+ 
     <form action=""  method="post">
-         <center><h1>Add Existing Courses</h1></center>
+         <center><h1>Add new Course</h1></center>
          <table border="1" id="facultytable"> 
              <tr>
                  <td>Type</td>
@@ -79,7 +78,6 @@ function myFunction() {
                  <td>Combination</td>
                  <td>Medium</td>
                  <td>Intake sanctioned</td>
-                 <td>Students Admitted</td>
                  <td>Action</td>
              </tr>
              <tr>
@@ -211,10 +209,6 @@ function myFunction() {
                           <input type="number" name="intake" id="intake" value="60" required="required">
                           
                      </td>
-                     <td>
-                          <input type="number" name="admit" id="admit"  required="required">
-                          
-                     </td>
                       <td>
                           <input type="button"  value="Add" onclick="myFunction()">
                          
@@ -239,7 +233,6 @@ function myFunction() {
                 <td>Combination</td>
                 <td>Medium</td>
                 <td>Intake Sanctioned</td>
-                <td>Students Admitted</td>
                 <td>Status</td>
                 <td>Action</td>
                
@@ -250,7 +243,7 @@ function myFunction() {
             try
             {
            
-            String query="select * from courses where cCode='"+cCode+"' and cStatus='Previously Existing Course' ORDER BY cType ASC;";
+            String query="select * from courses where cCode='"+cCode+"' and cStatus!='Previously Existing Course' ORDER BY cType ASC;";
             Connection conn=Database.getConnection();
             Statement stmt=conn.createStatement();
             ResultSet rs=stmt.executeQuery(query);
@@ -264,13 +257,13 @@ function myFunction() {
                     <td><%=rs.getString("cCombination") %></td>
                     <td><%=rs.getString("cMedium") %></td>
                     <td><%=rs.getString("cIntakeSanctioned") %></td>
-                    <td><%=rs.getString("cStudentsAdmitted") %></td>
                     <td><%=rs.getString("cStatus") %></td>
                     
-                    <% if(rs.getString("cStatus").equals("Previously Existing Course"))
+                    <% if(rs.getString("cStatus").equals("Inspection fee Pending"))
                             {  
-                                   
-                                            String url="<td><a href=\"upload.jsp?name=delete&&to=0&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
+                                
+                                          
+                                            String url="<td><a href=\"upload.jsp?name=delete&&to=1&&place=course&&sno="+ rs.getInt("sno") +"\">Remove</a></td>";
                                             out.print(url);
                                 
                            }%>
