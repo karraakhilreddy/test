@@ -64,13 +64,13 @@
                 
             <tr>
                 <td>Name</td>
-                <td>Type</td>
+                <td>Category</td>
                 <td>Designation</td>
                 <td>Qualification</td>
                 <td>Date of appointment</td>
                 <td>Nature of appointment</td>
                 <td>Mode of appointment</td>
-                <td>Scale of pay</td>
+                <td>Salary per Month</td>
                 <td>Mode of pay</td>
                 <td>Bank account Number</td>
                 <td>PAN card Number</td>
@@ -143,7 +143,7 @@
             
         </tr>
         <tr>
-            <td>Type</td>
+            <td>Category</td>
             <td> <select name="tType" required="required">
                     <option value="Principal">Principal</option>
                     <option value="Teaching">Teaching</option>
@@ -183,7 +183,7 @@
         </tr>
        
         <tr>
-            <td>Scale of pay</td>
+            <td>Salary per Month</td>
             <td><input type="number" name="tScale" required="required"></td>
              </tr>
          <tr>

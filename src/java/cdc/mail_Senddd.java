@@ -33,7 +33,7 @@ public class mail_Senddd {
         Session session = Session.getDefaultInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("ccppjava99@gmail.com", "ccppjava99");
+                        return new PasswordAuthentication("onlineservices@kakatiya.ac.in", "deancdc7696");
                     }
                 });
         System.out.println("Message   " + msg);

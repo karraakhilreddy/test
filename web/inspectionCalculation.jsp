@@ -108,15 +108,34 @@
                  amount=is.InspectionCalculation(cCode);
                  out.print("is = " +amount);
                  System.out.print(amount);
+        
+         try{
+                 String query="select iAmount,iDate,iOrderNo from cdc_college_details where cCode='"+cCode+"';";
+                Connection conn=Database.getConnection();
+                Statement stmt=conn.createStatement();
+                 ResultSet rs=stmt.executeQuery(query);
+                if(rs.next()){
+                    if(rs.getInt("iAmount")==0){
+                        %>
+                            <form action="paymentGateway.jsp" method="POST">
+                                <input type="text" name="amount" value=<%= amount %> hidden>
+                                <input type="text" name="cCode" value=<%= cCode %> hidden>
+                                <input type="text" name="name" value="inspection" hidden>
+                                <button> <input type="submit" name="" value="Pay Now" style="background-color: white;"></button>
+                             </form>
+                        <%
+                    }else{
+                            %>
+                            <h3>Already Inspection Fee Paid on date <%=rs.getDate("iDate")%> <br>with order number <%=rs.getString("iOrderNo")%>.</h3>
+                        <%
+                    }
+                 }
+         }catch(Exception e){
+                System.out.println(e.getMessage());
+         }
+         
          %>
-         <form action="paymentGateway.jsp" method="POST">
-             <input type="text" name="amount" value=<%= amount %> hidden>
-             <input type="text" name="cCode" value=<%= cCode %> hidden>
-             <input type="text" name="name" value="inspection" hidden>
-             <button> <input type="submit" name="" value="Pay Now" style="background-color: white;"></button>
-          
-             
-         </form>
+        
                 <br>
              <form action="doubleVerification.jsp" method="post">
                  <button>  <input type="submit" name="" value="Verify the payment" style="background-color: white;" ></button>

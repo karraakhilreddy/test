@@ -3,6 +3,11 @@
     Created on : Jan 4, 2019, 10:21:37 AM
     Author     : akhil
 --%>
+<%@page import="com.lowagie.text.Image"%>
+<%@page import="com.lowagie.text.Phrase"%>
+<%@page import="com.lowagie.text.FontFactory"%>
+<%@page import="com.lowagie.text.Paragraph"%>
+<%@page import="com.lowagie.text.Chunk"%>
 <%@page import="com.lowagie.text.pdf.PdfPTable"%>
 <%@page import="com.lowagie.text.pdf.PdfWriter"%>
 <%@page import="java.io.FileOutputStream"%>
@@ -38,8 +43,8 @@
     <nav>
         <div class="navbuttons">
              <ul>
-                <button class="active" onclick="window.location='home.jsp'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+                <button class="" onclick="window.location='home.jsp'" ><li>About</li></button>
+                <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -106,7 +111,13 @@
                     
                     java.sql.Timestamp date =  Timestamp.valueOf(startDate);
                     //SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                   
+                    java.util.Date dt = new java.util.Date();
+
+                    java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
+
+                    String currentYear = sdf.format(dt);
+                    int nextYear=Integer.parseInt(currentYear)+1;
+                    int previousYear=Integer.parseInt(currentYear)-1;
                      
                                         Statement st = null;
                                         ResultSet rs = null;
@@ -125,6 +136,51 @@
                                          document.open();
                                          
                                          PdfPTable table = new PdfPTable(2);
+                                          document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    Paragraph p=new Paragraph("College Development Council");
+                    float fntSize, lineSpacing;
+                    fntSize = 15f;
+                    lineSpacing = 10f;
+                   /* p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);*/
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    p=new Paragraph(new Phrase(lineSpacing,"\n\nKakatiya University",FontFactory.getFont(FontFactory.COURIER_BOLD, 20f)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    p=new Paragraph(new Phrase(lineSpacing,"\nWarangal - 506009",FontFactory.getFont(FontFactory.COURIER, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     document.add(Chunk.NEWLINE);
+                     
+                     
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+
+
+                    Image image = Image.getInstance("http://localhost:8084/test_1_1_1/IMG/1.png");
+                     image.scaleAbsolute(80f, 80f);
+                    image.setAbsolutePosition(85f, 740f);
+                    document.add(image);
+
+                     //p=new Paragraph("Inspection Report for the academic year 20 -20  .");
+                    p = new Paragraph(new Phrase(lineSpacing,"Fee Receipt of Extension of Affiliation \n\n for the academic year "+currentYear+"-"+nextYear,FontFactory.getFont(FontFactory.COURIER_BOLD, 15f)));
+                    
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     document.add(Chunk.NEWLINE);
                                             table.addCell("College Code");
                                             table.addCell(cCode);
                                             table.completeRow();
@@ -231,9 +287,8 @@
                                                 
                                             </table>
                                             
-                                                    <a href="Reports/download.jsp?ff=<%=f%>">Download Receipt</a>
-                                            
-                                            
+                                                    <lable >Download Receipt</lable> <a href="Reports/download.jsp?ff=<%=f%>">Download Receipt</a>
+                                                        
                                             <%
                     char place=data[0].charAt(0);
                     
@@ -266,7 +321,7 @@
 
                                                                 l.updateLog(cCode, "Made Inspection Payment", "Made Payment of Rs."+data[3],ipAddress);
 
-                                                                      out.println("Record is inserted into PAYMENT table!");
+                                                                      //out.println("Record is inserted into PAYMENT table!");
                     
                     switch(place){
                         case '1':
@@ -276,14 +331,23 @@
 
 
 
-                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Inspection fee Paid' WHERE `cCode` =?;";
+                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Inspection fee Paid' WHERE ( `cCode`=? and `cStatus` ='Inspection fee Pending' );";
                                                          ps=con.prepareStatement(insertTableSQL);
+                                                         
+                                                         
+                                                         
 
-                                                                      ps.setString(1, cCode);
-                                                                      ps.executeUpdate();
+                                                          ps.setString(1, cCode);
+                                                          ps.executeUpdate();
+                                                                      
+                                                         insertTableSQL = "UPDATE `cdc_college_details` SET `iAmount` ='"+data[3]+"', `iDate`='"+date+"',`iOrderNo`='"+data[0]+"' WHERE `cCode` =?;";
+                                                         ps=con.prepareStatement(insertTableSQL);
+                                                         ps.setString(1, cCode);
+                                                          ps.executeUpdate();
+                                                          
                                                                       l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
 
-                                                                      out.println("Record is inserted into LOG table!");
+                                                                      //out.println("Record is inserted into LOG table!");
 
                                                                         
                                                                       
@@ -318,9 +382,16 @@
 
                                                                       ps.setString(1, cCode);
                                                                       ps.executeUpdate();
+                                                                      
+                                                                      
+                                                         insertTableSQL = "UPDATE `cdc_college_details` SET `aAmount` ='"+data[3]+"', `aDate`='"+date+"',`aOrderNo`='"+data[0]+"' WHERE `cCode` =?;";
+                                                         ps=con.prepareStatement(insertTableSQL);
+                                                         ps.setString(1, cCode);
+                                                          ps.executeUpdate();
+                                                          
                                                                       l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
 
-                                                                      out.println("Record is inserted into LOG table!");
+                                                                      //out.println("Record is inserted into LOG table!");
 
                                         } catch (Exception e) {
 
@@ -348,7 +419,7 @@
                 </div>
             </center>
         </div>
-        
+                   <br><br><br><br><br><br><br>
     </div>
        
               

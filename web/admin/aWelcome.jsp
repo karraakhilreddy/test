@@ -48,7 +48,7 @@
             <table>
                 <tr>
                     <td>College Code</td>
-                    <td><input type="text" name="aCcode" ></td>
+                    <td><input type="text" name="aCcode" required></td>
                 </tr>
                 <tr>
                     <td><td><button name="button" value="alogin" type="submit">Get Reports</button></td></td>

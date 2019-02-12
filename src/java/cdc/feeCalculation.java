@@ -183,6 +183,30 @@ public class feeCalculation {
                       rs2.close();
                      stmt2.close();
                     break;
+                    case "Physical Education":
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection fee pending' and cType='Physical Education' ;";
+        
+                      stmt2=conn.createStatement();
+                      rs2=stmt2.executeQuery(query2);
+                     if(rs2.next())
+                     { 
+                                amount=amount+(rs2.getInt("tCourse")*17500);
+                      }
+                      rs2.close();
+                     stmt2.close();
+                    break;
+                    case "Hotel Management":
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection fee pending' and cType='Hotel Management' ;";
+        
+                      stmt2=conn.createStatement();
+                      rs2=stmt2.executeQuery(query2);
+                     if(rs2.next())
+                     { 
+                                amount=amount+(rs2.getInt("tCourse")*5000);
+                      }
+                      rs2.close();
+                     stmt2.close();
+                    break;
             }
             
         }
@@ -405,6 +429,30 @@ public class feeCalculation {
                      stmt2.close();
                      totalNonLabCourses=totalPGcourses-totalLabCourses;
                      aamount=aamount+(totalNonLabCourses*8000);
+                    break;
+                    case "Physical Education":
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Physical Education' ;";
+        
+                      stmt2=conn.createStatement();
+                      rs2=stmt2.executeQuery(query2);
+                     if(rs2.next())
+                     { 
+                                amount=amount+(rs2.getInt("tCourse")*15000);
+                      }
+                      rs2.close();
+                     stmt2.close();
+                    break;
+                    case "Hotel Management":
+                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='Hotel Management' ;";
+        
+                      stmt2=conn.createStatement();
+                      rs2=stmt2.executeQuery(query2);
+                     if(rs2.next())
+                     { 
+                                amount=amount+(rs2.getInt("tCourse")*15000);
+                      }
+                      rs2.close();
+                     stmt2.close();
                     break;
             }
             

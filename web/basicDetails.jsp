@@ -62,16 +62,17 @@
     {
      
         document.getElementById("lLessor").style.visibility= "hidden";
-        
+         document.getElementById("lLessor").value="-";
         document.getElementById("lLessee").style.visibility= "hidden";
-        
+         document.getElementById("lLessee").value="-";
         document.getElementById("lPeriod").style.visibility= "hidden";
-        
+        document.getElementById("lPeriod").value="0";
         document.getElementById("lSurveyNo").style.visibility= "hidden";
-        
+        document.getElementById("lSurveyNo").value="0";
         document.getElementById("lRegNo").style.visibility= "hidden";
-        
+        document.getElementById("lRegNo").value="0";
         document.getElementById("lRegDate").style.visibility= "hidden";
+        document.getElementById("lRegDate").value=null;
         
     }
 
@@ -181,7 +182,11 @@
                              <td>Address of the college:</td>
                              <td><input type="text" name="cAddress" placeholder="college address"  value="<%=rs.getString("cAddress") %>"  required="required"></td>
                          </tr>
-                         
+                         <tr>
+                              <td>College Email:</td>
+                              <td><input type="email" name="cEmail" value="<%=rs.getString("cEmail") %>"  ></td>
+                            
+                         </tr>
                         <tr>
                               <td>Name of the Sponsoring society:</td>
                               <td><input type="text" name="sName" placeholder="society name" value="<%=rs.getString("sName") %>"  required="required" ></td>

@@ -54,6 +54,7 @@
              Connection con = null;
             Statement st = null;
             ResultSet rs = null;
+            ResultSet rs2 = null;
 
             con = Database.getConnection();
             st = con.createStatement();
@@ -85,6 +86,7 @@
                                 <td><b>Medium</b></td>
                                 <td><b>Intake</b></td>
                                 <td><b>Admitted</b></td>
+                                <td><b>Status</b></td>
 
                                 </tr>
                     <%
@@ -110,6 +112,7 @@
                     String st4=rs.getString("cMedium");
                     String st5=String.valueOf(rs.getInt("cIntakeSanctioned"));
                     String st6=String.valueOf(rs.getInt("cStudentsAdmitted"));
+                    String st7=rs.getString("cStatus");
                     table.addCell(st1);
                     table.addCell(st2);
                     table.addCell(st3);
@@ -124,6 +127,7 @@
                                 <td><font size="2"><%=st4%></font></td>
                                 <td><font size="2"><%=st5%></font></td>
                                 <td><font size="2"><%=st6%></font></td>
+                                <td><font size="2"><%=st7%></font></td>
                             </tr>
 
                     <% 
@@ -806,13 +810,33 @@
                     
                     case "Basic":
                     
-                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
-                   
-
                     
+                        
+                    java.util.Date dt = new java.util.Date();
+
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
+
+            String currentYear = sdf.format(dt);
+            int nextYear=Integer.parseInt(currentYear)+1;
+            int previousYear=Integer.parseInt(currentYear)-1;
+            String cName=" ";
+                   
+                   
+                rs2 = st.executeQuery("SELECT iAmount FROM cdc_college_details where ccode="+cCode+";");
+                if(rs2.next()){
+                    if(rs2.getInt("iAmount")==0){
+                        %><script>
+                            alert('To download application please pay inspection fee.');
+                            window.location.replace("reports.jsp");        
+                         </script><%
+                        break;
+                    }
+                }    
                     PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
-
+                    document.setMargins(1, 1, 20, 1);
+                    document.setMarginMirroring(true);
+                    
                     //headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};
                     table4 = new PdfPTable(2);
                     
@@ -823,29 +847,51 @@
                     float fntSize, lineSpacing;
                     fntSize = 15f;
                     lineSpacing = 10f;
-                    p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                   /* p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);*/
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    p=new Paragraph(new Phrase(lineSpacing,"\n\nKakatiya University",FontFactory.getFont(FontFactory.COURIER_BOLD, 20f)));
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
-                    p=new Paragraph("KAKATIYA UNIVERSITY\nWarangal-506001");
+                    p=new Paragraph(new Phrase(lineSpacing,"\nWarangal - 506009",FontFactory.getFont(FontFactory.COURIER, fntSize)));
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                      document.add(Chunk.NEWLINE);
+                     
+                     
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
 
-                    Image image = Image.getInstance("http://cdc-aa.kakatiya.ac.in:8080/test_1_1_1/IMG/1.png");
+
+                    Image image = Image.getInstance("http://localhost:8084/test_1_1_1/IMG/1.png");
                      image.scaleAbsolute(80f, 80f);
                     image.setAbsolutePosition(85f, 740f);
                     document.add(image);
 
                      //p=new Paragraph("Inspection Report for the academic year 20 -20  .");
-                    p = new Paragraph(new Phrase(lineSpacing,"Inspection Report for the academic year 20 -20  .",FontFactory.getFont(FontFactory.COURIER, fntSize)));
+                    p = new Paragraph(new Phrase(lineSpacing,"Application for Extension of Affiliation \n\n for the academic year "+currentYear+"-"+nextYear,FontFactory.getFont(FontFactory.COURIER_BOLD, 15f)));
                     
                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                      document.add(Chunk.NEWLINE);
                     
-                  
+                   rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
 
                     while (rs.next()){
+                    
+                    cName=rs.getString("cName");
 
                     table4.addCell("College Code");
                     table4.addCell(rs.getString("cCode"));
@@ -866,7 +912,7 @@
                     
                        
                    
-                    table4.addCell("Name of the sponsering society");
+                    table4.addCell("Name of the sponsoring society");
                     table4.addCell(rs.getString("sName"));
                     table4.completeRow();
                     
@@ -890,7 +936,7 @@
                     table4.addCell(rs.getString("sRegNo"));
                     table4.completeRow();
                    
-                    table4.addCell("year of registration");
+                    table4.addCell("Year of registration");
                     table4.addCell(rs.getString("sYear"));
                     table4.completeRow();
                    
@@ -920,7 +966,7 @@
                     table4.addCell(rs.getString("valOwnBuilding"));
                     table4.completeRow();
                    
-                    if(rs.getString("valOwnBuilding").equals("no")){
+                    if(!rs.getString("valOwnBuilding").equals("owned")){
                         
                          table4.addCell("Lessor");
                          table4.addCell(rs.getString("lLessor"));
@@ -943,7 +989,7 @@
                          table4.completeRow();
                     
                          table4.addCell("Reg Date");
-                         table4.addCell(rs.getString(rs.getString("lRegDate")));
+                         table4.addCell(rs.getString("lRegDate"));
                          table4.completeRow();
                     
                     }
@@ -998,11 +1044,6 @@
                     table4.addCell(rs.getString("valPlayGround"));
                     table4.completeRow();
                    
-                    document.add(table4);
-                    document.newPage();
-                    
-                    table4 =new PdfPTable(2);
-
                     table4.addCell("Is parking area available");
                     table4.addCell(rs.getString("valParkingArea"));
                     table4.completeRow();
@@ -1023,13 +1064,13 @@
 
                     table4.completeRow();
 
-                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Particulars of land and building");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     p = new Paragraph(new Phrase(lineSpacing,"Particulars of land and building\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
+                    document.add(Chunk.NEWLINE);
+
                     table4 = new PdfPTable(2);
                     
                    
@@ -1088,13 +1129,14 @@
                     document.add(table4);
                     table4.completeRow();
 
-                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                                       
                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Library Details");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     p = new Paragraph(new Phrase(lineSpacing,"Library Details\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
+                    document.add(Chunk.NEWLINE);
+
                     table4 = new PdfPTable(2);
                     
                    
@@ -1118,12 +1160,12 @@
 
                     document.add(table4);
                     table4.completeRow();
-                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Faculty Details");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     p = new Paragraph(new Phrase(lineSpacing,"Faculty Details\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
+                    
+                    document.add(Chunk.NEWLINE);
 
 
                     table4 = new PdfPTable(2);
@@ -1143,10 +1185,11 @@
 
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Corpus fund Details");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     p = new Paragraph(new Phrase(lineSpacing,"Corpus Fund Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
+                    
+                    document.add(Chunk.NEWLINE);
 
                     table4 = new PdfPTable(2);
                     table4.addCell("FDR/BG number");
@@ -1179,18 +1222,20 @@
                     
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
                     document.setPageSize(PageSize.A4.rotate());
-                    document.setMargins(0, 0, 0, 0);
+                    
+                    document.setMargins(-1, -1, 100, -1);
+                    document.setMarginMirroring(true);
+                    
                     document.newPage();
-                     p=new Paragraph("Course Details");
-                    document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
-                    document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Existing Courses during the last academic year "+previousYear+"-"+currentYear,FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
-                  
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+";");
+                     document.add(Chunk.NEWLINE);
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" and cStatus='Previously Existing Course';");
                    
                     
-                    headers = new String[] {"Type", "Course", "Combination", "Medium","Intake", "Admitted","Status"};
+                    headers = new String[] {"Type", "Course", "Combination/Course", "Medium","Intake Sanctioned", "Admitted Strength"};
                     table = new PdfPTable(headers.length);
                                 for (int i = 0; i < headers.length; i++) {
                                     String header = headers[i];
@@ -1199,6 +1244,9 @@
                                     cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
                                     table.addCell(cell);
                                 }
+				float wid2[]={12f,10f,45f,8f,5f,5f};
+                                	table.setWidths(wid2);
+
                                 table.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("ctype");
@@ -1207,32 +1255,78 @@
                     String st4=rs.getString("cMedium");
                     String st5=String.valueOf(rs.getInt("cIntakeSanctioned"));
                     String st6=String.valueOf(rs.getInt("cStudentsAdmitted"));
-                    String st7=String.valueOf(rs.getString("cStatus"));
+                    
                     table.addCell(st1);
                     table.addCell(st2);
                     table.addCell(st3);
                     table.addCell(st4);
                     table.addCell(st5);
                     table.addCell(st6);
+                    
+                    table.completeRow();
+                       
+                    }
+			table.setWidthPercentage(95);
+                    document.add(table);
+                    
+                     document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Requested Courses for the academic year"+currentYear+"-"+nextYear,FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     document.add(Chunk.NEWLINE);
+
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" and cStatus!='Previously Existing Course';");
+                   
+                    
+                    headers = new String[] {"Type", "Course", "Combination/Course", "Medium","Intake","Status"};
+                    table = new PdfPTable(headers.length);
+                                for (int i = 0; i < headers.length; i++) {
+                                    String header = headers[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table.addCell(cell);
+                                }
+				float wid3[]={12f,15f,45f,8f,7f,24f};
+                                	table.setWidths(wid3);
+
+                                table.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("ctype");
+                    String st2=rs.getString("cCourse");
+                    String st3=rs.getString("cCombination");
+                    String st4=rs.getString("cMedium");
+                    String st5=String.valueOf(rs.getInt("cIntakeSanctioned"));
+                    
+                    String st7=String.valueOf(rs.getString("cStatus"));
+                    table.addCell(st1);
+                    table.addCell(st2);
+                    table.addCell(st3);
+                    table.addCell(st4);
+                    table.addCell(st5);
+                    
                     table.addCell(st7);
                     table.completeRow();
                        
                     }
+			table.setWidthPercentage(95);
                     document.add(table);
                     document.setPageSize(PageSize.A4.rotate());
-                    document.setMargins(-1, -1, -1, -1);
+			
+                    document.setMargins(-1, -1, 100, -1);
+                    document.setMarginMirroring(true);
                     document.newPage();
                     
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
-                    document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Principal Details");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                   document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Principal Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
+                     document.add(Chunk.NEWLINE);
 
                     rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Principal';");
                     
-                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                     headers2 = new String[] {"Name", "Designation", "Qualifications", "Date of appointment","Nature of appointment", "Mode of appointment","Salary per month","Mode of payment","Bank account Number","PAN card Number","Aadhar  number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
                                 for (int i = 0; i < headers2.length; i++) {
                                     String header = headers2[i];
@@ -1241,6 +1335,8 @@
                                     cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 8, Font.BOLD)));
                                     table2.addCell(cell);
                                 }
+				float wid[]={24f,18f,18f,11f,10f,11f,10f,6f,15f,10f,13f,10f};
+                                	table2.setWidths(wid);
                                 table2.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("tName");
@@ -1257,8 +1353,19 @@
                     String st12=rs.getString("tAadhar");
                     String st13=rs.getString("tMobile");
                     
-                                   
-                    table2.addCell(st1);
+                        table2.addCell(new Phrase(st1, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st3, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st4, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st5, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st6, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st7, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st8, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st9, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st10, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st11, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st12, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st13, FontFactory.getFont(FontFactory.HELVETICA, 8)));               
+                    /*table2.addCell(st1);
                     
                     table2.addCell(st3);
                     table2.addCell(st4);
@@ -1270,29 +1377,35 @@
                     table2.addCell(st10);
                     table2.addCell(st11);
                     table2.addCell(st12);
-                    table2.addCell(st13);
+                    table2.addCell(st13);*/
                     table2.completeRow();
                    
                     }
                     table2.setWidthPercentage(95);
                     document.add(table2);
+                    
+
                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Faculty Details-Teaching");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+
+                     p = new Paragraph(new Phrase(lineSpacing,"\n\n\nTeaching Faculty",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
+                     document.add(Chunk.NEWLINE);
 
                     rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Teaching';");
                     
-                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                    // headers2 = new String[] {"Name", "Designations", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Salary per month","Mode of payment","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
                                 for (int i = 0; i < headers2.length; i++) {
                                     String header = headers2[i];
                                     PdfPCell cell = new PdfPCell();
                                     cell.setGrayFill(0.9f);
-                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 8, Font.BOLD)));
                                     table2.addCell(cell);
                                 }
+				// wid={24f,18f,18f,11f,10f,11f,10f,6f,15f,10f,13f,10f};
+                                	table2.setWidths(wid);
+
                                 table2.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("tName");
@@ -1309,7 +1422,20 @@
                     String st12=rs.getString("tAadhar");
                     String st13=rs.getString("tMobile");
                     
-                    table2.addCell(st1);
+			table2.addCell(new Phrase(st1, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st3, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st4, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st5, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st6, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st7, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st8, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st9, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st10, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st11, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st12, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st13, FontFactory.getFont(FontFactory.HELVETICA, 8)));               
+
+                  /*  table2.addCell(st1);
                     
                     table2.addCell(st3);
                     table2.addCell(st4);
@@ -1321,30 +1447,32 @@
                     table2.addCell(st10);
                     table2.addCell(st11);
                     table2.addCell(st12);
-                    table2.addCell(st13);
-                    table2.completeRow();
+                    table2.addCell(st13);*/
+                    table2.completeRow(); 
                    
                     }
+		    table2.setWidthPercentage(95);
                     document.add(table2);
 
                      document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Faculty Details-Non Teaching");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     p = new Paragraph(new Phrase(lineSpacing,"Non-Teaching Staff",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
-                      document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
                     rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Non-Teaching';");
                     
-                     headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
+                    // headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
                                 for (int i = 0; i < headers2.length; i++) {
                                     String header = headers2[i];
                                     PdfPCell cell = new PdfPCell();
                                     cell.setGrayFill(0.9f);
-                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 8, Font.BOLD)));
                                     table2.addCell(cell);
                                 }
+				//wid={24f,18f,18f,11f,10f,11f,10f,6f,15f,10f,13f,10f};
+                                	table2.setWidths(wid);
+
                                 table2.completeRow();
                     while (rs.next()){
                         String st1=rs.getString("tName");
@@ -1361,7 +1489,23 @@
                     String st12=rs.getString("tAadhar");
                     String st13=rs.getString("tMobile");
                     
-                    table2.addCell(st1);
+
+			table2.addCell(new Phrase(st1, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st3, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st4, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st5, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st6, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st7, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st8, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st9, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st10, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st11, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st12, FontFactory.getFont(FontFactory.HELVETICA, 8)));
+			table2.addCell(new Phrase(st13, FontFactory.getFont(FontFactory.HELVETICA, 8)));               
+
+
+
+                   /* table2.addCell(st1);
                     
                     table2.addCell(st3);
                     table2.addCell(st4);
@@ -1373,176 +1517,101 @@
                     table2.addCell(st10);
                     table2.addCell(st11);
                     table2.addCell(st12);
-                    table2.addCell(st13);
+                    table2.addCell(st13);*/
+
                     table2.completeRow();
                    
                     }
+		    table2.setWidthPercentage(95);
                     document.add(table2);
 
                     }
                    document.setPageSize(PageSize.A4);
                     document.newPage();
-                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Opinion of the Inspection Team");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.setMargins(2, 2, 2, 2);
+                       document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Declaration",FontFactory.getFont(FontFactory.COURIER_BOLD, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
-                      document.add(Chunk.NEWLINE);
-                      
-                      
-                    table2=new PdfPTable(2);
-
-                   
                     
-                    table2.addCell("On");
-                    table2.addCell("Satisfactory/Average/Poor/Very Poor");
-                    table2.completeRow();
-
-                    table2.addCell("Size of Class-Rooms");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    table2.addCell("Condition of the furniture");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    table2.addCell("Size of Laboratories");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    table2.addCell("Lab.Equipment");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    table2.addCell("Language Laboratory & Equipment");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    table2.addCell("Maintanance of the Library");
-                    table2.addCell("");
-                    table2.completeRow();
-
-                    document.add(table2);
-
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Overall Remorks of the Insepection Team");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                     String declaration="\n\n\t\t\t\t\t\t I,_____________________________________________________________,"
+                                        + "\n\n\t\t\t\t\t\tSecretary/Correspondent of ______________________________________"
+                                        + "\n\n\t\t\t\t\t\t____________________________________ College do hereby declare that "
+                                        + "\n\n\t\t\t\t\t\tthe particulars furnished above are true and correct to the best "
+                                        + "\n\n\t\t\t\t\t\tof my knowledge and belief. ";
+                       p = new Paragraph(new Phrase(lineSpacing,declaration,FontFactory.getFont(FontFactory.COURIER, 12f)));
+                    // p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
-                      document.add(Chunk.NEWLINE);
-                      float[] widths = {0.1f, 0.9f};
-                    table2=new PdfPTable(widths);
-
-                    table2.addCell("Sl.No");
-                    table2.addCell("Remarks");
-                    table2.completeRow();
-
-                    for(int i=0;i<10;i++){
-                            table2.addCell(" ");
-                            table2.addCell(" ");
-                            table2.completeRow();
-                    }
-                    document.add(table2);
-
-                    document.newPage();
-
-                    document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("Authorisation");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
-                    document.add(p);
-                      document.add(Chunk.NEWLINE);
-
-
-                    table2=new PdfPTable(2);
-
-                    table2.addCell("Name and Signature of the \n Secretary/Corresponding with Seal");
-                    table2.addCell("Name and Signature of the Inspection Team");
-                    table2.completeRow();
-
-                    PdfPCell cell23 = new PdfPCell(new Phrase(" "));
-                    cell23.setRowspan(3);
-                    table2.addCell(cell23);
-                    table2.addCell("1.Signature\t:\n\n  Name\t:\n\n  Designation:\t\n\n");
-                    table2.addCell("1.Signature\t:\n\n  Name\t:\n\n  Designation:\t\n\n");
-                    table2.addCell("1.Signature\t:\n\n  Name\t:\n\n  Designation:\t\n\n");
-                    table2.completeRow();
-                    document.add(table2);
-
-
-
                      
-                     document.add(Chunk.NEWLINE);
-                     p=new Paragraph("For Office Use Only");
-                     document.add(Chunk.NEWLINE);
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
-                     document.add(p);
 
-                    p=new Paragraph("Affilation may be Granted/Extended (or) May ot be Extended");
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
-                    
-                    document.add(p);
-                    p=new Paragraph("With Conditions,If any");
-                                       
-                     document.add(p);
-                     
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                    
-                      p=new Paragraph("Submitted for Approval");
-                    p.setAlignment(Paragraph.ALIGN_CENTER);
-                    
-                    document.add(p);
 
+                          document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                    p = new Paragraph(new Phrase(lineSpacing,"SECRETARY/CORRESPONDENT\t\t\t",FontFactory.getFont(FontFactory.COURIER_BOLD, 12f)));
+                    p.setAlignment(Paragraph.ALIGN_RIGHT);
+                    p.setIndentationRight(50);
+                    document.add(p);
+                    
                     document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
-
-                     p=new Paragraph("\t\t\t\t\t\t\t\t\tDEAN,CDC,KU\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tREGISTRAR,KU\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVICE-CHANCELLOR,KU");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                     document.add(Chunk.NEWLINE);
                     
+                     
+
+                      document.add(Chunk.NEWLINE);
+                      document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Certification by the University nominee on the Governing Body.",FontFactory.getFont(FontFactory.COURIER_BOLD, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
+                   
+                     document.add(Chunk.NEWLINE);
+                     declaration="\n\n\n\t\t\t\t\t\t I hereby forward the application of the college with the certification"
+                                  + "\n\n\t\t\t\t\t\t that I have visited the college and the information furnished above is"
+                                  + "\n\n\t\t\t\t\t\t true and correct to the best of my knowledge and belief.";
+                                        
+                       p = new Paragraph(new Phrase(lineSpacing,declaration,FontFactory.getFont(FontFactory.COURIER, 12f)));
+                    // p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     
+
+
+                          document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+
+                  
+
 
                       document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
                      document.add(Chunk.NEWLINE);
-                       document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                       document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-
-                    p=new Paragraph("Name, Signature & Seal of the Secretary\\\nCorrespondent of the Society");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
-                     document.add(p);
-
-
-                      document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-                     document.add(Chunk.NEWLINE);
-
-                     p=new Paragraph("Name & Signature of the members of the Inspection Team\n1.\n2.\n3.");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    p = new Paragraph(new Phrase(lineSpacing,"SIGNATURE OF THE \t\t\t\t\t\t\t\t\t \nUNIVERSITY NOMINEE ON THE \t\t\t\t\t\t\t\t\nGOVERNING BODY OF THE COLLEGE",FontFactory.getFont(FontFactory.COURIER_BOLD, 12f)));
+                    p.setAlignment(Paragraph.ALIGN_RIGHT);
+                    p.setIndentationRight(50);
                     document.add(p);
-                   
-                   
 
+                    
+                    document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                     document.add(Chunk.NEWLINE);
+                   
+                      
 
 
                     document.close();

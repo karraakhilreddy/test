@@ -65,7 +65,7 @@
                 }
                 String cCode=request.getParameter("cCode");
                 long amount=Long.parseLong(request.getParameter("amount"));
-                String randomNo="KKU";
+                String randomNo="KUA";
                 int random = (int )(Math.random() * 998 + 1);
                 randomNo=place+cCode+randomNo+random;
                 out.print(randomNo);

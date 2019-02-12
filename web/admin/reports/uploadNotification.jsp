@@ -54,8 +54,8 @@
                     <td><input type="text" name="lastName" size="50" value="CDC" hidden/></td>
                 </tr>
                 <tr>
-                    <td>Portrait Photo: </td>
-                    <td><input type="file" name="photo" size="50"/></td>
+                    <td>Select File (PDF only): </td>
+                    <td><input accept="application/pdf" type="file" name="photo" size="50"/></td>
                 </tr>
                 <tr>
                     <td colspan="2">

@@ -98,6 +98,7 @@
          <br/><br/>
          <input type="submit" name="button" value="login" style="background-color:deepskyblue; height : 45px ;width : 240px;color: white; border-radius:0px; cursor:pointer" >
          <p><a href="temp/forgotPassword.html" style="text-decoration:none;">Forgot/Generate Password ?</a> </p>
+         <p><a href="temp/checkMail.html" style="text-decoration:none;">Check College Code & Registered Email</a> </p>
             </fieldset>
               
            

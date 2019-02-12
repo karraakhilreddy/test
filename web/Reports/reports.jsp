@@ -3,7 +3,8 @@
 <head>
 	 <meta charset="utf-8">
 	<title>cdc</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+   <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css">
 </head>
 <body >
    <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
@@ -44,20 +45,22 @@
         <form action="generateReportsPDF.jsp" method="post">
             <table border="10" style="background-color: #b9b992">
                 <tr>
-                    <td>Basic Details</td>
-                    <td><input id="reportbutton" type="submit" name="button" value="Basic" style=" background-color: deepskyblue;height : 45px ;width : 120px;color: white; cursor:pointer"></td>
+                    <td>Application for Extension of Affiliation</td>
+   
+                    <td><button name ="button" value="Basic" type="submit">Download Application</button></td> 
                 </tr>
                 <tr>
                     <td>Course Details</td>
-                    <td><input id="reportbutton" type="submit" name="button" value="Course" style="background-color: deepskyblue; height : 45px ;width : 120px;color: white; cursor:pointer"></td>
+                    <td><button name ="button" value="Course" type="submit">Get Details</button></td> 
+
                 </tr>
                 <tr>
                     <td>Faculty details</td>
-                    <td><input id="reportbutton" type="submit" name="button" value="Faculty" style="background-color: deepskyblue; height : 45px ;width : 120px;color: white; cursor:pointer"></td>
+                    <td><button name ="button" value="Faculty" type="submit">Get Details</button></td>
                 </tr>
                 <tr>
                     <td>Transactions</td>
-                    <td><input  id="reportbutton" type="submit" name="button" value="Transactions" style="background-color: deepskyblue; height : 45px ;width : 120px;color: white; cursor:pointer"> </td>
+                    <td><button name ="button" value="Transactions" type="submit">Get Details</button></td>
                 </tr>
             </table>
             

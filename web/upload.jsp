@@ -255,10 +255,10 @@
                             long secPhNo = Long.parseLong(request.getParameter("secPhNo"));
                             String cPrincipal = request.getParameter("cPrincipal");
                             long cPPhNo = Long.parseLong(request.getParameter("cPPhNo"));
-                            
+                            String cEmail = request.getParameter("cEmail");
                             
                             String uQuery="update cdc_college_details set cAddress = ?,typeOfCollege=?,sName=?,sAddress=?,areaOfCollege=?,sregNo=?,sYear=?,"+
-                            "cEstd=?,secName=?,secPhno=?,cPrincipal=?,CPPhNo=?,natureOfCollege=?,cName=? where sno = ?;";
+                            "cEstd=?,secName=?,secPhno=?,cPrincipal=?,CPPhNo=?,natureOfCollege=?,cName=?,cEmail=? where sno = ?;";
 
                             ps = con.prepareStatement(uQuery);
                             ps.setString(1, cAddress);
@@ -276,13 +276,14 @@
                             
                             ps.setString(13,natureOfCollege);
                             ps.setString(14,cName);
-                            ps.setInt(15,sno);
-
+                            ps.setString(15,cEmail);
+                            ps.setInt(16,sno);
+                            
                             int i=ps.executeUpdate();
                             if(i==1)
                                         {
                                              logs l=new logs();
-                                           l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
+                                           l.updateLog(String.valueOf(cCode), "General Details", "Updated Basic Details",ipAddress); 
 
                                             %> <script>alert ( "Update succesfull" );
                                             window.location='basicDetails.jsp';</script><%
@@ -298,7 +299,7 @@
                        }
                            catch(Exception e){
                                 %> <script>alert ( "Update failed : " );</script><%
-                                //out.println(e.getMessage());       
+                                System.out.println(e.getMessage());       
                             } 
 
 
@@ -410,7 +411,7 @@
                             if(i==1)
                                         {
                                              logs l=new logs();
-                                           l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
+                                           l.updateLog(String.valueOf(cCode), "Building details", "Updated Basic Details",ipAddress); 
 
                                             %> <script>alert ( "Update succesfull" );
                                             window.location='basicDetails.jsp';</script><%
@@ -465,7 +466,7 @@
                             if(i==1)
                                         {
                                              logs l=new logs();
-                                           l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
+                                           l.updateLog(String.valueOf(cCode), "Staff Details", "Updated Basic Details",ipAddress); 
 
                                             %> <script>alert ( "Update succesfull" );
                                             window.location='basicDetails.jsp';</script><%
@@ -521,7 +522,7 @@
                             if(i==1)
                                         {
                                              logs l=new logs();
-                                           l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
+                                           l.updateLog(String.valueOf(cCode), "CFD details", "Updated Basic Details",ipAddress); 
 
                                             %> <script>alert ( "Update succesfull" );
                                             window.location='basicDetails.jsp';</script><%
@@ -580,7 +581,7 @@
                             if(i==1)
                                         {
                                              logs l=new logs();
-                                           l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "Updated Basic Details",ipAddress); 
+                                           l.updateLog(String.valueOf(cCode), "Additional Details", "Updated Basic Details",ipAddress); 
 
                                             %> <script>alert ( "Update succesfull" );
                                             window.location='basicDetails.jsp';</script><%
@@ -689,3 +690,4 @@
         
     </body>
 </html>
+m

@@ -101,15 +101,34 @@
                  amount=is.AffiliationCalculation(cCode);
                  out.print("is = " +amount);
                  System.out.print(amount);
+        try{
+                 String query="select aAmount,aDate,aOrderNo from cdc_college_details where cCode='"+cCode+"';";
+                Connection conn=Database.getConnection();
+                Statement stmt=conn.createStatement();
+                 ResultSet rs=stmt.executeQuery(query);
+                if(rs.next()){
+                    if(rs.getInt("aAmount")==0){
+                        %>
+                            <form action="paymentGateway.jsp" method="POST">
+                                    <input type="text" name="amount" value=<%= amount %> hidden>
+                                    <input type="text" name="cCode" value=<%= cCode %> hidden>
+                                    <input type="text" name="name" value="affiliation" hidden>
+                                    <input type="submit" name="" value="Pay Now" >
+                            </form>
+                        <%
+                    }else{
+                            %>
+                            <h3>Already Affiliation Fee Paid on date <%=rs.getDate("aDate")%> <br>with order number <%=rs.getString("aOrderNo")%>.</h3>
+                        <%
+                    }
+                 }
+         }catch(Exception e){
+                System.out.println(e.getMessage());
+         }
+         
+         %>
+       
         
-        %>
-        <form action="paymentGateway.jsp" method="POST">
-             <input type="text" name="amount" value=<%= amount %> hidden>
-             <input type="text" name="cCode" value=<%= cCode %> hidden>
-             <input type="text" name="name" value="affiliation" hidden>
-             <input type="submit" name="" value="Pay Now" >
-             
-         </form>
              <form action="doubleVerification.jsp" method="post">
                  <input type="submit" name="" value="Verify the payment" >
              </form>

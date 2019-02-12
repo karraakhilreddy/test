@@ -51,6 +51,8 @@
     <div class="mainBackground">
         <div  style="background-color: #b9b992; width: 850px; align-content: center;">
             <h1>Notifications</h1>
+            <a href="temp/checkMail.html" style="text-decoration: none; "> Click here to Correct/Check College Code and registered email</a>
+            <br> <br>
             <table>
                 <tr>
                     <td>S.No</td>

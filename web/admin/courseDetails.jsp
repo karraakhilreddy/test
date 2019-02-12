@@ -77,7 +77,7 @@
             try
             {
            
-            String query="select * from courses where cCode='"+aCcode+"' ORDER BY cType ASC;";
+            String query="select * from courses where cCode='"+aCcode+"' ORDER BY cType ASC,cStatus;";
             Connection conn=Database.getConnection();
             Statement stmt=conn.createStatement();
             ResultSet rs=stmt.executeQuery(query);
