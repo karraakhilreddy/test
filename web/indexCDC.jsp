@@ -14,9 +14,42 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     
-    <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
-    <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
-    
+   <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
+    <link rel="stylesheet" type="text/css" href="CSS/breakDown.css"> 
+    <style>
+        table{
+            width: 100%;
+            cellspacing : 1;
+            cellpadding : 1;
+            border:0;
+          
+        }
+        tr{
+            height: 40;
+        }
+        tr:nth-child(even) 
+        {
+            background-color: #b0cad5;
+        }
+        tr:nth-child(odd) 
+        {
+            background-color: #c4dce7;
+        }
+       a{
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            color:#044df2;
+            font-size:14px;
+            text-decoration:none;
+            line-height:20px;
+         }
+
+            a:hover{
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            color:#ff0000;
+            font-size:14px;
+            text-decoration:none;
+       }
+    </style>
     <script>
         
         
@@ -107,7 +140,7 @@
             <table>
                 <tr>
                     
-                    <td>Notification</td>
+                    
                 </tr>
               <%
                                 try{
@@ -122,7 +155,8 @@
 
                                                 <tr>
                                                     
-                                                    <td><a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a></td>
+                                                    <td><a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a>
+                                                        <% if(sno<=3){ %><img src="IMG/new_icon_red.gif"> <% } %></td>
                                                     
                                                 </tr>
                                           <%
