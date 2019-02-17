@@ -13,6 +13,8 @@
     </head>
     <body>
         <% 
+            
+            session.setAttribute("userId", null);
             session.invalidate(); 
             response.sendRedirect("index.html");
         %>

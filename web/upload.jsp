@@ -99,12 +99,15 @@
                                             l.updateLog(cCode, "facultyDetails.jsp", "inserted Faculty Details",ipAddress);
                                                    
                                                   System.out.println("Record is inserted into DBUSER table!");
+                                                  response.sendRedirect("facultyDetails.jsp");
                                     }
 
                     } catch (Exception e) {
-
+                                System.out.println(e.getMessage());
+                                %> <script>alert ( "Update failed :<%=e.getMessage()%>" );
+                                            window.location='facultyDetails.jsp';</script><%
                                System.out.println(e.getMessage());
-                               out.println(e.getMessage());
+                               
 
                     } finally {
 
@@ -115,7 +118,7 @@
                             if (con != null) {
                                      con.close();
                             }
-                            response.sendRedirect("facultyDetails.jsp");
+                            
                     }
                     break;
                     case "course0" :
@@ -154,10 +157,12 @@
                                                     l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "inserted Course Details",ipAddress); 
                                                   
                                                   System.out.println("Record is inserted into DBUSER table!");
+                                                    response.sendRedirect("courseDetails.jsp");
                                     
 
                     } catch (Exception e) {
-
+                                 %> <script>alert ( "Update failed :<%=e.getMessage()%>" );
+                                            window.location='courseDetails.jsp';</script><%
                                System.out.println(e.getMessage());
 
                     } finally {
@@ -169,7 +174,7 @@
                             if (con != null) {
                                      con.close();
                             }
-                              response.sendRedirect("courseDetails.jsp");
+                              
                            
                     }
                     break;
@@ -209,10 +214,12 @@
                                                     l.updateLog(String.valueOf(cCode), "courseDetails1.jsp", "inserted Course Details",ipAddress); 
                                                   
                                                   System.out.println("Record is inserted into DBUSER table!");
+                                                  response.sendRedirect("courseDetails1.jsp");
                                     
 
                     } catch (Exception e) {
-
+                                 %> <script>alert ( "Update failed :<%=e.getMessage()%>" );
+                                            window.location='courseDetails1.jsp';</script><%
                                System.out.println(e.getMessage());
 
                     } finally {
@@ -224,7 +231,7 @@
                             if (con != null) {
                                      con.close();
                             }
-                              response.sendRedirect("courseDetails1.jsp");
+                              
                            
                     }
                     break;
@@ -291,14 +298,14 @@
                                             System.out.println("updated successfully");
                                         }
                                         else{
-                                            %> <script>alert ( "Update failed" );
+                                            %> <script>alert ( "Update failed :");
                                             window.location='basicDetails.jsp';</script><%
 
                                             out.println("no updation");  
                                         }                           
                        }
                            catch(Exception e){
-                                %> <script>alert ( "Update failed : " );</script><%
+                                %> <script>alert ( "Update failed : "+<%=e.getMessage()%> );</script><%
                                 System.out.println(e.getMessage());       
                             } 
 
@@ -426,7 +433,7 @@
                                         }                           
                        }
                            catch(Exception e){
-                                %> <script>alert ( "Update failed : " );</script><%
+                                %> <script>alert ( "Update failed :<%=e.getMessage()%> " );</script><%
                                 System.out.println(e.getMessage());       
                             } 
 
@@ -481,7 +488,7 @@
                                         }                           
                        }
                            catch(Exception e){
-                                %> <script>alert ( "Update failed : " );</script><%
+                                %> <script>alert ( "Update failed :<%=e.getMessage()%> " );</script><%
                                 //out.println(e.getMessage());       
                             }
 
@@ -537,7 +544,7 @@
                                         }                           
                             }
                            catch(Exception e){
-                                %> <script>alert ( "Update failed : " );</script><%
+                                %> <script>alert ( "Update failed : " <%=e.getMessage()%>);</script><%
                                 //out.println(e.getMessage());       
                             }
 
@@ -596,7 +603,7 @@
                                         }                           
                             }
                            catch(Exception e){
-                                %> <script>alert ( "Update failed : " );</script><%
+                                %> <script>alert ( "Update failed :<%=e.getMessage()%> " );</script><%
                                 //out.println(e.getMessage());       
                             }
                             
@@ -634,6 +641,18 @@
                                             response.sendRedirect("courseDetails.jsp");
                                         else if(to.equals("1"))
                                             response.sendRedirect("courseDetails1.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                           break;
+                        case "document":
+                                try{
+                                        Statement st = con.createStatement();
+                                        st.executeUpdate("DELETE  FROM documents WHERE id="+sno);
+                                        out.print("Deleted");
+                                        logs l=new logs();
+                                        l.updateLog(String.valueOf(cCode), "documents.jsp", "deleted document ",ipAddress); 
+                                        response.sendRedirect("Reports/uploadDocuments.jsp");
                                     }catch(Exception e){
                                          out.print("Problem");
                                     }

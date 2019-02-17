@@ -51,7 +51,10 @@
                 </tr>
                 <tr>
                     <td><lable hidden>Last Name: </lable></td>
-                    <td><input type="text" name="lastName" size="50" value="CDC" hidden/></td>
+                    <td>
+                        <input type="text" name="lastName" size="50" value="CDC" hidden/>
+                        <input type="text" name="fileType" size="50" value="Notification" hidden/>
+                    </td>
                 </tr>
                 <tr>
                     <td>Select File (PDF only): </td>

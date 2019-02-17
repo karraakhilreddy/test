@@ -77,7 +77,7 @@
                     String encData=(String)request.getParameter("encData");
                     //"7OuNG4OlchGQjNFa6cbaTH6jz4rKiRqweXSiTK0gBwBcByVP0Is222w+xPJXrnbkY/p5WA2TFPR7wl9K60cobi/7iqtma/gf42Okz3eiClxO29uMaMPMq8llV50drYvY4+I2LG6CdUkdMh/6T+NipOVH3as172QI6n8IjUSF/DiAuO/mh35uOy++dxu1HHa11/DNK95tdIKIf6MyW0zrWzgQAI54GVlqjlpZCxWSOeiK8EZsRDtw/JBgxIZE3r5qxW0UhEsXig8oMhnp9PEOhToNjSmZWLrmMdbnPWVWTPs="; //
                     String    Key="fBc5628ybRQf88f/aqDUOQ==";
-                    System.out.print(encData);
+                    //System.out.print(encData);
                     System.out.print("<br>");
                     String   EncryptTrans = AES128Bit.decrypt(encData, Key);
                     String[] data=EncryptTrans.split(Pattern.quote("|"));
@@ -319,100 +319,11 @@
                                                                       logs l=new logs();
 
 
-                                                                l.updateLog(cCode, "Made "+feeFor+" Payment", "Made Payment of Rs."+data[3],ipAddress);
+                                                                l.updateLog(cCode, "Payment Fail", "Made Payment of Rs."+data[3],ipAddress);
 
                                                                       //out.println("Record is inserted into PAYMENT table!");
                     
-                    switch(place){
-                        case '1':
-                                        try {
-
-                                                        
-
-
-
-                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Inspection fee Paid' WHERE ( `cCode`=? and `cStatus` ='Inspection fee Pending' );";
-                                                         ps=con.prepareStatement(insertTableSQL);
-                                                         
-                                                         
-                                                         
-
-                                                          ps.setString(1, cCode);
-                                                          ps.executeUpdate();
-                                                                      
-                                                         insertTableSQL = "UPDATE `cdc_college_details` SET `iAmount` ='"+data[3]+"', `iDate`='"+date+"',`iOrderNo`='"+data[0]+"' WHERE `cCode` =?;";
-                                                         ps=con.prepareStatement(insertTableSQL);
-                                                         ps.setString(1, cCode);
-                                                          ps.executeUpdate();
-                                                          
-                                                                      l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
-
-                                                                      //out.println("Record is inserted into LOG table!");
-
-                                                                        
-                                                                      
-                                         
-                                        } catch (Exception e) {
-
-                                                   System.out.println(e.getMessage());
-                                                   out.println(e.getMessage());
-
-                                        } finally {
-
-                                                if (ps != null) {
-                                                         ps.close();
-                                                }
-
-                                                if (con != null) {
-                                                         con.close();
-                                                }
-                                                //response.sendRedirect("facultyDetails.jsp");
-                                        }
-                                        
-                                        
-                                            
-                                            
-                    break;
-                        case '2':
-                            
-                            try{
-                             
-                                                         insertTableSQL = "UPDATE `cdc`.`courses` SET `cStatus` ='Affiliation fee Paid' WHERE (`cCode` =? and `cStatus`='Inspection Success');";
-                                                         ps=con.prepareStatement(insertTableSQL);
-
-                                                                      ps.setString(1, cCode);
-                                                                      ps.executeUpdate();
-                                                                      
-                                                                      
-                                                         insertTableSQL = "UPDATE `cdc_college_details` SET `aAmount` ='"+data[3]+"', `aDate`='"+date+"',`aOrderNo`='"+data[0]+"' WHERE `cCode` =?;";
-                                                         ps=con.prepareStatement(insertTableSQL);
-                                                         ps.setString(1, cCode);
-                                                          ps.executeUpdate();
-                                                          
-                                                                      l.updateLog(cCode, "Updated courses status to fee paid", "Made Payment of Rs."+data[3],ipAddress);
-
-                                                                      //out.println("Record is inserted into LOG table!");
-
-                                        } catch (Exception e) {
-
-                                                   System.out.println(e.getMessage());
-                                                   out.println(e.getMessage());
-
-                                        } finally {
-
-                                                if (ps != null) {
-                                                         ps.close();
-                                                }
-
-                                                if (con != null) {
-                                                         con.close();
-                                                }
-                                                //response.sendRedirect("facultyDetails.jsp");
-                                        }
-                                        
-                                        
-                        break;
-                    }
+                   
                     
                    %>   
                     

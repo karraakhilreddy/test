@@ -12,10 +12,10 @@
 <html>
 <head>
 	 <meta charset="utf-8">
-	<title>cdc</title>
+	<title>Academic Audit</title>
     
-    <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
-    <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css">
     
     <script>
         
@@ -73,19 +73,19 @@
 <body >
   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div >
-           <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
-            <div ><img src="IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
+           <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
+            <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
           <h2 style="color:black; font-family: Bookman Old Style; ">KAKATIYA UNIVERSITY</h2>
-          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>COLLEGE DEVELOPMENT COUNCIL</b></h1>
+          <h1 style="color:navy; text-shadow: 0 0 20px #FFFFFF; font-family: Bookman Old Style;"><b>ACADEMIC AUDIT</b></h1>
           <h3> <spam>Warangal-506009,Telangana</spam></h3>
       </div>
       <a href="#">
-       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To College Development Council</i></b></marquee></p></a>
+       <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Academic Audit</i></b></marquee></p></a>
   </div>
 
     <nav>
         <div class="navbuttons">
-             <ul><button class="" onclick="window.location='aboutCDC.html'" ><li>About</li></button>
+             <ul><button class="" onclick="window.location='aboutAA.html'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 
@@ -100,13 +100,14 @@
     <div class="main">    
         <center>
     <div class="mainBackground">
-        <div  style="width: 850px; align-content: center;">
+        <div  style="background-color: #b9b992; width: 850px; align-content: center;">
             <h1>Notifications</h1>
             <a href="temp/checkMail.html" style="text-decoration: none; "> Click here to Correct/Check College Code and registered email</a>
             <br> <br>
             <table>
                 <tr>
-                    
+                    <td>S.No</td>
+                    <td>Date</td>
                     <td>Notification</td>
                 </tr>
               <%
@@ -121,8 +122,9 @@
                                            %>
 
                                                 <tr>
-                                                    
-                                                    <td><a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a></td>
+                                                    <td><%=sno%></td>
+                                                    <td><%= rs.getString("date")%></td>
+                                                    <td><a href="notifDownload.jsp?id=<%= rs.getString("id")%>" style="text-decoration: none;"><%= rs.getString("Notification")%></a></td>
                                                     
                                                 </tr>
                                           <%

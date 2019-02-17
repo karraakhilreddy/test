@@ -50,6 +50,11 @@
                     <td><button name ="button" value="Basic" type="submit">Download Application</button></td> 
                 </tr>
                 <tr>
+                    <td>Upload Documents</td>
+   
+                    <td><button name ="button" formaction="uploadDocuments.jsp" type="submit">Upload</button></td> 
+                </tr>
+                <tr>
                     <td>Course Details</td>
                     <td><button name ="button" value="Course" type="submit">Get Details</button></td> 
 

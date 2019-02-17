@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
     <script>
         
+        if( performance.navigation.type===2){
+          location.reload(true); 
+        }
         // document.getElementById("button1").click();
        datePickerId.max = new Date().toISOString().split("T")[0];
         function dateset(){
@@ -107,6 +110,7 @@
 </head>
 
 <body onload="openCont(event, 'generalDetails','but1')" >
+    
  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div >
            <div ><img src="IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
@@ -152,6 +156,10 @@
  
 </div>
          <% 
+             
+             if(session.getAttribute("userId")==null){
+                 response.sendRedirect("login.jsp");
+             }
             String cCode=(String)session.getAttribute("cCode");
             //int cCode=Integer.parseInt(scCode);
             session.setAttribute("cCode", cCode);

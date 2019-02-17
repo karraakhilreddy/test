@@ -72,7 +72,7 @@
                     
                     
                     String name=request.getParameter("name");
-                    String  requestparameter = "1000003|DOM|IN|INR|"+amount+"|Other|http://localhost:8084/test_1_1_1/paymentGatewayResponse.jsp|https://test.sbiepay.com/secure/fail3.jsp|SBIEPAY|"+randomNo+"|2|NB|ONLINE|ONLINE";
+                    String  requestparameter = "1000003|DOM|IN|INR|"+amount+"|Other|http://localhost:8084/test_1_1_1/paymentGatewayResponse.jsp|http://localhost:8084/test_1_1_1/paymentGatewayFailureResponse.jsp|SBIEPAY|"+randomNo+"|2|NB|ONLINE|ONLINE";
                     //http://162.241.200.162:8080/test_1_1_1/paymentGatewayResponse.jsp
                     //String billingDtls= cCode+"|Telangana|Warangal|506002|"+name+"|+91|222|1234567|9892456281|biller@gmail.com|N";
                     //String shippingDtls="ShipperName|Mayuresh Enclave, Sector 20, Plat A-211, Nerul west,Navi-Mumbai,403706|Mumbai|Maharastra|India|403706|+91|222|30988373|9812345678|N";

@@ -25,14 +25,14 @@
             int uploadId = Integer.parseInt(request.getParameter("id"));
          
         Connection conn = null; // connection to the database
-         
+         String from=request.getParameter("from");
         try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             conn = Database.getConnection();
  
             // queries the database
-            String sql = "SELECT pdf FROM notifications WHERE id = ?";
+            String sql = "SELECT pdf FROM "+from+" WHERE id = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, uploadId);
  
@@ -51,14 +51,14 @@
                 // sets MIME type for the file download
                 String mimeType = context.getMimeType(fileName);
                 if (mimeType == null) {        
-                    mimeType = "application/octet-stream";
+                    mimeType = "application/PDF";
                 }              
                  
                 // set content properties and header attributes for the response
                 response.setContentType(mimeType);
                 response.setContentLength(fileLength);
                 String headerKey = "Content-Disposition";
-                String headerValue = String.format("attachment; filename=\"%s\"", fileName);
+                String headerValue = String.format("inline; filename=\"%s\"", fileName);
                 response.setHeader(headerKey, headerValue);
  
                 // writes the file to the client

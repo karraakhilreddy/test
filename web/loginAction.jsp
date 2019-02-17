@@ -53,7 +53,7 @@
                                             logs l=new logs();
                                             
                                             l.updateLog(cCode, "loginAction.jsp", "Login",ipAddress);
-                                            
+                                            session.setAttribute("userId", cCode);
                                             response.sendRedirect("basicDetails.jsp");
 
                                         }else
