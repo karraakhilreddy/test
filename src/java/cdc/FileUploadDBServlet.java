@@ -61,7 +61,7 @@ public class FileUploadDBServlet extends HttpServlet {
                                     conn = Database.getConnection();
 
                                     // constructs SQL statement
-                                    String sql = "INSERT INTO `cdc`.`notifications`(`Notification`,`of`,`pdf`,`date`)VALUES(?,?,?,?);";
+                                    String sql = "INSERT INTO `cdc`.`notifications`(`Notification`,`off`,`pdf`,`date`)VALUES(?,?,?,?);";
                                     PreparedStatement statement = conn.prepareStatement(sql);
                                     statement.setString(1, firstName);
                                     statement.setString(2, lastName);

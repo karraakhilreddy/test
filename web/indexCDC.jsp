@@ -14,7 +14,7 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     
-   <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">
+  <!-- <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">-->
     <link rel="stylesheet" type="text/css" href="CSS/breakDown.css"> 
     <style>
         table{
@@ -25,7 +25,10 @@
           
         }
         tr{
-            height: 40;
+            height: 35px;
+        }
+        tr:hover{
+            height: 45px;
         }
         tr:nth-child(even) 
         {
@@ -35,18 +38,18 @@
         {
             background-color: #c4dce7;
         }
-       a{
+        a{
             font-family:Verdana, Arial, Helvetica, sans-serif;
             color:#044df2;
-            font-size:14px;
+            font-size:11px;
             text-decoration:none;
             line-height:20px;
          }
 
-            a:hover{
+        a:hover{
             font-family:Verdana, Arial, Helvetica, sans-serif;
-            color:#ff0000;
-            font-size:14px;
+            color:orangered;
+            font-size:12px;
             text-decoration:none;
        }
     </style>
@@ -145,7 +148,7 @@
               <%
                                 try{
                                         int sno=1;
-                                        String query="select * from notifications order by id desc;";
+                                        String query="select * from notifications where off='CDC' order by id desc ;";
                                          Connection conn=Database.getConnection();
                                          Statement stmt=conn.createStatement();
                                          ResultSet rs=stmt.executeQuery(query);
@@ -155,7 +158,7 @@
 
                                                 <tr>
                                                     
-                                                    <td><a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a>
+                                                    <td>&nbsp;<a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a>
                                                         <% if(sno<=3){ %><img src="IMG/new_icon_red.gif"> <% } %></td>
                                                     
                                                 </tr>
