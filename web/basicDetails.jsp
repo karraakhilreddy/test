@@ -106,7 +106,11 @@
 
      
     </script>
-    
+    <style>
+        sub{
+            
+        }
+    </style>
 </head>
 
 <body onload="openCont(event, 'generalDetails','but1')" >
@@ -148,11 +152,11 @@
              
                  
         <div class="tab">
-  <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">General Details </button>
-  <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Building Details </button>
- <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Staff Details </button>
-  <button  id="button4" class="tablinks" onclick="openCont(event, 'corpusFundDetails')">CorpusFundDetails </button>
-  <button  id="button5" class="tablinks" onclick="openCont(event, 'additionalDetails')">Additional Details </button>
+            <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">General Details <sub>(Step 1)</sub></button>
+  <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Building Details <sub>(Step 2)</sub></button>
+ <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Staff Details &nbsp;<sub>(Step 3)</sub></button>
+  <button  id="button4" class="tablinks" onclick="openCont(event, 'corpusFundDetails')">CorpusFundDetails <sub>(Step 4)</sub></button>
+  <button  id="button5" class="tablinks" onclick="openCont(event, 'additionalDetails')">Additional Details <sub>(Step 5)</sub></button>
  
 </div>
          <% 
@@ -260,7 +264,7 @@
                          
                          <tr>
                              <td>Mobile Number of the Secretary:</td>  
-                             <td><input type="text"  name="secPhNo" pattern="(([6-9][0-9]).{8,10})" title="enter a valid Indian Phone Number" value="<%=rs.getLong("secPhNo") %>" required="required"></td> 
+                             <td><input type="text"  name="secPhNo" pattern="(([6-9][0-9]).{8,8})" title="enter a valid Indian Phone Number" value="<%=rs.getLong("secPhNo") %>" required="required"></td> 
                          </tr>
                          
                          <tr>
@@ -270,7 +274,7 @@
                           
                          <tr>
                             <td>Mobile Number of the Principal:</td>
-                            <td><input type="text" name="cPPhNo" pattern="(([6-9][0-9]).{8,10})" title="enter a valid Indian Phone Number" value="<%=rs.getLong("cPPhNo")%>" required="required" pattern="(([6-9][0-9]).{8,10})" ></td>
+                            <td><input type="text" name="cPPhNo" pattern="(([6-9][0-9]).{8,8})" title="enter a valid Indian Phone Number" value="<%=rs.getLong("cPPhNo")%>" required="required" pattern="(([6-9][0-9]).{8,10})" ></td>
                          </tr>
                          
     </table>
@@ -317,15 +321,15 @@
              <td><input type="number"  id="lPeriod" name="lPeriod"   value="<%=rs.getInt("lPeriod") %>" ></td>
          </tr>              
          <tr>
-             <td>&nbsp;SurveyNo</td>
+             <td>&nbsp;Building SurveyNo</td>
              <td><input type="text" id="lSurveyNo" name="lSurveyNo"   value="<%=rs.getString("lSurveyNo") %>" class="hidden"></td>
          </tr>    
          <tr>
-             <td> &nbsp; RegNo</td>
+             <td> &nbsp;Building RegNo</td>
              <td><input type="text" name="lRegNo" id="lRegNo"    value="<%= rs.getString("lRegNo") %>" ></td>
          </tr>
          <tr>
-             <td>&nbsp;RegDate ]</td>
+             <td>&nbsp;Building RegDate ]</td>
              <td><input type="date" name="lRegDate"   value="<%=rs.getDate("lRegDate") %>" class="hidden"  onclick="dateset();" id="datefield1" min="1899-11-11" max="2019-02-12"></td>
          </tr>
                   
