@@ -73,13 +73,15 @@
                     
                     String name=request.getParameter("name");
                     String  requestparameter = "1000629|DOM|IN|INR|"+amount+"|Other|http://localhost:8084/test_1_1_1/paymentGatewayResponse.jsp|http://localhost:8084/test_1_1_1/paymentGatewayFailureResponse.jsp|SBIEPAY|"+randomNo+"|2|NB|ONLINE|ONLINE";
-                    //http://162.241.200.162:8080/test_1_1_1/paymentGatewayResponse.jsp
-                    //String billingDtls= cCode+"|Telangana|Warangal|506002|"+name+"|+91|222|1234567|9892456281|biller@gmail.com|N";
-                    //String shippingDtls="ShipperName|Mayuresh Enclave, Sector 20, Plat A-211, Nerul west,Navi-Mumbai,403706|Mumbai|Maharastra|India|403706|+91|222|30988373|9812345678|N";
-      
+                    
                     //String    Key="fBc5628ybRQf88f/aqDUOQ==";
-                    String    Key="Jc9eODmDTTDxIxhzzJemDEtWXd4DZg7eJMtniRPcwh0=";
+                    
+                    String    Key1="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";//key from panel
+                    String    Key2="Fbi1P7Nc7R1Yd7mgVB7EYQ=="; // key from pdf
+                    //Hz72KWhj0LW9Mc/W9Rq1tA==
+                    //Hz72KWhj0LW9Mc/W9Rq1tA==
             
+                        String   Key = AES128Bit.decrypt(Key1, Key2);
             
                         String   EncryptTrans = AES128Bit.encrypt(requestparameter, Key);
                         

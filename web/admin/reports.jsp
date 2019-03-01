@@ -52,6 +52,9 @@
                 <tr>
                 <td>Logs</td>
                 <td><input type="submit" name="button" value="Logs"></td>
+                <tr>
+                <td>Logs</td>
+                <td colspan="2"><a href="viewDocuments.jsp">View Documents</a></td>
             </tr>
             </table>
             

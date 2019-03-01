@@ -110,11 +110,11 @@
                     <div class="details">
                         <h3>Arvind<br><span>Documentation</span></h3>
                         <ul>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100010589497046"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            <li><a href="https://plus.google.com/u/0/106478810765748389579?tab=mX"><i class="fab fa-google-plus-g"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://twitter.com/VullengulaA"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div></div>
             <div style="clear:both;"></div>

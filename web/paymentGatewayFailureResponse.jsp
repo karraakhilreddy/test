@@ -76,7 +76,11 @@
                     String cCode=(String)session.getAttribute("cCode");
                     String encData=(String)request.getParameter("encData");
                     //"7OuNG4OlchGQjNFa6cbaTH6jz4rKiRqweXSiTK0gBwBcByVP0Is222w+xPJXrnbkY/p5WA2TFPR7wl9K60cobi/7iqtma/gf42Okz3eiClxO29uMaMPMq8llV50drYvY4+I2LG6CdUkdMh/6T+NipOVH3as172QI6n8IjUSF/DiAuO/mh35uOy++dxu1HHa11/DNK95tdIKIf6MyW0zrWzgQAI54GVlqjlpZCxWSOeiK8EZsRDtw/JBgxIZE3r5qxW0UhEsXig8oMhnp9PEOhToNjSmZWLrmMdbnPWVWTPs="; //
-                    String    Key="fBc5628ybRQf88f/aqDUOQ==";
+                    String    Key1="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";//key from panel
+                    String    Key2="Fbi1P7Nc7R1Yd7mgVB7EYQ=="; // key from pdf
+                    
+                    
+                    String   Key = AES128Bit.decrypt(Key1, Key2);
                     //System.out.print(encData);
                     System.out.print("<br>");
                     String   EncryptTrans = AES128Bit.decrypt(encData, Key);

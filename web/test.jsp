@@ -15,12 +15,12 @@
     <body>
         <h1>Hello World!</h1>
         <%
-                 String    Key="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";
+                 String    Key1="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";
                  String    Key2="Fbi1P7Nc7R1Yd7mgVB7EYQ==";
             
             
-                        String   EncryptTrans = AES128Bit.encrypt(Key2, Key);
-                        System.out.println(EncryptTrans);
+                        String   Key = AES128Bit.decrypt(Key1, Key2);
+                        out.println(Key);
         %>
     </body>
 </html>

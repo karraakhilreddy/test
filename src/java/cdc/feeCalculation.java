@@ -437,7 +437,7 @@ public class feeCalculation {
                       rs2=stmt2.executeQuery(query2);
                      if(rs2.next())
                      { 
-                                amount=amount+(rs2.getInt("tCourse")*15000);
+                                aamount=aamount+(rs2.getInt("tCourse")*15000);
                       }
                       rs2.close();
                      stmt2.close();
