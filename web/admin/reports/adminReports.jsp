@@ -28,7 +28,15 @@
         <center>
     <div class="mainBackground">
         
-        
+        <nav class="nav2">
+                        <table>
+                             <tr>
+                                 
+                                 <td><button onclick="location.href = '../aWelcome.jsp'">Home</button></td>
+                                 <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
+                            </tr>
+                        </table>
+                    </nav>
          <h1>Reports</h1>
         <form action="generateReportsPDF.jsp" method="post">
         <table>
@@ -46,7 +54,7 @@
             </tr>
             <tr>
                 <td>Logs</td>
-                <td><input type="submit" name="button" value="Logs"></td>
+                <td><input type="submit" name="button" value="cLogs"></td>
             </tr>
             <tr>
                 <td>Upload Notification</td>
@@ -74,7 +82,7 @@
 <div class="footer_center">
     <div > 
 <div class="left">Copyrights reserved by Kakatiya University</div>
-<div class="right"><a href="developers.jsp">Developers</a></div>
+<div class="right"><a href="../../developers.jsp">Developers</a></div>
 </div>
 </div>
 </div>

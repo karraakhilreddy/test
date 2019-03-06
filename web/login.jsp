@@ -63,7 +63,8 @@
     <nav>
          <nav>
         <div class="navbuttons">
-             <ul><button class="tablinks" onclick="window.open('aboutCDC.html');" ><li>About</li></button>
+             <ul><button class="" onclick="window.location='indexCDC.jsp'" ><li>Notifications</li></button>
+                 <button class="" onclick="window.location='aboutCDC.html'" ><li>About</li></button>
                 <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 
@@ -90,11 +91,11 @@
             <fieldset>
                 <img src="IMG\userimage.png" height="80" width="120" align="inherit"/><br/><br/>
             
-                <label><b>College Code</b></label><input type="text" name="cCode"  value="567" style="border:none;" placeholder=" College Code" required="required" >
+                <label><b>College Code</b></label><input type="text" name="cCode"   style="border:none;" placeholder=" College Code" required="required" >
             
 
          <br/><br/>
-         <label><b>Password</b></label> <input type="password" name="password" value="qwertyuiop" required="required"  placeholder="Password" >
+         <label><b>Password</b></label> <input type="password" name="password"  required="required"  placeholder="Password" >
          <br/><br/>
          <input type="submit" name="button" value="login" style="background-color:deepskyblue; height : 45px ;width : 240px;color: white; border-radius:0px; cursor:pointer" >
          <p><a href="temp/forgotPassword.html" style="text-decoration:none;">Forgot/Generate Password ?</a> </p>

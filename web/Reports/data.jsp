@@ -84,5 +84,5 @@ document.close();
 System.out.println(f);
 %>
     </TABLE>
-    <a href="download.jsp?ff=<%=f%>">Download the  document</a>
+    <a href="../download.jsp?ff=<%=f%>">Download the  document</a>
     </center>

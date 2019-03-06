@@ -387,7 +387,7 @@
 <div class="footer_center">
     <div > 
 <div class="left">Copyrights reserved by Kakatiya University</div>
-<div class="right"><a href="developers.jsp">Developers</a></div>
+<div class="right"><a href="../developers.jsp">Developers</a></div>
 </div>
 </div>
 </div>

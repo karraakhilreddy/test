@@ -27,13 +27,11 @@
      <div class="main">    
         <center>
     <div class="mainBackground">
-         <nav class="nav2">
+        <nav class="nav2">
                         <table>
                              <tr>
-                                 <td><button  onclick="location.href = '../basicDetails.jsp';">COLLEGE DETAILS</button></td>
-                                 <td><button  onclick="location.href = '../facultyDetails.jsp'">FACULTY DETAILS</button></td>
-                                 <td><button onclick="location.href = '../courseDetails.jsp'">COURSE DETAILS</button></td>
-                                 <td><button class="active" onclick="location.href = '../reports.jsp'">REPORTS</button></td>
+                                 
+                                 <td><button onclick="location.href = 'adminReports.jsp'">Back</button></td>
                                  <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
@@ -419,6 +417,85 @@
                     
                     
                     break;
+                    case "cLogs" :
+                    
+                    rs = st.executeQuery("SELECT * FROM cdc.logs;");
+                    %>
+        
+                          <table width="100%" border="0">
+                           
+                            </table>
+                                    <table width="100%" border="1">
+                           
+                            </table><br>
+                        <center>
+                        <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
+                            <tr bgcolor="deepskyblue">
+                                <td><b>College Code</b></td>
+                                <td><b>Time</b></td>
+                                <td><b>IP</b></td>
+                                <td><b>In</b></td>
+                                <td><b>Action</b></td>
+                                
+
+                                </tr>
+                    <%
+
+                    
+                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    document.open();
+
+                    headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};
+                    table4 = new PdfPTable(headers4.length);
+                                for (int i = 0; i < headers4.length; i++) {
+                                    String header = headers4[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table4.addCell(cell);
+                                }
+                                table4.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("cCode");
+                    String st2=rs.getString("time");
+                    String st3=rs.getString("ip");
+                    String st4=rs.getString("in");
+                    String st5=rs.getString("action");
+                    
+                    table4.addCell(st1);
+                    table4.addCell(st2);
+                    table4.addCell(st3);
+                    table4.addCell(st4);
+                    table4.addCell(st5);
+                    
+                    table4.completeRow();
+                        %>        <tr >
+                                <td><font size="2"><%=st1%></font></td>
+                                <td><font size="2"><%=st2%></font></td>
+                                <td><font size="2"><%=st3%></font></td>
+                                <td><font size="2"><%=st4%></font></td>
+                                <td><font size="2"><%=st5%></font></td>
+                                
+                            </tr>
+
+                    <% 
+                    }
+                    document.add(table4);
+                    document.close();
+                    System.out.println(f);
+                    %>
+                        </TABLE>
+                         <a href="download.jsp?ff=<%=f%>">Download the  as PDF</a>
+                        <a href="excelData.jsp?button=Logs">Download as Excel file</a>
+                        </center>
+        
+                    <%
+                    
+                   
+                    
+                    
+                    
+                    break;
                      case "Basic":
                     
                         
@@ -474,7 +551,7 @@
                     document.add(Chunk.NEWLINE);
 
 
-                    Image image = Image.getInstance("http://localhost:8084/test_1_1_1/IMG/1.png");
+                    Image image = Image.getInstance("https://cdc-aa.kakatiya.ac.in/IMG/1.png");
                      image.scaleAbsolute(80f, 80f);
                     image.setAbsolutePosition(85f, 740f);
                     document.add(image);
@@ -1226,6 +1303,11 @@
 
 
                     break;
+                    case "adminCollege" :
+                                
+                                response.sendRedirect("excelData.jsp?button=adminCollege");
+                                
+                                break;
             }
         
         
@@ -1236,7 +1318,7 @@
         </center></div>
        
               
-                  
+        <br><br><br><br>   
             
                    
                 
@@ -1249,7 +1331,7 @@
 <div class="footer_center">
     <div > 
 <div class="left">Copyrights reserved by Kakatiya University</div>
-<div class="right"><a href="developers.jsp">Developers</a></div>
+<div class="right"><a href="../../developers.jsp">Developers</a></div>
 </div>
 </div>
 </div>

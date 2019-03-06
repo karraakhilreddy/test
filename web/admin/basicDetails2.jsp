@@ -93,7 +93,7 @@
      
     </script>
 </head>
-<body onload="openCont(event, 'generalDetails','but1')">
+<body >
 <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div >
            <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>

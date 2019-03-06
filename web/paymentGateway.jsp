@@ -27,8 +27,8 @@
     <nav>
         <div class="navbuttons">
              <ul>
-                <button class="active" onclick="window.location='home.jsp'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+                <button class="tablinks" onclick="window.location='home.jsp'" ><li>About</li></button>
+                <button class="active" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 <button class="tablinks" onclick="window.location='dean.jsp'"><li>Dean</li></button>
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -72,7 +72,7 @@
                     
                     
                     String name=request.getParameter("name");
-                    String  requestparameter = "1000629|DOM|IN|INR|"+amount+"|Other|http://localhost:8084/test_1_1_1/paymentGatewayResponse.jsp|http://localhost:8084/test_1_1_1/paymentGatewayFailureResponse.jsp|SBIEPAY|"+randomNo+"|2|NB|ONLINE|ONLINE";
+                    String  requestparameter = "1000629|DOM|IN|INR|"+amount+"|Other|https://cdc-aa.kakatiya.ac.in/paymentGatewayResponse.jsp|https://cdc-aa.kakatiya.ac.in/paymentGatewayFailureResponse.jsp|SBIEPAY|"+randomNo+"|2|NB|ONLINE|ONLINE";
                     
                     //String    Key="fBc5628ybRQf88f/aqDUOQ==";
                     
@@ -109,11 +109,11 @@
                         <td><%=amount %></td>
                     </tr>
                 </table>
-                <form name="ecom" method="post" action="https://test.sbiepay.com/secure/AggregatorHostedListener">
+                <form name="ecom" method="post" action="https://www.sbiepay.com/secure/AggregatorHostedListener">
                         <input type="hidden" name="EncryptTrans" value="<%= EncryptTrans %>">
                         
                        <!-- <input type="text" name="MultiAccountInstructionDtls" value="//= EncryptTrans2 %>" hidden> -->
-                        <input type="hidden" name="merchIdVal" value ="1000003"/>
+                        <input type="hidden" name="merchIdVal" value ="1000629"/>
                         <input type="submit" name="submit" value="Submit"> 
                 </form>
         

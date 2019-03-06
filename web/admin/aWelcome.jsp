@@ -42,7 +42,7 @@
     <div class="main">    
         <center>
     <div class="mainBackground">
-        <h1>Hello World!</h1>
+        <h1>Hello Admin!</h1>
         
         <form action="basicDetails.jsp" method="post">
             <table>
@@ -77,7 +77,7 @@
 <div class="footer_center">
     <div > 
 <div class="left">Copyrights reserved by Kakatiya University</div>
-<div class="right"><a href="developers.jsp">Developers</a></div>
+<div class="right"><a href="../developers.jsp">Developers</a></div>
 </div>
 </div>
 </div>

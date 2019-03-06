@@ -35,7 +35,7 @@
         <%}else if(request.getParameter("merchantOrderID")!=null){
 
                 String merchantOrderID=request.getParameter("merchantOrderID");
-                String requestparameter = "|1000629|"+merchantOrderID+"|http://localhost:8084/test_1_1_1/doubleVerificationReport.jsp";
+                String requestparameter = "|1000629|"+merchantOrderID+"|https://cdc-aa.kakatiya.ac.in/doubleVerificationReport.jsp";
 
                 String    Key1="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";//key from panel
                     String    Key2="Fbi1P7Nc7R1Yd7mgVB7EYQ=="; // key from pdf

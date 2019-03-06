@@ -121,7 +121,8 @@
 
     <nav>
         <div class="navbuttons">
-             <ul><button class="" onclick="window.location='aboutCDC.html'" ><li>About</li></button>
+             <ul><button class="active" onclick="window.location='indexCDC.jsp'" ><li>Notifications</li></button>
+                 <button class="" onclick="window.location='aboutCDC.html'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 

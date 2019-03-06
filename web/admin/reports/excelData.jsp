@@ -164,7 +164,7 @@ File tempFile = File.createTempFile("report", ".xls");
                             response.sendRedirect("download.jsp?ff="+filename);
                             
                             } catch ( Exception ex ) {
-
+                                    out.print(ex.getMessage());
                         } 
                 
                 
@@ -237,12 +237,16 @@ File tempFile = File.createTempFile("report", ".xls");
                             response.sendRedirect("download.jsp?ff="+filename);
                             
                             } catch ( Exception ex ) {
-                                System.out.println(ex.getMessage());
+                                out.println(ex.getMessage());
                         } 
                 
                 
                 
                 break;
+                
+                
+               
+                
                 case "adminCollege" :
                 
                
@@ -358,6 +362,7 @@ File tempFile = File.createTempFile("report", ".xls");
                             int index=3;
                             int sno=0;
                             String name="";
+                            try{
                             while(rs.next()) 
                             {
                                 System.out.println("<b>5</b>");
@@ -387,7 +392,7 @@ File tempFile = File.createTempFile("report", ".xls");
                             row.createCell((short) 20).setCellValue(rs.getInt("lPeriod"));
                             row.createCell((short) 21).setCellValue(rs.getString("lSurveyNo"));
                             row.createCell((short) 22).setCellValue(rs.getString("lRegNo"));
-                            row.createCell((short) 23).setCellValue(rs.getDate("lRegDate"));
+                            row.createCell((short) 23).setCellValue(rs.getString("lRegDate"));
                             row.createCell((short) 24).setCellValue(rs.getString("landSurveyNumber"));
                             row.createCell((short) 25).setCellValue(rs.getString("landDocNo"));
                             row.createCell((short) 26).setCellValue(rs.getString("landRegDate"));
@@ -432,24 +437,27 @@ File tempFile = File.createTempFile("report", ".xls");
                             row.createCell((short) 65).setCellValue(rs.getInt("noTeachingStaff"));
                             row.createCell((short) 66).setCellValue(rs.getInt("noNonTeachingStaff"));
                             row.createCell((short) 67).setCellValue(rs.getString("CFDNo"));
-                            row.createCell((short) 68).setCellValue(rs.getDate("CFDDate"));
+                            row.createCell((short) 68).setCellValue(rs.getString("CFDDate"));
                             row.createCell((short) 69).setCellValue(rs.getInt("CFDAmount"));
                             row.createCell((short) 70).setCellValue(rs.getString("CFDIssuingBank"));
-                            row.createCell((short) 71).setCellValue(rs.getDate("CFDMaturitydate"));
-                            row.createCell((short) 72).setCellValue(rs.getDate("CFDRenewalDate"));
+                            row.createCell((short) 71).setCellValue(rs.getString("CFDMaturitydate"));
+                            row.createCell((short) 72).setCellValue(rs.getString("CFDRenewalDate"));
                             row.createCell((short) 72).setCellValue(rs.getString("iAmount"));
                             
-                            row.createCell((short) 72).setCellValue(rs.getDate("iDate"));
+                            row.createCell((short) 72).setCellValue(rs.getString("iDate"));
                             row.createCell((short) 72).setCellValue(rs.getString("aAmount"));
-                            row.createCell((short) 72).setCellValue(rs.getDate("aDate"));
+                            row.createCell((short) 72).setCellValue(rs.getString("aDate"));
                             
                             //out.print(rs.getString("cCode"));
                             index++;
                             }
+                            }catch(Exception e){
+                                System.out.print(e.getMessage());
+                            }
                             
                             HSSFSheet sheet = hwb.createSheet("Courses");
                             
-                            
+                            System.out.println("<b>6</b>");
                             
                             
                              strQuery = "SELECT cdc_college_details.cCode,cName,cType,cCourse,cCombination,cMedium,cIntakeSanctioned,cStudentsAdmitted,cStatus FROM  cdc_college_details  LEFT JOIN  courses ON cdc_college_details.ccode=courses.cCode Order by cdc_college_details.cCode ";
@@ -458,7 +466,7 @@ File tempFile = File.createTempFile("report", ".xls");
                              rs = stmt.executeQuery(strQuery);
 
                             
-                           
+                           System.out.println("<b>7</b>");
 
                             rowhead = sheet.createRow((short)2);
                             rowhead.createCell((short) 0).setCellValue("Code");
@@ -478,7 +486,7 @@ File tempFile = File.createTempFile("report", ".xls");
                             System.out.println("<b>Your excel file has been generated</b>");
                             
                            
-
+                            System.out.println("<b>8</b>");
                             
 
                              index=3;
@@ -486,6 +494,7 @@ File tempFile = File.createTempFile("report", ".xls");
                              name="";
                             while(rs.next()) 
                             {
+                                System.out.println("<b>9</b>");
                                 System.out.println("<b>Your excel file has been generated</b>");
                             sno++;
 
@@ -505,7 +514,7 @@ File tempFile = File.createTempFile("report", ".xls");
                              sheet = hwb.createSheet("Faculty");
                             
                             
-                            
+                            System.out.println("<b>9</b>");
                             
                              strQuery = "SELECT cdc_college_details.cCode,cName,faculty.tType,tName,tDesignation,tQualification,tDate,tNature,tModeApp,tScale,tBank,tModePay,tPan,tAadhar,tMobile FROM  cdc_college_details  LEFT JOIN  faculty ON cdc_college_details.cCode=faculty.cCode Order by cdc_college_details.cCode ";
                             System.out.println("<b>Your excel file has been generated</b>");
@@ -583,5 +592,58 @@ File tempFile = File.createTempFile("report", ".xls");
                 
                 
                 break;
+                  case "Logs" :
+                            try{
+
+
+                            conn = Database.getConnection();
+
+                            Statement stmt = conn.createStatement();
+                            String strQuery = "SELECT * FROM cdc.logs;";
+
+
+                            ResultSet rs = stmt.executeQuery(strQuery);
+
+                            HSSFWorkbook hwb = new HSSFWorkbook();
+                            HSSFSheet sheet = hwb.createSheet("new sheet");
+
+                            HSSFRow rowhead = sheet.createRow((short)2);
+                            rowhead.createCell((short) 0).setCellValue("SNo");
+                            rowhead.createCell((short) 1).setCellValue("College Code");
+                            rowhead.createCell((short) 2).setCellValue("Time");
+                            rowhead.createCell((short) 3).setCellValue("IP");
+                            rowhead.createCell((short) 4).setCellValue("In");
+                            rowhead.createCell((short) 5).setCellValue("Action");
+                                                       
+
+                            int index=3;
+                            int sno=0;
+                            String name="";
+                            while(rs.next()) 
+                            {
+                            sno++;
+
+                            HSSFRow row = sheet.createRow((short)index);
+                            row.createCell((short) 0).setCellValue(sno);
+                            row.createCell((short) 1).setCellValue(rs.getString("cCode"));
+                            row.createCell((short) 2).setCellValue(rs.getString("time"));
+                            row.createCell((short) 3).setCellValue(rs.getString("IP"));
+                            row.createCell((short) 4).setCellValue(rs.getString("in"));
+                            row.createCell((short) 5).setCellValue(rs.getString("action"));
+                            
+                            index++;
+                            }
+                            FileOutputStream fileOut = new FileOutputStream(filename);
+                            hwb.write(fileOut);
+                            fileOut.close();
+                            out.println("<b>Your excel file has been generated</b>");
+                            response.sendRedirect("download.jsp?ff="+filename);
+                            
+                            } catch ( Exception ex ) {
+                                out.print(ex.getMessage());
+                        } 
+                        break;
+                        
+          
         }
 %>

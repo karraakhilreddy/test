@@ -204,11 +204,11 @@
              </tr>
          <tr>
             <td>Aadhar card Number</td>
-             <td><input type="text" pattern="(([1-9][0-9]).{10,12})" name="tAadhar" required="required"></td>
+             <td><input type="text" pattern="(([1-9][0-9]).{10,10})" name="tAadhar" required="required"></td>
              </tr>
          <tr>
             <td>Mobile No</td>
-            <td><input type="text" pattern="(([6-9][0-9]).{8,10})" name="tMobile" required="required"></td>
+            <td><input type="text" pattern="(([6-9][0-9]).{8,8})" name="tMobile" required="required"></td>
        </tr>
        
             

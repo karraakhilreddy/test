@@ -174,7 +174,7 @@
                     document.add(Chunk.NEWLINE);
 
 
-                    Image image = Image.getInstance("http://localhost:8084/test_1_1_1/IMG/1.png");
+                    Image image = Image.getInstance("https://cdc-aa.kakatiya.ac.in/IMG/1.png");
                      image.scaleAbsolute(80f, 80f);
                     image.setAbsolutePosition(85f, 740f);
                     document.add(image);

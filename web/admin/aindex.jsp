@@ -69,7 +69,8 @@
     <nav>
         <div class="navbuttons">
              <ul>
-                <button class="tablinks" onclick="window.open('../aboutCDC.html');" ><li>About</li></button>
+                <button class="" onclick="window.location='../indexCDC.jsp'" ><li>Notifications</li></button>
+                 <button class="" onclick="window.location='../aboutCDC.html'" ><li>About</li></button>
                 <button class="tablinks" onclick="window.location='../login.jsp'"><li>College Login</li></button>
                 <button class="active" onclick="window.location='../admin/aindex.jsp'"><li>Admin Login</li></button>
                 
@@ -124,7 +125,7 @@
 <div class="footer_center">
     <div > 
 <div class="left">Copyrights reserved by Kakatiya University</div>
-<div class="right"><a href="developers.jsp">Developers</a></div>
+<div class="right"><a href="../developers.jsp">Developers</a></div>
 </div>
 </div>
 </div>
