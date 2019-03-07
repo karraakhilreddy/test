@@ -53,6 +53,10 @@
                 <td>Logs</td>
                 <td><input type="submit" name="button" value="Logs"></td>
                 <tr>
+                <tr>
+                <td>Deficiency Report</td>
+                <td><input type="submit" name="button" value="deficiencyReport"></td>
+                <tr>
                 <td>Logs</td>
                 <td colspan="2"><a href="viewDocuments.jsp">View Documents</a></td>
             </tr>

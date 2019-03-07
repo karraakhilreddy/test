@@ -70,7 +70,15 @@ a{
                             </tr>
                         </table>
                     </nav>
-        
+        <nav class="nav2">
+                        <table>
+                             <tr>
+                                 
+                                 <td><button onclick="location.href = 'reports.jsp'">Back</button></td>
+                                 <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
+                            </tr>
+                        </table>
+                    </nav>
                     <h1>Uploaded files</h1>
             
             <br> <br>

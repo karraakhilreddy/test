@@ -608,7 +608,55 @@
                             }
                             
                     break;  
- 
+                      case "Submit Report" :
+                    
+                    String number=(String)request.getParameter("number");
+                    String dDdate=(String)request.getParameter("date");
+                    String report=(String)request.getParameter("report");
+                    String aCcode=(String)request.getParameter("aCcode");
+                   
+                    //System.out.println(type+"\n"+course+"\n"+combination+"\n"+medium+"\n"+intake+"\n");
+                    insertTableSQL = "INSERT INTO `cdc`.`defieciencyreports`(`cCode`,`reportNo`,`date`,`report`)VALUES(?,?,?,?);";
+
+                    ps=con.prepareStatement(insertTableSQL);
+                    
+
+                    try {
+                                    
+
+                                                  ps.setString(1, aCcode);
+                                                  ps.setString(2, number);
+                                                  ps.setString(3, dDdate);
+                                                  ps.setString(4, report);
+                                                  
+                                                  // execute insert SQL stetement
+                                                  ps.executeUpdate();
+                                                   logs l=new logs();
+                                                    l.updateLog(String.valueOf(cCode), "courseDetails.jsp", "Deficiency report inserted",ipAddress); 
+                                                  
+                                                  System.out.println("Record is inserted into DBUSER table!");
+                                                    %> <script>alert ( "Report Inserted." );
+                                            window.location='admin/courseDetails.jsp';</script><%
+                                    
+
+                    } catch (Exception e) {
+                                 %> <script>alert ( "Update failed :<%=e.getMessage()%>" );
+                                            window.location='admin/courseDetails.jsp';</script><%
+                               System.out.println(e.getMessage());
+
+                    } finally {
+
+                            if (ps != null) {
+                                     ps.close();
+                            }
+
+                            if (con != null) {
+                                     con.close();
+                            }
+                              
+                           
+                    }
+                    break;   
                     case "delete" :
                     
                       String place=(String)request.getParameter("place");

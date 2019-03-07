@@ -1,3 +1,4 @@
+<%@page import="com.lowagie.text.pdf.draw.VerticalPositionMark"%>
 <%@page import="java.sql.*"%>
 <%@page import="cdc.Database"%>
 <%@ page import="java.io.*"%>
@@ -31,7 +32,7 @@
                         <table>
                              <tr>
                                  
-                                 <td><button onclick="location.href = 'adminReports.jsp'">Back</button></td>
+                                 <td><button onclick="location.href = '../reports.jsp'">Back</button></td>
                                  <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
@@ -1307,7 +1308,67 @@
                                 
                                 response.sendRedirect("excelData.jsp?button=adminCollege");
                                 
-                                break;
+                    break;
+                    
+                    case "deficiencyReport":
+                    
+                        dt = new java.util.Date();
+
+            sdf = new java.text.SimpleDateFormat("yyyy");
+
+             currentYear = sdf.format(dt);
+             nextYear=Integer.parseInt(currentYear)+1;
+             previousYear=Integer.parseInt(currentYear)-1;
+                   // rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
+                   
+
+                    
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
+                    document.open();
+
+                   
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\tPROF.CH.RAJESHAM,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tOffice of the Dean.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\tM.Com,MBA,M.Phil,Ph. D.,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCOLLEGE DEVELOPMENT COUNCIL.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDEAN,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tKakatiya University.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVidyaranyapuri, Hanamkonda.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWarangal-506009 Telangana");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    image = Image.getInstance("https://cdc-aa.kakatiya.ac.in/IMG/1.png");
+                     image.scaleAbsolute(80f, 80f);
+                    image.setAbsolutePosition(250f, 740f);
+                    document.add(image);
+                    
+                    
+                     p=new Paragraph("-------------------------------------------------------------------------------------------------------------------------------\n"
+                     + "Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com\n"
+                     + "-------------------------------------------------------------------------------------------------------------------------------");
+                     //Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    
+                    document.close();
+                    System.out.println(f);
+                    response.sendRedirect("download.jsp?ff="+f);
+                   
+                    
+
+                     
+                    break;
             }
         
         
