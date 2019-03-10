@@ -9,6 +9,12 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="../../CSS/indexCSS.css">
+        
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 </head>
 <body >
   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
@@ -28,7 +34,15 @@
         <center>
     <div class="mainBackground">
         
-        
+          <nav class="nav2">
+                        <table>
+                             <tr>
+                                 
+                                 <td><button onclick="goBack()">Go Back</button></td>
+                                 <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
+                            </tr>
+                        </table>
+                    </nav>
          
          <center>
         <h1>File Upload to Database Demo</h1>

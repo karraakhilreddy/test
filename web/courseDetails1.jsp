@@ -63,14 +63,14 @@ function myFunction() {
              
                  
         <div class="tab">
-  <button id="button1"  class="tablinks" onclick="location.href='courseDetails.jsp'">Existing Courses </button>
-  <button  id="button2" class="active" onclick="">New Courses</button>
+  <button id="button1"  class="tablinks" onclick="location.href='courseDetails.jsp'">Existing Courses this Academic Year</button>
+  <button  id="button2" class="active" onclick="">Courses for next Academic Year</button>
 
  
 </div>
  
     <form action=""  method="post">
-         <center><h1>Add new Course</h1></center>
+         <center><h1>Add Course</h1></center>
          <table border="1" id="facultytable"> 
              <tr>
                  <td>Type</td>
@@ -223,7 +223,7 @@ function myFunction() {
         
     
                           <br><br>
-                          <center><h1>Existing Course</h1></center>
+                          <center><h1>Courses List</h1></center>
                           
             <table border="1" id="facultytable">
                 

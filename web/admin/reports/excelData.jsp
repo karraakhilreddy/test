@@ -110,7 +110,7 @@ File tempFile = File.createTempFile("report", ".xls");
                             conn = Database.getConnection();
 
                             Statement stmt = conn.createStatement();
-                            String strQuery = "SELECT * FROM cdc.courses order by ctype asc;";
+                            String strQuery = "SELECT * FROM cdc.courses order by cStatus desc;";
 
 
                             ResultSet rs = stmt.executeQuery(strQuery);
@@ -126,11 +126,8 @@ File tempFile = File.createTempFile("report", ".xls");
                             rowhead.createCell((short) 4).setCellValue("Medium");
                             rowhead.createCell((short) 5).setCellValue("Intake");
                             rowhead.createCell((short) 6).setCellValue("Admitted");
-                            rowhead.createCell((short) 6).setCellValue("Status");
-                            rowhead.createCell((short) 7).setCellValue("Inspection Amount paid");
-                            rowhead.createCell((short) 8).setCellValue("Inspection Amount paid on");
-                            rowhead.createCell((short) 9).setCellValue("Affilation Amount paid");
-                            rowhead.createCell((short) 10).setCellValue("Affilation Amount paid on");
+                            rowhead.createCell((short) 7).setCellValue("Status");
+                            
                             
                             
                             
@@ -643,7 +640,69 @@ File tempFile = File.createTempFile("report", ".xls");
                                 out.print(ex.getMessage());
                         } 
                         break;
-                        
+                            
+            case "amount" :
+                
+                
+                
+                try{
+
+
+                            conn = Database.getConnection();
+
+                            Statement stmt = conn.createStatement();
+                            String strQuery = "SELECT ccode,cname,iamount,idate,aamount,adate FROM cdc.cdc_college_details;";
+
+
+                            ResultSet rs = stmt.executeQuery(strQuery);
+
+                            HSSFWorkbook hwb = new HSSFWorkbook();
+                            HSSFSheet sheet = hwb.createSheet("new sheet");
+
+                            HSSFRow rowhead = sheet.createRow((short)2);
+                            rowhead.createCell((short) 0).setCellValue("SNo");
+                            rowhead.createCell((short) 1).setCellValue("College Code");
+                            rowhead.createCell((short) 2).setCellValue("College Name");
+                            rowhead.createCell((short) 3).setCellValue("Inspection Amount");
+                            rowhead.createCell((short) 4).setCellValue("Date");
+                            rowhead.createCell((short) 5).setCellValue("Affiliation Amount");
+                            rowhead.createCell((short) 6).setCellValue("Date");
+                            
+                           
+                            
+
+                            int index=3;
+                            int sno=0;
+                            String name="";
+                            while(rs.next()) 
+                            {
+                            sno++;
+
+                            HSSFRow row = sheet.createRow((short)index);
+                            row.createCell((short) 0).setCellValue(sno);
+                            row.createCell((short) 1).setCellValue(rs.getString("cCode"));
+                            row.createCell((short) 2).setCellValue(rs.getString("cName"));
+                            row.createCell((short) 3).setCellValue(rs.getString("iamount"));
+                            row.createCell((short) 4).setCellValue(rs.getString("idate"));
+                            row.createCell((short) 5).setCellValue(rs.getString("aamount"));
+                            row.createCell((short) 6).setCellValue(rs.getString("adate"));
+                            
+                            
+                            index++;
+                            }
+                            FileOutputStream fileOut = new FileOutputStream(filename);
+                            hwb.write(fileOut);
+                            fileOut.close();
+                            out.println("<b>Your excel file has been generated</b>");
+                            response.sendRedirect("download.jsp?ff="+filename);
+                            
+                            } catch ( Exception ex ) {
+                                    out.print(ex.getMessage());
+                        } 
+                
+                
+                
+                break;
           
         }
 %>

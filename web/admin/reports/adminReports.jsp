@@ -41,20 +41,23 @@
         <form action="generateReportsPDF.jsp" method="post">
         <table>
             <tr>
-                <td>College</td>
-                <td><input type="submit" name="button" value="adminCollege"></td>
+                <td>Complete college-course-faculty</td>
+                <td><button type="submit" name="button" value="adminCollege">Download</button></td>
             </tr>
             <tr>
                 <td>College-course</td>
-                <td><input type="submit" name="button" value="adminCollegeCourse"></td>
+                
+                <td><button type="submit" name="button" value="adminCollegeCourse">View</button></td>
             </tr>
             <tr>
                 <td>College-Amount</td>
-                <td><input type="submit" name="button" value="adminCollegeAmount"></td>
+               
+                <td><button type="submit" name="button" value="adminCollegeAmount">View</button></td>
             </tr>
             <tr>
                 <td>Logs</td>
-                <td><input type="submit" name="button" value="cLogs"></td>
+                
+                <td><button type="submit" name="button" value="cLogs">View</button></td>
             </tr>
             <tr>
                 <td>Upload Notification</td>

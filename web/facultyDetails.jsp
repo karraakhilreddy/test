@@ -133,7 +133,7 @@
     
 
     <!--THE CONTAINER WHERE WE'll ADD THE DYNAMIC TABLE-->
-    <br><br><h2>Add New Faculty</h2><br><br>
+    <br><br><h2>Add Faculty</h2><br><br>
     <div id="cont"></div>
     <form action="upload.jsp" method="post" >
     <table  id="facultytable" >

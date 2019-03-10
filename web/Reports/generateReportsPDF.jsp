@@ -61,7 +61,14 @@
             String cCode=(String)session.getAttribute("cCode");
              File tempFile = File.createTempFile(cCode+"report", ".pdf");
             Document document = new Document(PageSize.A4);
-            
+            java.util.Date dt = new java.util.Date();
+
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
+
+            String currentYear = sdf.format(dt);
+            int nextYear=Integer.parseInt(currentYear)+1;
+            int previousYear=Integer.parseInt(currentYear)-1;
+            String cName=" ";
                     String f=tempFile.getAbsolutePath();//"D://table.pdf";
     
         
@@ -812,14 +819,7 @@
                     
                     
                         
-                    java.util.Date dt = new java.util.Date();
-
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy");
-
-            String currentYear = sdf.format(dt);
-            int nextYear=Integer.parseInt(currentYear)+1;
-            int previousYear=Integer.parseInt(currentYear)-1;
-            String cName=" ";
+                    
                    
                    
                 rs2 = st.executeQuery("SELECT iAmount FROM cdc_college_details where ccode="+cCode+";");
@@ -1683,6 +1683,150 @@
                     </table>
                     <%
                     
+                    break;
+                      case "adminCollege" :
+                                
+                                response.sendRedirect("excelData.jsp?button=adminCollege");
+                                
+                    break;
+                    
+                    case "deficiencyReport":
+                    
+                        dt = new java.util.Date();
+
+            sdf = new java.text.SimpleDateFormat("yyyy");
+
+             currentYear = sdf.format(dt);
+             nextYear=Integer.parseInt(currentYear)+1;
+             previousYear=Integer.parseInt(currentYear)-1;
+                   // rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
+                   
+
+                    
+                    PdfWriter.getInstance(document, new FileOutputStream(tempFile));
+                    document.open();
+
+                    //headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};
+                    table4 = new PdfPTable(2);
+                    
+                    //Font fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                     p=new Paragraph("College Development Council");
+                    //float fntSize, lineSpacing;
+                    fntSize = 15f;
+                    lineSpacing = 10f;
+                   /* p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);*/
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    p=new Paragraph(new Phrase(lineSpacing,"\n\nKakatiya University",FontFactory.getFont(FontFactory.COURIER_BOLD, 20f)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    p=new Paragraph(new Phrase(lineSpacing,"\nWarangal - 506009",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                     p=new Paragraph(new Phrase(lineSpacing,"\nDean, College Development Counciil.",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                     
+
+
+                    image = Image.getInstance("https://cdc-aa.kakatiya.ac.in/IMG/1.png");
+                     image.scaleAbsolute(80f, 80f);
+                    image.setAbsolutePosition(85f, 740f);
+                    document.add(image);
+                    
+                    
+                     p=new Paragraph("-------------------------------------------------------------------------------------------------------------------------------\n"
+                     + "Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com\n"
+                     + "-------------------------------------------------------------------------------------------------------------------------------");
+                     //Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    
+                     cCode=(String)session.getAttribute("cCode");
+                    rs = st.executeQuery("SELECT * FROM cdc.defieciencyreports where cCode="+cCode+";");
+                    
+                    String date="";
+                    String number="";
+                    String reports="";
+                    if(rs.next()){
+                    
+                        number=rs.getString("reportNo");
+                        date=rs.getString("date");
+                        reports=rs.getString("report");
+                    
+                    }
+                    rs = st.executeQuery("SELECT cAddress FROM cdc.cdc_college_details where cCode="+cCode+";");
+                    
+                    String address="";
+                    if(rs.next()){
+                        
+                        address=rs.getString("cAddress");
+                    
+                    }
+                    address=address.replace(",", "\n \t\t\t\t\t\t\t");
+                    p=new Paragraph("\t\t\t\t\t\t\tNo : "+number+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDate : "+date);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\n\t\t\t\t\t\t\tTo :\n \t\t\t\t\t\t\t"+address);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\tSub : DEFICIENCIES - Deficiencies pointed out by the Affiliiation inspection Committee\n\t\t\t\t\t\t\t\t\t\t\t\t for the academic year "+currentYear+"-"+nextYear+" - Regarding.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("*****");
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\tSir/Madam,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tWith reference to the subject cited, I am to inform you that the following are the\n\t\t\t\t\t\t\tdeficiencies pointed out by the Affiliation Inspection Committee pertaining to your College and\n\t\t\t\t\t\t\tsame were informed to you at the time of Annual-Affiliation-inspections for the academic year\n\t\t\t\t\t\t\t"+currentYear+"-"+nextYear);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    reports=reports.replace("\n", "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+reports);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tTherefore, you are informed to submit Compliance report with relevant supporting \n\t\t\t\t\t\t\tdocuments for the said deficiencies to the undersigned within 15- days from the date of\n\t\t\t\t\t\t\tissue of this letter, failing which affiliation cannot be extended for the next academic \n\t\t\t\t\t\t\tyear "+nextYear+"-"+(nextYear+1));
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDEAN");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\tCopy to :-\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t1) The Srcretary to the Vice-Chansellor, KU\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t2) The Stack File.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    
+                    document.close();
+                    System.out.println(f);
+                    response.sendRedirect("download.jsp?ff="+f);
+                   
+                    
+
+                     
                     break;
             }
 

@@ -4,6 +4,7 @@
     Author     : akhil
 --%>
 
+<%@page import="cdc.mail_Senddd"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="com.mysql.cj.util.StringUtils"%>
@@ -751,6 +752,36 @@
                                     }
                            break;
                     }
+                    break;
+                    
+
+                    case "masters" :
+                                String ccode=(String)request.getParameter("ccode");
+                                String csno=(String)request.getParameter("csno");
+                                String cname=(String)request.getParameter("cname");
+                                String cemail=(String)request.getParameter("cemail");
+                                String admin=(String)session.getAttribute("Admin_Role");
+                                try{
+                                    out.print("2");
+                                        Statement st = con.createStatement();
+                                        String query="update cdc_college_details set ccode='"+ccode+"', cname='"+cname+"', cemail='"+cemail+"' where sno="+csno+";";
+                                        System.out.println(query);
+                                        st.executeUpdate(query);
+                                        out.print("Deleted");
+                                         logs l=new logs();
+                                         l.updateLog(admin, "masters.jsp", "Updated masters",ipAddress); 
+                                         String msg="Dear sir/madam,\nYour request for updation of email/colle code is successsfull.\nNow you can generate the password from the website.\nThanks and Regards.\nDean CDC,KU";
+                                         mail_Senddd.sendMail(msg,"KKK",cemail); 
+                                        %> <script>alert ( "Updated :");
+                                            window.location='admin/masters.jsp';</script><%
+                                        
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                         
+
+
+
                     break;
             }
         %>

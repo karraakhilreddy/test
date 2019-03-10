@@ -66,8 +66,8 @@ function myFunction() {
              
                  
         <div class="tab">
-  <button id="button1"  class="active" onclick="">Existing Courses </button>
-  <button  id="button2" class="tablinks" onclick="location.href='courseDetails1.jsp'">New Courses</button>
+            <button id="button1"  class="active" onclick="">Existing Courses this Academic Year <br></button>
+  <button  id="button2" class="tablinks" onclick="location.href='courseDetails1.jsp'">Courses for next Academic Year</button>
 
  
 

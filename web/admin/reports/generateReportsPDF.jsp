@@ -10,6 +10,12 @@
 	 <meta charset="utf-8">
 	<title>cdc</title>
     <link rel="stylesheet" type="text/css" href="../../CSS/indexCSS.css">
+    
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 </head>
 <body >
   <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
@@ -32,7 +38,7 @@
                         <table>
                              <tr>
                                  
-                                 <td><button onclick="location.href = '../reports.jsp'">Back</button></td>
+                                 <td><button onclick="goBack()">Go Back</button></td>
                                  <td><button onclick="location.href = '../logout.jsp'">LOGOUT</button></td>
                             </tr>
                         </table>
@@ -60,7 +66,7 @@
             switch(button){
                 case "Course" :
                    
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+";");
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" ORDER BY cStatus ASC;");
                     %>
         
                           <table width="100%" border="0">
@@ -78,6 +84,7 @@
                                 <td><b>Medium</b></td>
                                 <td><b>Intake</b></td>
                                 <td><b>Admitted</b></td>
+                                <td><b>Status</b></td>
 
                                 </tr>
                     <%
@@ -103,12 +110,14 @@
                     String st4=rs.getString("cMedium");
                     String st5=String.valueOf(rs.getInt("cIntakeSanctioned"));
                     String st6=String.valueOf(rs.getInt("cStudentsAdmitted"));
+                    String st7=rs.getString("cStatus");
                     table.addCell(st1);
                     table.addCell(st2);
                     table.addCell(st3);
                     table.addCell(st4);
                     table.addCell(st5);
                     table.addCell(st6);
+                    table.addCell(st7);
                     table.completeRow();
                         %>        <tr >
                                 <td><font size="2"><%=st1%></font></td>
@@ -117,6 +126,7 @@
                                 <td><font size="2"><%=st4%></font></td>
                                 <td><font size="2"><%=st5%></font></td>
                                 <td><font size="2"><%=st6%></font></td>
+                                <td><font size="2"><%=st7%></font></td>
                             </tr>
 
                     <% 
@@ -1326,30 +1336,48 @@
                     PdfWriter.getInstance(document, new FileOutputStream(tempFile));
                     document.open();
 
-                   
-                    p=new Paragraph("\t\t\t\t\t\t\t\t\tPROF.CH.RAJESHAM,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tOffice of the Dean.");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    //headers4 = new String[] {"College Code", "Time", "IP", "In Page","Action"};
+                    table4 = new PdfPTable(2);
+                    
+                    //Font fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                     p=new Paragraph("College Development Council");
+                    //float fntSize, lineSpacing;
+                    fntSize = 15f;
+                    lineSpacing = 10f;
+                   /* p = new Paragraph(new Phrase(lineSpacing,"College Development Council",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);*/
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    p=new Paragraph(new Phrase(lineSpacing,"\n\nKakatiya University",FontFactory.getFont(FontFactory.COURIER_BOLD, 20f)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    p=new Paragraph(new Phrase(lineSpacing,"\nWarangal - 506009",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
-                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\tM.Com,MBA,M.Phil,Ph. D.,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCOLLEGE DEVELOPMENT COUNCIL.");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                     p=new Paragraph(new Phrase(lineSpacing,"\nDean, College Development Counciil.",FontFactory.getFont(FontFactory.COURIER_BOLD, fntSize)));
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
+                    
+                     
 
-                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDEAN,\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tKakatiya University.");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
-                    document.add(p);
-                    
-                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVidyaranyapuri, Hanamkonda.");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
-                    document.add(p);
-                    
-                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tWarangal-506009 Telangana");
-                    p.setAlignment(Paragraph.ALIGN_LEFT);
-                    document.add(p);
-                    
+
                     image = Image.getInstance("https://cdc-aa.kakatiya.ac.in/IMG/1.png");
                      image.scaleAbsolute(80f, 80f);
-                    image.setAbsolutePosition(250f, 740f);
+                    image.setAbsolutePosition(85f, 740f);
                     document.add(image);
                     
                     
@@ -1357,6 +1385,67 @@
                      + "Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com\n"
                      + "-------------------------------------------------------------------------------------------------------------------------------");
                      //Phones : Office - 08702438998; 08702461443; email: deancdcku@gmail.com
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    
+                     cCode=(String)session.getAttribute("aCcode");
+                    rs = st.executeQuery("SELECT * FROM cdc.defieciencyreports where cCode="+cCode+";");
+                    
+                    String date="";
+                    String number="";
+                    String reports="";
+                    if(rs.next()){
+                    
+                        number=rs.getString("reportNo");
+                        date=rs.getString("date");
+                        reports=rs.getString("report");
+                    
+                    }
+                    rs = st.executeQuery("SELECT cAddress FROM cdc.cdc_college_details where cCode="+cCode+";");
+                    
+                    String address="";
+                    if(rs.next()){
+                        
+                        address=rs.getString("cAddress");
+                    
+                    }
+                    address=address.replace(",", "\n \t\t\t\t\t\t\t");
+                    p=new Paragraph("\t\t\t\t\t\t\tNo : "+number+"\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDate : "+date);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\n\t\t\t\t\t\t\tTo :\n \t\t\t\t\t\t\t"+address);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\tSub : DEFICIENCIES - Deficiencies pointed out by the Affiliiation inspection Committee\n\t\t\t\t\t\t\t\t\t\t\t\t for the academic year "+currentYear+"-"+nextYear+" - Regarding.");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("*****");
+                    p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\tSir/Madam,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tWith reference to the subject cited, I am to inform you that the following are the\n\t\t\t\t\t\t\tdeficiencies pointed out by the Affiliation Inspection Committee pertaining to your College and\n\t\t\t\t\t\t\tsame were informed to you at the time of Annual-Affiliation-inspections for the academic year\n\t\t\t\t\t\t\t"+currentYear+"-"+nextYear);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    reports=reports.replace("\n", "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+reports);
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tTherefore, you are informed to submit Compliance report with relevant supporting \n\t\t\t\t\t\t\tdocuments for the said deficiencies to the undersigned within 15- days from the date of\n\t\t\t\t\t\t\tissue of this letter, failing which affiliation cannot be extended for the next academic \n\t\t\t\t\t\t\tyear "+nextYear+"-"+(nextYear+1));
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tDEAN");
+                    p.setAlignment(Paragraph.ALIGN_LEFT);
+                    document.add(p);
+                    
+                    p=new Paragraph("\t\t\t\t\t\t\tCopy to :-\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t1) The Srcretary to the Vice-Chansellor, KU\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t2) The Stack File.");
                     p.setAlignment(Paragraph.ALIGN_LEFT);
                     document.add(p);
                     
@@ -1368,6 +1457,90 @@
                     
 
                      
+                    break;
+                    case "adminCollegeAmount" :
+                    
+                    rs = st.executeQuery("SELECT ccode,cname,iamount,idate,aamount,adate FROM cdc.cdc_college_details;");
+                    %>
+        
+                          <table width="100%" border="0">
+                           
+                            </table>
+                                    <table width="100%" border="1">
+                           
+                            </table><br>
+                        <center>
+                        <TABLE BORDER="10" CELLPADDING="6" CELLSPACING="2" WIDTH="70%">
+                            <tr bgcolor="deepskyblue">
+                                <td><b>College Code</b></td>
+                                <td><b>College Name</b></td>
+                                <td><b>Inspection Amount</b></td>
+                                <td><b>Date</b></td>
+                                <td><b>Affiliation Amount</b></td>
+                                <td><b>Date</b></td>
+                                
+                                
+
+                                </tr>
+                    <%
+
+                    
+                    PdfWriter.getInstance(document, new FileOutputStream(new File(f)));
+                    document.open();
+
+                    headers4 = new String[] {"College Code", "College Name", "Inspection Amount", "Date","Affiliation Amount","Date"};
+                    table4 = new PdfPTable(headers4.length);
+                                for (int i = 0; i < headers4.length; i++) {
+                                    String header = headers4[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table4.addCell(cell);
+                                }
+                                table4.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("cCode");
+                    String st2=rs.getString("cname");
+                    String st3=rs.getString("iamount");
+                    String st4=rs.getString("idate");
+                    String st5=rs.getString("aamount");
+                    String st6=rs.getString("adate");
+                    
+                    table4.addCell(st1);
+                    table4.addCell(st2);
+                    table4.addCell(st3);
+                    table4.addCell(st4);
+                    table4.addCell(st5);
+                    table4.addCell(st6);
+                    
+                    table4.completeRow();
+                        %>        <tr >
+                                <td><font size="2"><%=st1%></font></td>
+                                <td><font size="2"><%=st2%></font></td>
+                                <td><font size="2"><%=st3%></font></td>
+                                <td><font size="2"><%=st4%></font></td>
+                                <td><font size="2"><%=st5%></font></td>
+                                <td><font size="2"><%=st6%></font></td>
+                                
+                            </tr>
+
+                    <% 
+                    }
+                    document.add(table4);
+                    document.close();
+                    System.out.println(f);
+                    %>
+                        </TABLE>
+                         <a href="download.jsp?ff=<%=f%>">Download the  as PDF</a>
+                        <a href="excelData.jsp?button=amount">Download as Excel file</a>
+                        </center>
+        
+                    <%
+                    
+                   
+                    
+                    
+                    
                     break;
             }
         

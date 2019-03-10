@@ -63,6 +63,11 @@
                     <td>Faculty details</td>
                     <td><button name ="button" value="Faculty" type="submit">Get Details</button></td>
                 </tr>
+                 <tr>
+                <td>Deficiency Report</td>
+                 <td><button name ="button" value="deficiencyReport" type="submit">Download Report</button></td>
+                
+                </tr>
                 <tr>
                     <td>Transactions</td>
                     <td><button name ="button" value="Transactions" type="submit">Get Details</button></td>

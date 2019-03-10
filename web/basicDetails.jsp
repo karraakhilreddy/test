@@ -75,7 +75,7 @@
         document.getElementById("lRegNo").style.visibility= "hidden";
         document.getElementById("lRegNo").value="0";
         document.getElementById("lRegDate").style.visibility= "hidden";
-        document.getElementById("lRegDate").value=null;
+        document.getElementById("lRegDate").value="1111-11-11";
         
     }
 
@@ -330,7 +330,7 @@
          </tr>
          <tr>
              <td>&nbsp;Building RegDate ]</td>
-             <td><input type="date" name="lRegDate"   value="<%=rs.getDate("lRegDate") %>" class="hidden"  onclick="dateset();" id="datefield1" min="1899-11-11" max="2019-02-12"></td>
+             <td><input type="date" name="lRegDate" id="lRegDate"  value="<%=rs.getDate("lRegDate") %>"   onclick="dateset();" id="datefield1" min="1111-11-11" max="2019-02-12"></td>
          </tr>
                   
                             
@@ -560,7 +560,7 @@
                           <td><input type="date" name="CFDDate" value="<%=rs.getDate("CFDDate") %>" name="CFDDate"  required="required"  onclick="dateset()" id="datefield3" min="1899-11-11" max="2019-02-12" ></td>
                           <td><input type="number" name="CFDAmount"  required="required" value="<%=rs.getInt("CFDAmount") %>" ></td>
                           <td><input type="text" name="CFDIssuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" ></td>
-                          <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" onclick="dateset()" id="datefield4" min="1899-11-11" max="2019-02-12" ></td>
+                          <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" onclick="dateset()" id="datefield4" min="1899-11-11"  ></td>
                           <td><input type="date" name="CFDRenewalDate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required"   ></td>
                      </tr>
                  

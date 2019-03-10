@@ -56,6 +56,9 @@
                 <tr>
                     <td colspan="2"><a href="reports/adminReports.jsp">Complete Reports</a></td></td>
                 </tr>
+                <tr>
+                    <td colspan="2"><a href="masters.jsp">Masters</a></td></td>
+                </tr>
             </table>
         </form>
          

@@ -38,24 +38,29 @@
         <form action="reports/generateReportsPDF.jsp" method="post">
             <table>
                 <tr>
-                    <td>Basic</td>
-                    <td><input type="submit" name="button" value="Basic"></td>
+                    <td>Inspection Report</td>
+                    <td><button type="submit" name="button" value="Basic">Download Report</button></td>
+                
                 </tr>
                 <tr>
-                    <td>Course</td>
-                    <td><input type="submit" name="button" value="Course"></td>
+                    <td>Course List</td>
+                    <td><button type="submit" name="button" value="Course">View</button></td>
+                    
                 </tr>
                 <tr>
-                    <td>Faculty</td>
-                    <td><input type="submit" name="button" value="Faculty"></td>
+                    <td>Faculty List</td>
+                    <td><button type="submit" name="button" value="Faculty">View</button></td>
+                    
                 </tr>
                 <tr>
                 <td>Logs</td>
-                <td><input type="submit" name="button" value="Logs"></td>
-                <tr>
+                <td><button type="submit" name="button" value="Logs">View</button></td>
+                </tr>
                 <tr>
                 <td>Deficiency Report</td>
-                <td><input type="submit" name="button" value="deficiencyReport"></td>
+               
+                <td><button type="submit" name="button" value="deficiencyReport">Download</button></td>
+                </tr>
                 <tr>
                 <td>Logs</td>
                 <td colspan="2"><a href="viewDocuments.jsp">View Documents</a></td>
