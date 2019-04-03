@@ -81,6 +81,7 @@ public class FileUploadDBServlet extends HttpServlet {
                                     message = "ERROR: " + ex.getMessage();
                                     ex.printStackTrace();
                                 } catch (ClassNotFoundException ex) {
+                                    message = "ERROR: " + ex.getMessage();
                                     Logger.getLogger(FileUploadDBServlet.class.getName()).log(Level.SEVERE, null, ex);
                                 } finally {
                                     if (conn != null) {

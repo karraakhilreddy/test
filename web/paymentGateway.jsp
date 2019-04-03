@@ -57,6 +57,9 @@
                         </table>
                     </nav>
                     <% 
+                        if(session.getAttribute("userId")==null){
+                                    response.sendRedirect("login.jsp");
+                                }
                 String place="";
                 if(request.getParameter("name").equals("inspection")){
                     place="1";

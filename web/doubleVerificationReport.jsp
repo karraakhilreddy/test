@@ -52,7 +52,8 @@
                     </nav>
         <h1>Payment Verification report!</h1>
         <%
-                    String encStatusData=request.getParameter("encStatusData");//"7OuNG4OlchGQjNFa6cbaTH6jz4rKiRqweXSiTK0gBwBcByVP0Is222w+xPJXrnbkY/p5WA2TFPR7wl9K60cobi/7iqtma/gf42Okz3eiClxO29uMaMPMq8llV50drYvY4+I2LG6CdUkdMh/6T+NipOVH3as172QI6n8IjUSF/DiAuO/mh35uOy++dxu1HHa11/DNK95tdIKIf6MyW0zrWzgQAI54GVlqjlpZCxWSOeiK8EZsRDtw/JBgxIZE3r5qxW0UhEsXig8oMhnp9PEOhToNjSmZWLrmMdbnPWVWTPs="; //(String)request.getParameter("encData");
+            //
+                    String encStatusData=request.getParameter("encStatusData");//"TSJwyBQ/NznHX3CMDwYMFAPX3JXTchDG0cZgI+dCGEGnsaukBIdRm/IqxhjUVn0BAcc8ufJ70NMcOYNtSIB/OKOb7ZDSry6/C1qygZdTquqY6HrQjo3exmv6vSZyEZY6SKW/LCH2TvUeJUBfMptt9p7Q/siY1mmBS6goM6C1mXV7IxnOehS7MUGEQZtDPLxyb12h5phVZa6FNCrS81EClxVbM31ImsYl9SbvqD+yZDAsYyBV8+T+sQ4eC7g29vni"; //(String)request.getParameter("encData");
                     String    Key1="tvhkwlcVatJsWTBAAe9Ou9xS91EGFLcFuTZ/W4I3jH4=";//key from panel
                     String    Key2="Fbi1P7Nc7R1Yd7mgVB7EYQ=="; // key from pdf
                     
@@ -89,19 +90,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Reference ID</td>
-                                                    <td><%= data[1] %></td>
+                                                    <td><%= data[0] %></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Status</td>
-                                                    <td><%=data[2] %></td>
+                                                    <td><%=data[1] %></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Amount</td>
-                                                    <td><%=data[3] %></td>
+                                                    <td><%=data[6] %></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Paymode</td>
-                                                    <td><%= data[4]%></td>
+                                                    <td><%= data[11]%></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Reason</td>
@@ -128,7 +129,13 @@
                     
         
    </center>
-        
+                                                    <% if(data[1].equals("SUCCESS")){%>
+                                                <form action="doubleVerificationResponse.jsp" method="POST">
+                                                    <input type="text" hidden="" name="encStatusData" value="<%= encStatusData %>">
+                                                    <br>
+                                                    <input type="submit">
+                                                </form>
+                                                    <%}%>
  
         <div class="footer">
   <div id="button"></div>

@@ -1,15 +1,42 @@
-
 <!DOCTYPE html>
-
 <html>
-<head>
-	 <meta charset="utf-8">
-	<title>cdc</title>
+
+    <head>
     
-    <link rel="stylesheet" type="text/css" href="../CSS/help.css">
+       <meta charset="utf-8">
+	<title>AA</title>
+    
     <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css">
-    
-    <script>
+    <link rel="stylesheet" type="text/css" href="../CSS/Help.css">
+    <style>
+        .tabcontent{
+            background-color: white;
+        }
+       
+p{
+     font-size: 13pt;
+     color:black;
+   padding: 2px;
+   text-align: left;
+}
+.lists  ul li{
+   font-size: 14pt;
+    color: black;
+   text-align: left;
+}
+.lists ol li{
+    font-size: 14pt;
+     color: black;
+        text-align: left;
+}
+.lists{
+    border:1px solid grey;
+    border-radius: 8px;
+    background-color: white;
+    padding: 2px;
+}
+    </style>
+     <script>
         
         
             function openCont(evt, contName,from) {
@@ -60,10 +87,10 @@
                     
             }
     </script>
-  
-</head>
-<body onload="openCont(event, 'generalDetails','but1')">
-  <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
+    </head>
+    <body style="background-color: white;" onload="openCont(event, 'generalDetails','but1')">
+
+    <div style="text-align: center; background:linear-gradient(#50c9c3,#96deda); margin-top: -1em;">
       <div >
            <div ><img src="../IMG/1.png" height="150" width="150" align="left" hspace="80" ></div>
             <div ><img src="../IMG/2.png" height="150" width="200" align="right" hspace="80" ></div>
@@ -74,11 +101,11 @@
       <a href="#">
        <p style="color:black; border-style: white; text-align: center; background-color: #30cfd0;"><marquee  behavior="alternate" scrollamount="6" onmouseover="this.stop()" onmouseout="this.start()"><b><i>Welcome To Academic Audit</i></b></marquee></p></a>
   </div>
-
-    <nav>
+          <nav>
         <div class="navbuttons">
-             <ul><button class="" onclick="window.location='aboutCDC.html'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+             <ul><button class="active" onclick="window.location='indexAA.jsp'" ><li>Notifications</li></button>
+                 <button class="" onclick="window.location='aboutAA.html'" ><li>About</li></button>
+                <button class="tablinks" onclick="window.location='loginAA.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -88,6 +115,7 @@
         </div>
        
     </nav>
+
 <center>
    
     <div class="container">
@@ -95,11 +123,10 @@
              
                  
         <div class="tab">
-  <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">About </button>
-  <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Dean</button>
- <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Help </button>
- 
-</div>
+            <button id="button1"  class="tablinks" onclick="openCont(event, 'generalDetails')">About </button>
+            <button  id="button2" class="tablinks" onclick="openCont(event, 'buildingDetails')">Dean</button>
+            <button   id="button3"  class="tablinks" onclick="openCont(event, 'staffDetails')">Help </button>
+        </div>
         
                <center>
 
@@ -109,8 +136,8 @@
     
       <div class="lists"> 
         <marquee  behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="60">
-            <img src="../IMG/1.png">
-            <img src="../IMG/cdcBuilding.JPG" width="300" height="220">
+            <img src="IMG/1.png">
+            <img src="IMG/cdcBuilding.JPG" width="300" height="220">
         </marquee>
         
     
@@ -182,7 +209,7 @@ The College Development Council accords permission/affiliation to establish and 
   </div>
         
                  <h2 style="color: green;">JURISDICTION OF THE UNIVERSITY</h2>
-                 <center><div><img src="../IMG/Juri.jpg" width="900" height="900"> </div></center>
+                 <center><div><img src="IMG/Juri.jpg" width="900" height="900"> </div></center>
    
 </div>
 
@@ -195,7 +222,7 @@ The College Development Council accords permission/affiliation to establish and 
         
         <center>
            
-            <img src="../IMG/dean.jpg" width="200" height="250">
+            <img src="IMG/dean.jpg" width="600" height="450">
              <p><b>NAME:</b>Prof. Ch. Rajesham<br>
 			<b>CONTACT:</b> 9440163189<br>
 			<b>e-mail :</b> drchr18@yahoo.com </p>
@@ -326,7 +353,7 @@ The College Development Council accords permission/affiliation to establish and 
             </h2>
             <br>
             <h3>
-                <img src="../IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
+                <img src="IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
                 Phone  : 08702438998; 08702461443; <br>
                 E-Mail : deancdcku@gmail.com <br>
                 
@@ -346,7 +373,7 @@ The College Development Council accords permission/affiliation to establish and 
             
             <h3>
                 CH.PRANAY KUMAR <br>
-                <img src="../IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
+                <img src="IMG/cdcBuilding.JPG" height="230px" width="400px"> <br>
                 Mobile : 9849447696 <br>
                 E-Mail : kupranay@gmail.com <br>
                 
@@ -366,7 +393,7 @@ The College Development Council accords permission/affiliation to establish and 
             </h2>
             <br>
             <h3>
-                 <img src="../IMG/dean.jpg" height="230px" width="230px"> <br>
+                <img src="IMG/dean.jpg" width="600" height="450"> <br>
                 Professor Ch.RAJESHAM, M.Com; MBA; M.Phil;.Ph.D. <br>
                
                 Mobile : 9440163184 <br>

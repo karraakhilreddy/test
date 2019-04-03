@@ -12,11 +12,47 @@
 <html>
 <head>
 	 <meta charset="utf-8">
-	<title>Academic Audit</title>
+	<title>cdc</title>
     
-    <link rel="stylesheet" type="text/css" href="../CSS/indexCSS.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css">
-    
+  <!-- <link rel="stylesheet" type="text/css" href="CSS/indexCSS.css">-->
+    <link rel="stylesheet" type="text/css" href="../CSS/breakDown.css"> 
+    <style>
+        table{
+            width: 100%;
+            cellspacing : 1;
+            cellpadding : 1;
+            border:0;
+          
+        }
+        tr{
+            height: 35px;
+        }
+        tr:hover{
+            height: 45px;
+        }
+        tr:nth-child(even) 
+        {
+            background-color: #b0cad5;
+        }
+        tr:nth-child(odd) 
+        {
+            background-color: #c4dce7;
+        }
+        a{
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            color:#044df2;
+            font-size:11px;
+            text-decoration:none;
+            line-height:20px;
+         }
+
+        a:hover{
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            color:orangered;
+            font-size:12px;
+            text-decoration:none;
+       }
+    </style>
     <script>
         
         
@@ -85,8 +121,9 @@
 
     <nav>
         <div class="navbuttons">
-             <ul><button class="" onclick="window.location='aboutAA.html'" ><li>About</li></button>
-                <button class="tablinks" onclick="window.location='login.jsp'"><li>College Login</li></button>
+             <ul><button class="active" onclick="window.location='indexAA.jsp'" ><li>Notifications</li></button>
+                 <button class="" onclick="window.location='aboutAA.html'" ><li>About</li></button>
+                <button class="tablinks" onclick="window.location='loginAA.jsp'"><li>College Login</li></button>
                 <button class="tablinks" onclick="window.location='admin/aindex.jsp'"><li>Admin Login</li></button>
                 
                 <button onclick="window.open('https://www.kakatiya.ac.in');" ><li>University</li></button>
@@ -100,20 +137,19 @@
     <div class="main">    
         <center>
     <div class="mainBackground">
-        <div  style="background-color: #b9b992; width: 850px; align-content: center;">
+        <div  style="width: 850px; align-content: center;">
             <h1>Notifications</h1>
             <a href="temp/checkMail.html" style="text-decoration: none; "> Click here to Correct/Check College Code and registered email</a>
             <br> <br>
             <table>
                 <tr>
-                    <td>S.No</td>
-                    <td>Date</td>
-                    <td>Notification</td>
+                    
+                    
                 </tr>
               <%
                                 try{
                                         int sno=1;
-                                        String query="select * from notifications order by id desc;";
+                                        String query="select * from notifications where off='AA' order by id desc ;";
                                          Connection conn=Database.getConnection();
                                          Statement stmt=conn.createStatement();
                                          ResultSet rs=stmt.executeQuery(query);
@@ -122,9 +158,9 @@
                                            %>
 
                                                 <tr>
-                                                    <td><%=sno%></td>
-                                                    <td><%= rs.getString("date")%></td>
-                                                    <td><a href="notifDownload.jsp?id=<%= rs.getString("id")%>" style="text-decoration: none;"><%= rs.getString("Notification")%></a></td>
+                                                    
+                                                    <td>&nbsp;<a href="notifDownload.jsp?from=notifications&&id=<%= rs.getString("id")%>" target="_blank" style="text-decoration: none;"><%= rs.getString("Notification")%></a>
+                                                        <% if(sno<=3){ %><img src="IMG/new_icon_red.gif"> <% } %></td>
                                                     
                                                 </tr>
                                           <%

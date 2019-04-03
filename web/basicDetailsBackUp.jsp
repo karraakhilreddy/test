@@ -8,18 +8,21 @@
     <link rel="stylesheet" type="text/css" href="CSS/breakDown.css">
     <script>
         
+        if( performance.navigation.type===2){
+          location.reload(true); 
+        }
         // document.getElementById("button1").click();
-       //datePickerId.max = new Date().toISOString().split("T")[0];
+       datePickerId.max = new Date().toISOString().split("T")[0];
         function dateset(){
             var today = new Date();
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
              if(dd<10){
-                    dd='0'+dd;
+                    dd='0'+dd
                 } 
                 if(mm<10){
-                    mm='0'+mm;
+                    mm='0'+mm
                 } 
 
             today = yyyy+'-'+mm+'-'+dd;
@@ -327,7 +330,7 @@
          </tr>
          <tr>
              <td>&nbsp;Building RegDate ]</td>
-             <td><input type="date" name="lRegDate" id="lRegDate"  value="<%=rs.getDate("lRegDate") %>"   onclick="dateset();" id="datefield1" min="1111-11-11" ></td>
+             <td><input type="date" name="lRegDate" id="lRegDate"  value="<%=rs.getDate("lRegDate") %>"   onclick="dateset();" id="datefield1" min="1111-11-11" max="2019-02-12"></td>
          </tr>
                   
                             
@@ -344,7 +347,7 @@
                     
                     <tr>
                         <td>Date of Registration:</td>
-                        <td><input type="date" name="landRegDate"  value="<%=rs.getDate("landRegDate") %>"required="required" onclick="dateset()" id="datefield2" min="1899-11-11" ></td>
+                        <td><input type="date" name="landRegDate"  value="<%=rs.getDate("landRegDate") %>"required="required" onclick="dateset()" id="datefield2" min="1899-11-11" max="2019-02-12"></td>
                     </tr>
                          
                     <tr>     
@@ -553,86 +556,22 @@
                      
                      </tr>
                      <tr>
-                         <td><input type="text" name="CFDNo"  value=" " required="required" ></td>
-                          <td><input type="date" name="CFDDate" value=" " name="CFDDate"  required="required"  onclick="dateset()" id="datefield3" min="1899-11-11" ></td>
-                          <td><input type="number" name="CFDAmount"  required="required" value=" " ></td>
-                          <td><input type="text" name="CFDIssuingBank" value=" "  required="required" ></td>
-                          <td><input type="date" name="CFDMaturitydate"  value=" "  required="required" onclick="dateset()"  min="1899-11-11"  ></td>
-                          <td><input type="date" name="CFDRenewalDate" value=" "   required="required"   ></td>
+                         <td><input type="text" name="CFDNo"  value="<%=rs.getString("CFDNo") %>" required="required" ></td>
+                          <td><input type="date" name="CFDDate" value="<%=rs.getDate("CFDDate") %>" name="CFDDate"  required="required"  onclick="dateset()" id="datefield3" min="1899-11-11" max="2019-02-12" ></td>
+                          <td><input type="number" name="CFDAmount"  required="required" value="<%=rs.getInt("CFDAmount") %>" ></td>
+                          <td><input type="text" name="CFDIssuingBank" value="<%=rs.getString("CFDIssuingBank") %>"  required="required" ></td>
+                          <td><input type="date" name="CFDMaturitydate"  value="<%=rs.getDate("CFDMaturitydate") %>"  required="required" onclick="dateset()" id="datefield4" min="1899-11-11"  ></td>
+                          <td><input type="date" name="CFDRenewalDate" value="<%=rs.getDate("CFDRenewalDate") %>"   required="required"   ></td>
                      </tr>
                  
                    </table>
                       <br><br>
                 
                         
-<button name="name" value="corpusFundDetails" type="submit">Insert</button>                        
+<button name="name" value="corpusFundDetails" type="submit">UPDATE</button>                        
                       <br><br>    
                      
-                      <div>
-                          
-                                        
-            <table border="1" id="">
-                
-            <tr>
-                          <th>FDR/BG NO</th>
-                          <th>Date</th>
-                          <th>Amount</th>
-                          <th>Name of the issuing Bank</th>
-                          <th>Date of Maturity</th>
-                          <th>Date of Renewal</th>
-                          <th>Action</th>
-            </tr>
-            <%
-               // String cCode=(String)session.getAttribute("cCode");
-            try
-            {
-           
-            String query2="select * from cfd where cCode='"+cCode+"';";
-            Connection conn2=Database.getConnection();
-            Statement stmt2=conn2.createStatement();
-            ResultSet rs2=stmt2.executeQuery(query2);
-            while(rs2.next())
-            {
-
-            %>
-                <tr>
-                    <td><%=rs2.getString("CFDNo") %></td>
-                    <td><%=rs2.getDate("CFDDate") %></td>
-                    <td><%=rs2.getInt("CFDAmount") %></td>
-                    <td><%=rs2.getString("CFDIssuingBank") %></td>
-                    <td><%=rs2.getDate("CFDMaturitydate") %></td>
-                    <td><%=rs2.getDate("CFDRenewalDate") %></td>
-                    
-                    <%   
-                                   
-                        String url="<td><a href=\"upload.jsp?name=delete&&place=cfd&&sno="+ rs2.getInt("id") +"\">Remove</a></td>";
-                        out.print(url);
-                                
-                    %>
-                    
-                    
-                    </tr>
-                    <%
-
-            }
-            %>
-            </table><br>
-                <%
-                  
-                rs2.close();
-                stmt2.close();
-                conn2.close();
-                }
-            catch(Exception e)
-            {
-                e.printStackTrace();
-                }
-
-
-
-
-            %>  
-                      </div>  
+                   
                
           </div>
                       </form>

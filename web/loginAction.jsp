@@ -96,7 +96,7 @@
                                             logs l=new logs();
                                             
                                             l.updateLog( rs.getString("role"), "loginAction.jsp", "Login",ipAddress);
-                                            
+                                            session.setAttribute("userId", rs.getString("role"));
                                             response.sendRedirect("admin/aWelcome.jsp");
                                             out.println("3");
                                         }else

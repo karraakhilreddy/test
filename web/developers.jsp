@@ -28,7 +28,7 @@
                     
                     Dean CDC, Prof. CH.Rajeshem Sir, and Asst. Registrar Ch. Pranay Sir, helped and guided us for the completion of this project.<br><br>
                     
-                    And special thanks to Mr. Satish sir, SBI bank KU branch manager, Campus networking and website, Director, Dr.B.Rama Devi Madam and Vardhineni Pavithran Sir,Network Administrator  KU, for helping us in crossing every hurdle by providing  legal and technical  support.
+                    And special thanks to Mr. Satish sir, SBI bank KU branch manager, Campus networking and website, Director, Dr.B.Rama Madam and Vardhineni Pavithran Sir,Network Administrator  KU, for helping us in crossing every hurdle by providing  legal and technical  support.
                 </p>
             </div>
             <div class="row mgt50px">

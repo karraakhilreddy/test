@@ -13,7 +13,8 @@ Connection conn = null;
 
 java.util.Date date = new java.util.Date();
 
-String filename = "D:\\f"+date.getTime() +".xls" ;
+File tempFile = File.createTempFile("report", ".xls");
+ String filename=tempFile.getAbsolutePath();
 
         String button=request.getParameter("button");
         switch(button){
@@ -21,11 +22,11 @@ String filename = "D:\\f"+date.getTime() +".xls" ;
             case "Faculty" :
                             try{
 
-
+                                String cCode=(String)session.getAttribute("cCode");
                             conn = Database.getConnection();
 
                             Statement stmt = conn.createStatement();
-                            String strQuery = "SELECT * FROM cdc.faculty;";
+                            String strQuery = "SELECT * FROM cdc.faculty where ccode='"+cCode+"';";
 
 
                             ResultSet rs = stmt.executeQuery(strQuery);
@@ -106,11 +107,11 @@ String filename = "D:\\f"+date.getTime() +".xls" ;
                 
                 try{
 
-
+                            String cCode=(String)session.getAttribute("cCode");
                             conn = Database.getConnection();
 
                             Statement stmt = conn.createStatement();
-                            String strQuery = "SELECT * FROM cdc.courses order by ctype asc;";
+                            String strQuery = "SELECT * FROM cdc.courses where ccode='"+cCode+"' order by ctype asc ;";
 
 
                             ResultSet rs = stmt.executeQuery(strQuery);

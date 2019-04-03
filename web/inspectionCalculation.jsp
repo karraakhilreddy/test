@@ -66,6 +66,9 @@
                 
             </tr>
             <%
+                if(session.getAttribute("userId")==null){
+                                    response.sendRedirect("login.jsp");
+                                }
                 String cCode=(String)session.getAttribute("cCode");
             try
             {
@@ -123,6 +126,10 @@
                                 <input type="text" name="name" value="inspection" hidden>
                                 <button> <input type="submit" name="" value="Pay Now" style="background-color: white;"></button>
                              </form>
+                                 <br>
+                            <form action="doubleVerification.jsp" method="post">
+                                <button>  <input type="submit" name="" value="Verify the payment" style="background-color: white;" ></button>
+                            </form>  
                         <%
                     }else{
                             %>
@@ -136,10 +143,7 @@
          
          %>
         
-                <br>
-             <form action="doubleVerification.jsp" method="post">
-                 <button>  <input type="submit" name="" value="Verify the payment" style="background-color: white;" ></button>
-             </form>
+             
     </div>    
         </center>
     </div>

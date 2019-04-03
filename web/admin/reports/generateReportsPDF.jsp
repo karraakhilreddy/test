@@ -66,7 +66,7 @@ function goBack() {
             switch(button){
                 case "Course" :
                    
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" ORDER BY cStatus ASC;");
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode='"+cCode+"' ORDER BY cStatus ASC;");
                     %>
         
                           <table width="100%" border="0">
@@ -149,7 +149,7 @@ function goBack() {
                     break;
                     case "Faculty" :
                      
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+";");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode='"+cCode+"';");
                     %>
         
                           <table width="100%" border="0">
@@ -351,7 +351,7 @@ function goBack() {
                     
                     case "Logs" :
                     
-                    rs = st.executeQuery("SELECT * FROM cdc.logs where cCode="+cCode+";");
+                    rs = st.executeQuery("SELECT * FROM cdc.logs where cCode='"+cCode+"';");
                     %>
         
                           <table width="100%" border="0">
@@ -517,7 +517,7 @@ function goBack() {
             String currentYear = sdf.format(dt);
             int nextYear=Integer.parseInt(currentYear)+1;
             int previousYear=Integer.parseInt(currentYear)-1;
-                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
+                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode='"+cCode+"';");
                    
 
                     
@@ -872,43 +872,145 @@ function goBack() {
 
                     document.add(table4);
                     table4.completeRow();
-
-                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
-                    document.add(Chunk.NEWLINE);
-                     p = new Paragraph(new Phrase(lineSpacing,"Corpus Fund Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                    
+                    
+                     document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Others\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
                      p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
                     document.add(Chunk.NEWLINE);
 
+
                     table4 = new PdfPTable(2);
-                    table4.addCell("FDR/BG number");
-                    table4.addCell(rs.getString("CFDNo"));
+
+
+                    table4.addCell("Students Attandance System");
+                    table4.addCell(rs.getString("cAttendanceSystem"));
                     table4.completeRow();
                    
-                    table4.addCell("Date");
-                    table4.addCell(rs.getString("CFDDate"));
+                    table4.addCell("Provision of CCTVs");
+                    table4.addCell(rs.getString("cCCTV"));
                     table4.completeRow();
                    
-                    table4.addCell("Amount");
-                    table4.addCell(rs.getString("CFDAmount"));
+                    table4.addCell("Availability of computers");
+                    table4.addCell(rs.getString("cComputers"));
                     table4.completeRow();
                    
-                    table4.addCell("Name of the issuing bank");
-                    table4.addCell(rs.getString("CFDIssuingBank"));
+                    table4.addCell("Availability of projectors");
+                    table4.addCell(rs.getString("cprojectors"));
                     table4.completeRow();
                    
-                    table4.addCell("Date of maturity");
-                    table4.addCell(rs.getString("CFDMaturityDate"));
+                    table4.addCell("Whether the college is having NSS unit");
+                    table4.addCell(rs.getString("cNSSUnit"));
                     table4.completeRow();
                    
-                    table4.addCell("Date of renewal");
-                    table4.addCell(rs.getString("CFDRenewalDate"));
+                    table4.addCell("No of programs/camps organized in the last year");
+                    table4.addCell(rs.getString("cNSSCampsNo"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Whether the college is convening governing body meetings regularly by inviting university nominee");
+                    table4.addCell(rs.getString("cMeetings"));
+                    table4.completeRow();
+                   
+                                     
+
+                    document.add(table4);
+                    table4.completeRow();
+                    
+                    document.newPage();
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Payment Details\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    document.add(Chunk.NEWLINE);
+
+                    
+                    table4 = new PdfPTable(2);
+
+
+                    table4.addCell("Inspection Amount");
+                    table4.addCell(rs.getString("iAmount"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Inspection Amount Paid On");
+                    table4.addCell(rs.getString("iDate"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Inspection Order No");
+                    table4.addCell(rs.getString("iOrderNo"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Amount");
+                    table4.addCell(rs.getString("aAmount"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Amount Paid On");
+                    table4.addCell(rs.getString("aDate"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Order No");
+                    table4.addCell(rs.getString("aOrderNo"));
+                    table4.completeRow();
+                   
+
+                    document.add(table4);
                     table4.completeRow();
 
                     
-                    document.add(table4);
-                    table4.completeRow();
+                    document.setPageSize(PageSize.A4.rotate());
+                    
+                    document.setMargins(-1, -1, 100, -1);
+                    document.setMarginMirroring(true);
+                    
+                    document.newPage();
+                     document.add(Chunk.NEWLINE);
+                    p = new Paragraph(new Phrase(lineSpacing,"Corpus Fund Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     document.add(Chunk.NEWLINE);
+                    rs = st.executeQuery("SELECT * FROM cdc.cfd where cCode="+cCode+";");
+                   
+                    
+                    headers = new String[] {"CFD No", "CFD Date","CFD Amount", "CFD Issuing Bank", "CFD Maturity Date","CFD Renewal Date"};
+                    table = new PdfPTable(headers.length);
+                                for (int i = 0; i < headers.length; i++) {
+                                    String header = headers[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table.addCell(cell);
+                                }
+				float wid2[]={12f,10f,45f,8f,5f,5f};
+                                //	table.setWidths(wid2);
+
+                                table.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("CFDNo");
+                    String st2=rs.getString("CFDDate");
+                    String st3=rs.getString("CFDAmount");
+                    String st4=rs.getString("CFDIssuingBank");
+                    String st5=rs.getString("CFDMaturityDate");
+                    String st6=rs.getString("CFDRenewalDate");
+                    
+                    table.addCell(st1);
+                    table.addCell(st2);
+                    table.addCell(st3);
+                    table.addCell(st4);
+                    table.addCell(st5);
+                    table.addCell(st6);
+                    
+                    table.completeRow();
+                       
+                    }
+                    document.add(table);
+                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                    
                     
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
                     document.setPageSize(PageSize.A4.rotate());
@@ -919,7 +1021,7 @@ function goBack() {
                      p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                      document.add(Chunk.NEWLINE);
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" and cStatus='Previously Existing Course';");
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode='"+cCode+"' and cStatus='Previously Existing Course';");
                    
                     
                     headers = new String[] {"Type", "Course", "Combination", "Medium","Intake sanctioned", "Admitted Strength"};
@@ -958,7 +1060,7 @@ function goBack() {
                     document.add(p);
                      document.add(Chunk.NEWLINE);
 
-                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode="+cCode+" and cStatus!='Previously Existing Course';");
+                    rs = st.executeQuery("SELECT * FROM cdc.courses where cCode='"+cCode+"' and cStatus!='Previously Existing Course';");
                    
                     
                     headers = new String[] {"Type", "Course", "Combination", "Medium","Intake sanctioned","Status"};
@@ -1001,7 +1103,7 @@ function goBack() {
                     document.add(p);
                      document.add(Chunk.NEWLINE);
 
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Principal';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode='"+cCode+"' and tType='Principal';");
                     
                      headers2 = new String[] {"Name", "Designations", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Salary per month","Mode of payment","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
@@ -1055,7 +1157,7 @@ function goBack() {
                     document.add(p);
                      document.add(Chunk.NEWLINE);
 
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Teaching';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode='"+cCode+"' and tType='Teaching';");
                     
                     // headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
@@ -1105,7 +1207,7 @@ function goBack() {
                      p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                      document.add(Chunk.NEWLINE);
-                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode="+cCode+" and tType='Non-Teaching';");
+                    rs = st.executeQuery("SELECT * FROM cdc.faculty where cCode='"+cCode+"' and tType='Non-Teaching';");
                     
                     // headers2 = new String[] {"Name", "Designation", "Qualification", "Date of appointment","Nature of appointment", "Mode of appointment","Scale of pay","Mode of pay","Bank account Number","PAN card Number","Aadhar number","Mobile Number"};
                     table2 = new PdfPTable(headers2.length);
@@ -1329,7 +1431,7 @@ function goBack() {
              currentYear = sdf.format(dt);
              nextYear=Integer.parseInt(currentYear)+1;
              previousYear=Integer.parseInt(currentYear)-1;
-                   // rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
+                   // rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode='"+cCode+"';");
                    
 
                     
@@ -1389,8 +1491,8 @@ function goBack() {
                     document.add(p);
                     
                     
-                     cCode=(String)session.getAttribute("aCcode");
-                    rs = st.executeQuery("SELECT * FROM cdc.defieciencyreports where cCode="+cCode+";");
+                     //cCode=(String)session.getAttribute("aCcode");
+                    rs = st.executeQuery("SELECT * FROM cdc.defieciencyreports where cCode='"+cCode+"';");
                     
                     String date="";
                     String number="";
@@ -1402,7 +1504,7 @@ function goBack() {
                         reports=rs.getString("report");
                     
                     }
-                    rs = st.executeQuery("SELECT cAddress FROM cdc.cdc_college_details where cCode="+cCode+";");
+                    rs = st.executeQuery("SELECT cAddress FROM cdc.cdc_college_details where cCode='"+cCode+"';");
                     
                     String address="";
                     if(rs.next()){

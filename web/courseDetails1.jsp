@@ -84,6 +84,9 @@ function myFunction() {
                  <td> <select  name="type" id="type" onchange="this.form.submit()"  required> 
                             <option value="0"></option>
                            <%
+                               if(session.getAttribute("userId")==null){
+                                    response.sendRedirect("login.jsp");
+                                }
                                 try{
                                         String query="select distinct Type from course_structure order by Type asc;";
                                          Connection conn=Database.getConnection();

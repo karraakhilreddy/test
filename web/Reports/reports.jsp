@@ -52,7 +52,8 @@
                 <tr>
                     <td>Upload Documents</td>
    
-                    <td><button name ="button" formaction="uploadDocuments.jsp" type="submit">Upload</button></td> 
+                    <!--<td><button name ="button" formaction="uploadDocuments.jsp" type="submit">Upload</button></td> -->
+                    <td>Please Submit hard copies by hand.</td> 
                 </tr>
                 <tr>
                     <td>Course Details</td>

@@ -337,16 +337,13 @@ File tempFile = File.createTempFile("report", ".xls");
                             rowhead.createCell((short) 64).setCellValue("No.of Periodicals");
                             rowhead.createCell((short) 65).setCellValue("No. of teaching staff");
                             rowhead.createCell((short) 66).setCellValue("No. of non teaching staff");
-                            rowhead.createCell((short) 67).setCellValue("FDR/BG No");
-                            rowhead.createCell((short) 68).setCellValue("Date");
-                            rowhead.createCell((short) 69).setCellValue("Amount");
-                            rowhead.createCell((short) 70).setCellValue("Name of Issuing bank");
-                            rowhead.createCell((short) 71).setCellValue("date of maturity");
-                            rowhead.createCell((short) 72).setCellValue("date of renewal");
-                            rowhead.createCell((short) 73).setCellValue("Inspection Amount");
-                            rowhead.createCell((short) 74).setCellValue("Inspection Amount paid on date");
-                            rowhead.createCell((short) 75).setCellValue("Inspection Amount");
-                            rowhead.createCell((short) 76).setCellValue("Inspection Amount paid on date");
+                           
+                            rowhead.createCell((short) 67).setCellValue("Inspection Amount");
+                            rowhead.createCell((short) 68).setCellValue("Inspection Amount paid on date");
+                            rowhead.createCell((short) 69).setCellValue("Inspection Amount OrderID");
+                            rowhead.createCell((short) 70).setCellValue("Inspection Amount");
+                            rowhead.createCell((short) 71).setCellValue("Inspection Amount paid on date");
+                            rowhead.createCell((short) 72).setCellValue("Inspection Amount OrderID");
                             
                             
                             
@@ -433,17 +430,14 @@ File tempFile = File.createTempFile("report", ".xls");
                             row.createCell((short) 64).setCellValue(rs.getInt("noPeriodicals"));
                             row.createCell((short) 65).setCellValue(rs.getInt("noTeachingStaff"));
                             row.createCell((short) 66).setCellValue(rs.getInt("noNonTeachingStaff"));
-                            row.createCell((short) 67).setCellValue(rs.getString("CFDNo"));
-                            row.createCell((short) 68).setCellValue(rs.getString("CFDDate"));
-                            row.createCell((short) 69).setCellValue(rs.getInt("CFDAmount"));
-                            row.createCell((short) 70).setCellValue(rs.getString("CFDIssuingBank"));
-                            row.createCell((short) 71).setCellValue(rs.getString("CFDMaturitydate"));
-                            row.createCell((short) 72).setCellValue(rs.getString("CFDRenewalDate"));
-                            row.createCell((short) 72).setCellValue(rs.getString("iAmount"));
                             
-                            row.createCell((short) 72).setCellValue(rs.getString("iDate"));
-                            row.createCell((short) 72).setCellValue(rs.getString("aAmount"));
-                            row.createCell((short) 72).setCellValue(rs.getString("aDate"));
+                            row.createCell((short) 67).setCellValue(rs.getString("iAmount"));
+                            
+                            row.createCell((short) 68).setCellValue(rs.getString("iDate"));
+                            row.createCell((short) 69).setCellValue(rs.getString("iOrderNo"));
+                            row.createCell((short) 70).setCellValue(rs.getString("aAmount"));
+                            row.createCell((short) 71).setCellValue(rs.getString("aDate"));
+                            row.createCell((short) 72).setCellValue(rs.getString("aOrderNo"));
                             
                             //out.print(rs.getString("cCode"));
                             index++;

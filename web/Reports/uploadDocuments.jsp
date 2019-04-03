@@ -183,7 +183,7 @@ a{
                             <option value="Latest Permission letter from NCTE">Latest Permission letter from NCTE</option>
                             
                         </select>               
-                        <input accept="application/pdf" type="file" name="photo" size="50"/>
+                        <input accept="application/pdf" type="file" name="photo" size="500"/>
                         <!--<input type="text" name="firstName"  value="file1" hidden/>-->
                         <input type="text" name="lastName" size="50" value="<%=session.getAttribute("cCode")%>" hidden/>
                         <input type="text" name="fileType" size="50" value="Document" hidden/>

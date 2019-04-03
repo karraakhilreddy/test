@@ -87,7 +87,7 @@
         <!-- code -->
         <center>
         <form action="loginAction.jsp" method="post" id=" ">
-             
+            <br><h3>Before login please check college code and email from <a href="masters.jsp">HERE.</a></h3>
             <fieldset>
                 <img src="IMG\userimage.png" height="80" width="120" align="inherit"/><br/><br/>
             

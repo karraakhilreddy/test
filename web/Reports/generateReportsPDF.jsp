@@ -889,9 +889,7 @@
                     
                    rs = st.executeQuery("SELECT * FROM cdc_college_details where ccode="+cCode+";");
 
-                    while (rs.next()){
-                    
-                    cName=rs.getString("cName");
+                     while (rs.next()){
 
                     table4.addCell("College Code");
                     table4.addCell(rs.getString("cCode"));
@@ -966,7 +964,7 @@
                     table4.addCell(rs.getString("valOwnBuilding"));
                     table4.completeRow();
                    
-                    if(!rs.getString("valOwnBuilding").equals("owned")){
+                    if(rs.getString("valOwnBuilding").equals("no")){
                         
                          table4.addCell("Lessor");
                          table4.addCell(rs.getString("lLessor"));
@@ -989,7 +987,7 @@
                          table4.completeRow();
                     
                          table4.addCell("Reg Date");
-                         table4.addCell(rs.getString("lRegDate"));
+                         table4.addCell(rs.getString(rs.getString("lRegDate")));
                          table4.completeRow();
                     
                     }
@@ -1044,6 +1042,11 @@
                     table4.addCell(rs.getString("valPlayGround"));
                     table4.completeRow();
                    
+                    document.add(table4);
+                    document.newPage();
+                    
+                    table4 =new PdfPTable(2);
+
                     table4.addCell("Is parking area available");
                     table4.addCell(rs.getString("valParkingArea"));
                     table4.completeRow();
@@ -1182,45 +1185,143 @@
 
                     document.add(table4);
                     table4.completeRow();
-
-                    // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
-                    document.add(Chunk.NEWLINE);
-                     p = new Paragraph(new Phrase(lineSpacing,"Corpus Fund Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                    
+                    
+                     document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Others\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
                      p.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(p);
                     
                     document.add(Chunk.NEWLINE);
 
+
                     table4 = new PdfPTable(2);
-                    table4.addCell("FDR/BG number");
-                    table4.addCell(rs.getString("CFDNo"));
+
+
+                    table4.addCell("Students Attandance System");
+                    table4.addCell(rs.getString("cAttendanceSystem"));
                     table4.completeRow();
                    
-                    table4.addCell("Date");
-                    table4.addCell(rs.getString("CFDDate"));
+                    table4.addCell("Provision of CCTVs");
+                    table4.addCell(rs.getString("cCCTV"));
                     table4.completeRow();
                    
-                    table4.addCell("Amount");
-                    table4.addCell(rs.getString("CFDAmount"));
+                    table4.addCell("Availability of computers");
+                    table4.addCell(rs.getString("cComputers"));
                     table4.completeRow();
                    
-                    table4.addCell("Name of the issuing bank");
-                    table4.addCell(rs.getString("CFDIssuingBank"));
+                    table4.addCell("Availability of projectors");
+                    table4.addCell(rs.getString("cprojectors"));
                     table4.completeRow();
                    
-                    table4.addCell("Date of maturity");
-                    table4.addCell(rs.getString("CFDMaturityDate"));
+                    table4.addCell("Whether the college is having NSS unit");
+                    table4.addCell(rs.getString("cNSSUnit"));
                     table4.completeRow();
                    
-                    table4.addCell("Date of renewal");
-                    table4.addCell(rs.getString("CFDRenewalDate"));
+                    table4.addCell("No of programs/camps organized in the last year");
+                    table4.addCell(rs.getString("cNSSCampsNo"));
                     table4.completeRow();
+                   
+                    table4.addCell("Whether the college is convening governing body meetings regularly by inviting university nominee");
+                    table4.addCell(rs.getString("cMeetings"));
+                    table4.completeRow();
+                   
+                                     
+
+                    document.add(table4);
+                    table4.completeRow();
+                    
+                    document.newPage();
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                    document.add(Chunk.NEWLINE);
+                     p = new Paragraph(new Phrase(lineSpacing,"Payment Details\n",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                    
+                    document.add(Chunk.NEWLINE);
 
                     
+                    table4 = new PdfPTable(2);
+
+
+                    table4.addCell("Inspection Amount");
+                    table4.addCell(rs.getString("iAmount"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Inspection Amount Paid On");
+                    table4.addCell(rs.getString("iDate"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Inspection Order No");
+                    table4.addCell(rs.getString("iOrderNo"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Amount");
+                    table4.addCell(rs.getString("aAmount"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Amount Paid On");
+                    table4.addCell(rs.getString("aDate"));
+                    table4.completeRow();
+                   
+                    table4.addCell("Affiliation Order No");
+                    table4.addCell(rs.getString("aOrderNo"));
+                    table4.completeRow();
+                   
+
                     document.add(table4);
                     table4.completeRow();
                     
                     // fn=Font(FontFamily.,50.0f,Font.UNDERLINE);
+                    document.setPageSize(PageSize.A4.rotate());
+                    
+                    document.setMargins(-1, -1, 100, -1);
+                    document.setMarginMirroring(true);
+                    
+                    document.newPage();
+                     document.add(Chunk.NEWLINE);
+                    p = new Paragraph(new Phrase(lineSpacing,"Corpus Fund Details",FontFactory.getFont(FontFactory.COURIER, 12f)));
+                     p.setAlignment(Paragraph.ALIGN_CENTER);
+                    document.add(p);
+                     document.add(Chunk.NEWLINE);
+                    rs = st.executeQuery("SELECT * FROM cdc.cfd where cCode="+cCode+";");
+                   
+                    
+                    headers = new String[] {"CFD No", "CFD Date","CFD Amount", "CFD Issuing Bank", "CFD Maturity Date","CFD Renewal Date"};
+                    table = new PdfPTable(headers.length);
+                                for (int i = 0; i < headers.length; i++) {
+                                    String header = headers[i];
+                                    PdfPCell cell = new PdfPCell();
+                                    cell.setGrayFill(0.9f);
+                                    cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
+                                    table.addCell(cell);
+                                }
+				float wid2[]={12f,10f,45f,8f,5f,5f};
+                                //	table.setWidths(wid2);
+
+                                table.completeRow();
+                    while (rs.next()){
+                        String st1=rs.getString("CFDNo");
+                    String st2=rs.getString("CFDDate");
+                    String st3=rs.getString("CFDAmount");
+                    String st4=rs.getString("CFDIssuingBank");
+                    String st5=rs.getString("CFDMaturityDate");
+                    String st6=rs.getString("CFDRenewalDate");
+                    
+                    table.addCell(st1);
+                    table.addCell(st2);
+                    table.addCell(st3);
+                    table.addCell(st4);
+                    table.addCell(st5);
+                    table.addCell(st6);
+                    
+                    table.completeRow();
+                       
+                    }
+                    document.add(table);
                     document.setPageSize(PageSize.A4.rotate());
                     
                     document.setMargins(-1, -1, 100, -1);
@@ -1244,7 +1345,7 @@
                                     cell.setPhrase(new Phrase(header.toUpperCase(), new Font(Font.HELVETICA, 10, Font.BOLD)));
                                     table.addCell(cell);
                                 }
-				float wid2[]={12f,10f,45f,8f,5f,5f};
+				// wid2[]={12f,10f,45f,8f,5f,5f};
                                 	table.setWidths(wid2);
 
                                 table.completeRow();

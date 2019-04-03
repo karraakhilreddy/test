@@ -88,6 +88,10 @@ function myFunction() {
                  <td> <select  name="type" id="type" onchange="this.form.submit()"  required> 
                             <option value="0"></option>
                            <%
+                               
+                               if(session.getAttribute("userId")==null){
+                                    response.sendRedirect("login.jsp");
+                                }
                                 try{
                                         String query="select distinct Type from course_structure order by Type asc;";
                                          Connection conn=Database.getConnection();
@@ -233,7 +237,7 @@ function myFunction() {
                           <br><br>
                           <center><h1>Existing Course</h1></center>
                           
-            <table border="1" id="facultytable">
+            <table border="1" id="">
                 
             <tr>
                 <td>Type</td>

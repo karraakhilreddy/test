@@ -21,10 +21,10 @@
     <body>
      <%  
           
-          int cCode=Integer.parseInt(request.getParameter("cCode"));
+          String cCode=request.getParameter("cCode");
          Connection con=Database.getConnection();
           PreparedStatement ps=con.prepareStatement("select sno,cEmail from cdc_college_details where cCode=?");
-          ps.setInt(1 ,cCode);
+          ps.setString(1 ,cCode);
           ResultSet rs=ps.executeQuery();
           try{
          if(rs.next())

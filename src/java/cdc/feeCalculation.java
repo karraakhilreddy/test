@@ -147,7 +147,7 @@ public class feeCalculation {
                             
                     break;
                     case "UG":
-                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection fee pending' and cType='UG' ;";
+                     query2="SELECT count( distinct ccourse) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection fee pending' and cType='UG' ;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);
@@ -369,7 +369,7 @@ public class feeCalculation {
                      
                     break;
                     case "UG":
-                     query2="SELECT count(*) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='UG' ;";
+                     query2="SELECT count(distinct ccourse) as tCourse FROM courses where cCode='"+cCode+"' and cstatus='Inspection Success' and cType='UG' ;";
         
                       stmt2=conn.createStatement();
                       rs2=stmt2.executeQuery(query2);

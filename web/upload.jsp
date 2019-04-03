@@ -496,15 +496,11 @@
                     break;
                     case "corpusFundDetails":
                         try{
-                             int sno=0;
-                             String query="select sno from cdc_college_details where cCode='"+cCode+"';";
-
+                            
 
                             // Connection conn=Database.getConnection();
                              Statement stmt=con.createStatement();
-                             ResultSet rs=stmt.executeQuery(query);
-                             if(rs.next())
-                               sno=rs.getInt("sno");
+                             
                         
                         
                             String CFDNo=request.getParameter("CFDNo");
@@ -514,17 +510,17 @@
                             String CFDMaturitydate = request.getParameter("CFDMaturitydate");
                             String CFDRenewalDate= request.getParameter("CFDRenewalDate");
                             
-                             String uQuery="update cdc_college_details set CFDNo=?, CFDDate=?,CFDAmount=?, CFDIssuingBank=?, CFDMaturitydate=?,"+
-                                     "CFDRenewalDate=?  where sno = ?;";
+                             String uQuery="INSERT INTO `cdc`.`cfd`(`ccode`,`CFDNo`,`CFDDate`,`CFDAmount`,`CFDIssuingBank`,`CFDMaturityDate`,`CFDRenewalDate`)VALUES(?,?,?,?,?,?,?);";
                             
                             ps = con.prepareStatement(uQuery);
-                            ps.setString(1,CFDNo);
-                            ps.setString(2,CFDDate);
-                            ps.setInt(3,CFDAmount);
-                            ps.setString(4,CFDIssuingBank);
-                            ps.setString(5,CFDMaturitydate);
-                            ps.setString(6,CFDRenewalDate);
-                            ps.setInt(7,sno); 
+                            ps.setString(1,cCode);
+                            ps.setString(2,CFDNo);
+                            ps.setString(3,CFDDate);
+                            ps.setInt(4,CFDAmount);
+                            ps.setString(5,CFDIssuingBank);
+                            ps.setString(6,CFDMaturitydate);
+                            ps.setString(7,CFDRenewalDate);
+                           
                              
                             int i=ps.executeUpdate();
                             if(i==1)
@@ -702,6 +698,18 @@
                                         logs l=new logs();
                                         l.updateLog(String.valueOf(cCode), "documents.jsp", "deleted document ",ipAddress); 
                                         response.sendRedirect("Reports/uploadDocuments.jsp");
+                                    }catch(Exception e){
+                                         out.print("Problem");
+                                    }
+                           break;
+                        case "cfd":
+                                try{
+                                        Statement st = con.createStatement();
+                                        st.executeUpdate("DELETE  FROM cfd WHERE id="+sno);
+                                        out.print("Deleted");
+                                        logs l=new logs();
+                                        l.updateLog(String.valueOf(cCode), "basicDetails.jsp", "deleted cfd ",ipAddress); 
+                                        response.sendRedirect("basicDetails.jsp");
                                     }catch(Exception e){
                                          out.print("Problem");
                                     }
